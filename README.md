@@ -3,6 +3,7 @@
 [![Python](https://img.shields.io/pypi/pyversions/scatterd)](https://img.shields.io/pypi/pyversions/scatterd)
 [![PyPI Version](https://img.shields.io/pypi/v/scatterd)](https://pypi.org/project/scatterd/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/erdogant/scatterd/blob/master/LICENSE)
+[![Downloads](https://pepy.tech/badge/scatterd/week)](https://pepy.tech/project/scatterd/week)
 
 * Easy and fast manner of creating scatter plots.
 
