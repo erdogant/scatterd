@@ -20,11 +20,8 @@
 * It is distributed under the MIT license.
 
 ## Requirements
-* It is advisable to create a new environment. 
 ```python
-conda create -n env_scatterd python=3.6
-conda activate env_scatterd
-pip install numpy pandas tqdm matplotlib
+pip install numpy matplotlib colourmap
 ```
 
 ## Quick Start
@@ -41,7 +38,7 @@ python setup.py install
 
 ### Import scatterd package
 ```python
-import scatterd as scatterd
+from scatterd import scatterd
 ```
 
 ### Example:
