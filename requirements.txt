@@ -1,0 +1,7 @@
+#conda create -n env_scatterd python=3.6
+#conda activate env_scatterd
+#conda install spyder
+
+matplotlib 
+numpy 
+colourmap

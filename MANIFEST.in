@@ -1,0 +1,5 @@
+#include versioneer.py
+#include scatterd/_version.py
+
+include scatterd/data/*.zip
+include scatterd/data/*.txt
