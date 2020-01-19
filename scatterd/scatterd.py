@@ -1,4 +1,4 @@
-'''Easy and fast manner of creating scatter plots.
+'''Easy and fast way of creating scatter plots.
 
  from scatterd import scatterd
  
@@ -26,8 +26,8 @@ import numpy as np
 
 #%% Main
 def scatterd(Xcoord, Ycoord, s=15, c=[0,0,0], label=None, norm=False, cmap='Set1', xlabel=None, ylabel=None, title=None, fontsize=16, figsize=(15,10)):
-    '''
-    
+    '''Main function to make scaterplot.
+
 
     Parameters
     ----------
@@ -42,7 +42,7 @@ def scatterd(Xcoord, Ycoord, s=15, c=[0,0,0], label=None, norm=False, cmap='Set1
     c: list/array of RGB colors with same size as Xcoord
         Color of samples in RGB colors.
     cmap : String, optional
-        'Set1'       (default)     
+        'Set1'       (default)
         'Set2'       
         'rainbow'
         'bwr'        Blue-white-red
@@ -107,8 +107,9 @@ def scatterd(Xcoord, Ycoord, s=15, c=[0,0,0], label=None, norm=False, cmap='Set1
     if label is not None:
         c,cdict=colourmap.fromlist(label, cmap=args['cmap'], method='matplotlib')
 
-    # Boot figure
+    # Bootup figure
     fig, ax = plt.subplots(figsize=args['figsize'])
+
     # Scatter
     ax.scatter(X[:,0],X[:,1], facecolor=c, s=s, edgecolor='None')
 
@@ -135,6 +136,7 @@ def scatterd(Xcoord, Ycoord, s=15, c=[0,0,0], label=None, norm=False, cmap='Set1
     # Show figure
     fig.show()
     fig.canvas.draw()
+    
     # Return
     return(fig,ax)
 

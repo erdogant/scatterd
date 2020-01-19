@@ -1,7 +1,17 @@
 import setuptools
+import re
 #import versioneer
-new_version='0.1.0'
 
+#-------- Version control
+VERSIONFILE="scatterd/__init__.py"
+getversion = re.search( r"^__version__ = ['\"]([^'\"]*)['\"]", open(VERSIONFILE, "rt").read(), re.M)
+if getversion:
+    new_version = getversion.group(1)
+else:
+    raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
+
+
+#--------  Create setup file    
 with open("README.md", "r") as fh:
     long_description = fh.read()
 setuptools.setup(
@@ -13,7 +23,7 @@ setuptools.setup(
 #     cmdclass=versioneer.get_cmdclass(),  # VERSION CONTROL
      author="Erdogan Taskesen",
      author_email="erdogant@gmail.com",
-     description="Easy and fast manner of creating scatter plots.",
+     description="Easy and fast way of creating scatter plots.",
      long_description=long_description,
      long_description_content_type="text/markdown",
      url="https://github.com/erdogant/scatterd",

@@ -1,5 +1,6 @@
 # %% Tests
 from scatterd.scatterd import scatterd
+import numpy as np
 
 # %%import some data to play with
 from sklearn import datasets
@@ -7,7 +8,7 @@ iris = datasets.load_iris()
 X = iris.data[:, :2]  # we only take the first two features.
 y = iris.target
 
-# %%
+# %% Scatter
 # Simple scatter
 scatterd(X[:,0], X[:,1])
 # Color based on labels
