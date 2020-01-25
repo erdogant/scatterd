@@ -4,6 +4,7 @@
 [![PyPI Version](https://img.shields.io/pypi/v/scatterd)](https://pypi.org/project/scatterd/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/erdogant/scatterd/blob/master/LICENSE)
 [![Downloads](https://pepy.tech/badge/scatterd/week)](https://pepy.tech/project/scatterd/week)
+[![Donate Bitcoin](https://img.shields.io/badge/donate-orange.svg)](https://erdogant.github.io/donate/?currency=USD&amount=5)
 
 * Easy and fast manner of creating scatter plots.
 
@@ -71,7 +72,7 @@ scatterd(X[:,0], X[:,1], figsize=(25,15))
 </p>
 
 
-## Citation
+### Citation
 Please cite scatterd in your publications if this is useful for your research. Here is an example BibTeX entry:
 ```BibTeX
 @misc{erdogant2019scatterd,
@@ -82,11 +83,14 @@ Please cite scatterd in your publications if this is useful for your research. H
 }
 ```
 
-## Maintainers
+### Maintainers
 * Erdogan Taskesen, github: [erdogant](https://github.com/erdogant)
 
-## Contribute
+### Contribute
 * Contributions are welcome.
 
-## Licence
+### Licence
 See [LICENSE](LICENSE) for details.
+
+### Donation
+* This work is created and maintained in my free time. If this package is usefull to you and if want to see more like this, you can show your <a href="https://erdogant.github.io/donate/?currency=USD&amount=5">gratitude</a> :) Thanks!
