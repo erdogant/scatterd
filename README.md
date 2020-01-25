@@ -4,7 +4,7 @@
 [![PyPI Version](https://img.shields.io/pypi/v/scatterd)](https://pypi.org/project/scatterd/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/erdogant/scatterd/blob/master/LICENSE)
 [![Downloads](https://pepy.tech/badge/scatterd/week)](https://pepy.tech/project/scatterd/week)
-[![Donate Bitcoin](https://img.shields.io/badge/donate-orange.svg)](https://erdogant.github.io/donate/?currency=USD&amount=5)
+[![Donate Bitcoin](https://img.shields.io/badge/sponsor-grey.svg)](https://erdogant.github.io/donate/?currency=USD&amount=5)
 
 * Easy and fast manner of creating scatter plots.
 
