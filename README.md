@@ -4,7 +4,7 @@
 [![PyPI Version](https://img.shields.io/pypi/v/scatterd)](https://pypi.org/project/scatterd/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/erdogant/scatterd/blob/master/LICENSE)
 [![Downloads](https://pepy.tech/badge/scatterd/week)](https://pepy.tech/project/scatterd/week)
-[![Donate Bitcoin](https://img.shields.io/badge/donate-grey.svg)](https://erdogant.github.io/donate/?currency=USD&amount=5)
+[![Donate](https://img.shields.io/badge/donate-grey.svg)](https://erdogant.github.io/donate/?currency=USD&amount=5)
 
 * Easy and fast manner of creating scatter plots.
 
@@ -93,4 +93,4 @@ Please cite scatterd in your publications if this is useful for your research. H
 See [LICENSE](LICENSE) for details.
 
 ### Donation
-* This work is created and maintained in my free time. If this package is usefull to you and if want to see more like this, you can show your <a href="https://erdogant.github.io/donate/?currency=USD&amount=5">gratitude</a> :) Thanks!
+* This package is created and maintained in my free time. If this package is usefull, you can show your <a href="https://erdogant.github.io/donate/?currency=USD&amount=5">gratitude</a> :) Thanks!
