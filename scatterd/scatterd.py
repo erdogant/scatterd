@@ -33,14 +33,19 @@ def scatterd(Xcoord, Ycoord, s=15, c=[0,0,0], label=None, norm=False, cmap='Set1
     ----------
     Xcoord : numpy array
         1D Coordinates.
+
     Ycoord : numpy array
         1D Coordinates.
+
     label: list of labels with same size as Xcoord
         label of the samples.
+
     s: Int or list/array of sizes with same size as Xcoord
         Size of the samples.
+
     c: list/array of RGB colors with same size as Xcoord
         Color of samples in RGB colors.
+
     cmap : String, optional
         'Set1'       (default)
         'Set2'       
@@ -53,16 +58,23 @@ def scatterd(Xcoord, Ycoord, s=15, c=[0,0,0], label=None, norm=False, cmap='Set1
         'Pastel1'    Discrete colors
         'Paired'     Discrete colors
         'Set1'       Discrete colors    
+
     xlabel : String, optional
         Xlabel. The default is None.
+
+
     ylabel : String, optional
         Ylabel. The default is None.
+
     title : String, optional
         Title of the figure. The default is None.
+
     norm : Bool, optional
         Normalize datapoints. The default is True.
+
     figsize : tuple, optional
         Figure size. The default is (15,10).
+
     fontsize : String, optional
         The fontsize of the y labels that are plotted in the graph. The default is 16.
 
