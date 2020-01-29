@@ -82,11 +82,11 @@ if __name__ == '__main__':
                 # git commit
                 print('git add->commit->push')
                 os.system('git add .')
-                os.system('git commit -m v'+current_version)
-                os.system('git push')
+                # os.system('git commit -m v'+current_version)
+                # os.system('git push')
                 # Set tag for this version
                 print('Set new version tag: %s' %(current_version))
-                os.system('git tag -a v' + current_version + ' -m ' + current_version)
+                os.system('git tag -a v' + current_version + ' -m "' + current_version + '"')
                 os.system('git push origin --tags')
                 print('Upload to pypi..')
                 os.system(TWINE_PATH)
