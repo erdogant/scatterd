@@ -1,6 +1,5 @@
 import setuptools
 import re
-#import versioneer
 
 #-------- Version control
 VERSIONFILE="scatterd/__init__.py"
@@ -8,19 +7,17 @@ getversion = re.search( r"^__version__ = ['\"]([^'\"]*)['\"]", open(VERSIONFILE,
 if getversion:
     new_version = getversion.group(1)
 else:
-    raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
-
+    raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE))
 
 #--------  Create setup file    
 with open("README.md", "r") as fh:
     long_description = fh.read()
+
 setuptools.setup(
      install_requires=['matplotlib','numpy','colourmap'],
      python_requires='>=3',
      name='scatterd',
      version=new_version,
-#     version=versioneer.get_version(),    # VERSION CONTROL
-#     cmdclass=versioneer.get_cmdclass(),  # VERSION CONTROL
      author="Erdogan Taskesen",
      author_email="erdogant@gmail.com",
      description="Easy and fast way of creating scatter plots.",
