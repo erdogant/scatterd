@@ -65,17 +65,6 @@ scatterd(X[:,0], X[:,1], figsize=(25,15))
 </p>
 
 
-### Citation
-Please cite scatterd in your publications if this is useful for your research. Here is an example BibTeX entry:
-```BibTeX
-@misc{erdogant2019scatterd,
-  title={scatterd},
-  author={Erdogan Taskesen},
-  year={2019},
-  howpublished={\url{https://github.com/erdogant/scatterd}},
-}
-```
-
 ### Maintainer
 * Erdogan Taskesen, github: [erdogant](https://github.com/erdogant)
 * Contributions are welcome.
