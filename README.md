@@ -4,27 +4,20 @@
 [![PyPI Version](https://img.shields.io/pypi/v/scatterd)](https://pypi.org/project/scatterd/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/erdogant/scatterd/blob/master/LICENSE)
 [![Downloads](https://pepy.tech/badge/scatterd/week)](https://pepy.tech/project/scatterd/week)
-[![Donate](https://img.shields.io/badge/donate-grey.svg)](https://erdogant.github.io/donate/?currency=USD&amount=5)
+[![Coffee](https://img.shields.io/badge/coffee-black-grey.svg)](https://erdogant.github.io/donate/?currency=USD&amount=5)
 
 * Easy and fast manner of creating scatter plots.
 
 ## Contents
 - [Installation](#-installation)
-- [Requirements](#-Requirements)
 - [Quick Start](#-quick-start)
 - [Contribute](#-contribute)
-- [Citation](#-citation)
 - [Maintainers](#-maintainers)
 - [License](#-copyright)
 
 ## Installation
 * Install scatterd from PyPI (recommended). scatterd is compatible with Python 3.6+ and runs on Linux, MacOS X and Windows. 
 * It is distributed under the MIT license.
-
-## Requirements
-```python
-pip install numpy matplotlib colourmap
-```
 
 ## Quick Start
 ```
@@ -83,14 +76,7 @@ Please cite scatterd in your publications if this is useful for your research. H
 }
 ```
 
-### Maintainers
+### Maintainer
 * Erdogan Taskesen, github: [erdogant](https://github.com/erdogant)
-
-### Contribute
 * Contributions are welcome.
-
-### Licence
-See [LICENSE](LICENSE) for details.
-
-### Donation
-* This work is created and maintained in my free time. If you wish to buy me a <a href="https://erdogant.github.io/donate/?currency=USD&amount=5">Coffee</a> for this work, it is very appreciated.
+* If you wish to buy me a <a href="https://erdogant.github.io/donate/?currency=USD&amount=5">Coffee</a> for this work, it is very appreciated :)
