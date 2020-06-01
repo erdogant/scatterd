@@ -20,7 +20,7 @@ setuptools.setup(
      version=new_version,
      author="Erdogan Taskesen",
      author_email="erdogant@gmail.com",
-     description="Easy and fast way of creating scatter plots.",
+     description="scatterd is an easy and fast way of creating scatter plots.",
      long_description=long_description,
      long_description_content_type="text/markdown",
      url="https://github.com/erdogant/scatterd",
