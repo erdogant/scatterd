@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #%% Main
-def scatterd(X, Y, s=15, c=[0,0,0], label=None, norm=False, cmap='Set1', xlabel=None, ylabel=None, title=None, fontsize=16, fontcolor=None, figsize=(15,10)):
+def scatterd(X, Y, s=15, c=[0,0,0], label=None, density=False, norm=False, cmap='Set1', xlabel=None, ylabel=None, title=None, fontsize=16, fontcolor=None, figsize=(15,10)):
     """Make scaterplot.
 
     Parameters
@@ -22,6 +22,8 @@ def scatterd(X, Y, s=15, c=[0,0,0], label=None, norm=False, cmap='Set1', xlabel=
         1D Coordinates.
     Y : numpy array
         1D Coordinates.
+    density : Bool (default: False)
+        Include the kernel density in the scatter plot.
     label: list of labels with same size as X
         label of the samples.
     s: Int or list/array of sizes with same size as X
@@ -56,11 +58,9 @@ def scatterd(X, Y, s=15, c=[0,0,0], label=None, norm=False, cmap='Set1', xlabel=
         None : Use same colorscheme as for c
         [0,0,0] : If the input is a single color, all fonts will get this color.
 
-
     References
     -------
     Colormap: https://matplotlib.org/examples/color/colormaps_reference.html
-
 
     Returns
     -------
@@ -70,20 +70,21 @@ def scatterd(X, Y, s=15, c=[0,0,0], label=None, norm=False, cmap='Set1', xlabel=
     if len(X)!=len(Y): raise Exception('[scatterd] >ERROR: X should have same length as Y.')
     if s is None: raise Exception('[scatterd] >ERROR: input parameter s(ize) should be not None.')
     if c is None: raise Exception('[scatterd] >ERROR: input parameter c(olors) should be not None.')
-    if not isinstance(s, int) and len(s)!=len(X):
-        raise Exception('[scatterd] >ERROR: input parameter s(ize) should be of same size of X.')
+    if not isinstance(s, int) and len(s)!=len(X): raise Exception('[scatterd] >ERROR: input parameter s(ize) should be of same size of X.')
 
     args = {}
     args['norm'] = norm
     args['cmap'] = cmap
-    args['xlabel'] = xlabel
-    args['ylabel'] = ylabel
+    args['xlabel'] = 'x-axis' if xlabel is None else xlabel
+    args['ylabel'] = 'y-axis' if ylabel is None else ylabel
     args['title'] = title
     args['fontsize'] = fontsize
     args['figsize'] = figsize
     # Color of the axis and grid of the plot
     axiscolor = '#dddddd'
-
+    
+    if label is None: label=np.zeros_like(Y)
+    
     # Combine into array
     X = np.c_[X, Y]
 
@@ -98,13 +99,22 @@ def scatterd(X, Y, s=15, c=[0,0,0], label=None, norm=False, cmap='Set1', xlabel=
 
     # Set fontcolor
     fontcolor = _fontcolor(fontcolor, label, X, args['cmap'])
-    # print(fontcolor)
 
+    # Gather kernel density
+    dens = coord2density(X)
+    
     # Bootup figure
     fig, ax = plt.subplots(figsize=args['figsize'])
 
+    # Custom the color, add shade and bandwidth
+    df = pd.DataFrame(data=np.c_[X, labels], columns=['x','y','labels'])
+    ax = sns.kdeplot(data=df, x='x', y='y', hue="labels", fill=True, bw_adjust=.5, thresh=.5, levels=5)
+
     # Scatter
     ax.scatter(X[:,0],X[:,1], facecolor=c, s=s, edgecolor='None')
+    
+    # plt.show()
+    # ax = sns.kdeplot(X[:,0], X[:,1], cmap="Reds", shade=True, shade_lowest=False, bw_adjust=.6, alpha=0.66, legend=False, cbar=True, **kwargs)
 
     # Plot labels
     if label is not None:
@@ -153,4 +163,40 @@ def _fontcolor(fontcolor, label, X, cmap, verbose=3):
 
     return fontcolor
 
-  
+# %%
+    # libraries & dataset
+    # import seaborn as sns
+
+    # x, y : Variables that specify positions on the x and y axes.
+    # shade : Controls the presence of a shade.
+    # cmap : Colormap.
+    # bw_adjust : Bandwidth, smoothing parameter.
+    # thresh : number in [0, 1], Lowest iso-proportion level at which to draw a contour line.
+     
+    # set seaborn style
+    # sns.set_style("white")
+    
+    # # Custom the color, add shade and bandwidth
+    # sns.kdeplot(x=X, y=Y, cmap="Reds", shade=True, bw_adjust=.5)
+    # plt.show()
+
+    # # Add thresh parameter
+    # sns.kdeplot(x=X, y=Y, cmap="Blues", shade=True, thresh=0)
+    # plt.show()
+    
+# %% Density
+def coord2density(X, kernel='gaussian', metric='euclidean', showfig=False):
+    from sklearn.neighbors import KernelDensity
+
+    kde = KernelDensity(kernel=kernel, metric=metric, bandwidth=0.2).fit(X)
+    dens = kde.score_samples(X)
+
+    # import mpl_scatter_density # adds projection='scatter_density'
+    # pip install mpl-scatter-density
+    # density = plt.scatter_density(x, y, cmap=white_viridis)
+
+    if showfig:
+        plt.figure(figsize=(8,8))
+        plt.scatter(X[:,0], X[:,1], c=dens)
+
+    return dens
