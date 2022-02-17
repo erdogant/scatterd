@@ -11,18 +11,13 @@
 [![BuyMeCoffee](https://img.shields.io/badge/buymea-coffee-yellow.svg)](https://www.buymeacoffee.com/erdogant)
 <!---[![Coffee](https://img.shields.io/badge/coffee-black-grey.svg)](https://erdogant.github.io/donate/?currency=USD&amount=5)-->
 
-* Easy and fast manner of creating scatter plots.
+* ``scatterd`` is a python package to creating scatter plots in a easy and fast manner.
 
-## Contents
-- [Installation](#-installation)
-- [Quick Start](#-quick-start)
-- [Contribute](#-contribute)
-- [Maintainers](#-maintainers)
-- [License](#-copyright)
+# 
+**Star this repo if you like it! ⭐️**
+#
 
 ## Installation
-* Install scatterd from PyPI (recommended). scatterd is compatible with Python 3.6+ and runs on Linux, MacOS X and Windows. 
-* It is distributed under the MIT license.
 
 ## Quick Start
 ```
