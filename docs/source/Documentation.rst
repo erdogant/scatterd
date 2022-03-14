@@ -9,11 +9,11 @@ Sponsor
 	You can help in various ways:
 
 	* Become a **Sponsor**!
-	* Not blocking my ethical and friendly banners on this page :)
+	* Not blocking my ethical and friendly banners on this documentation page :)
 	* Star this repo at the github page.
 	* Other contributions can be in the form of feature requests, idea discussions, reporting bugs, opening pull requests.
 	
-	Your help is highly appreciated.
+	Cheers Mate.
 
 
 
