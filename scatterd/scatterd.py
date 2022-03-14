@@ -17,7 +17,7 @@ import seaborn as sns
 # %% Main
 def scatterd(x, y, s=50, c=[0, 0, 0], labels=None, density=False, norm=False, cmap='Set1', figsize=(25, 15),
              xlabel='x-axis', ylabel='y-axis', title='', fontsize=24, fontcolor=None, axiscolor='#dddddd',
-             args_density = {'cmap': 'Reds', 'shade': True, 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': True, 'fill': True}):
+             args_density = {'cmap': 'Reds', 'shade': True, 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': False, 'fill': True}):
     """Make scaterplot.
 
     Parameters
@@ -79,8 +79,9 @@ def scatterd(x, y, s=50, c=[0, 0, 0], labels=None, density=False, norm=False, cm
     if not isinstance(s, int) and len(s)!=len(x): raise Exception('[scatterd] >ERROR: input parameter s(ize) should be of same size of X.')
 
     # Defaults
-    defaults_kde = {'cmap': 'Reds', 'shade': True, 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': True, 'fill': True}
+    defaults_kde = {'cmap': 'Reds', 'shade': True, 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': False, 'fill': True}
     args_density = {**defaults_kde, **args_density}
+    print(args_density)
 
     # Preprocessing
     X, labels = _preprocessing(x, y, labels, norm)
@@ -97,6 +98,7 @@ def scatterd(x, y, s=50, c=[0, 0, 0], labels=None, density=False, norm=False, cm
     # Add density to scatterplot
     if density:
         ax = sns.kdeplot(x=X[:, 0], y=X[:, 1], ax=ax, **args_density)
+        # ax = sns.kdeplot(x=X[:, 0], y=X[:, 1], ax=ax, hue=labels, **args_density)
 
     # Set figure properties
     ax = _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title, axiscolor, ax)
