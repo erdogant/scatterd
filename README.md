@@ -81,7 +81,7 @@ On the [documentation pages](https://erdogant.github.io/scatterd/) you can find 
   </a>
 </p>
 
-
+<hr>
 
 ### Support
 
