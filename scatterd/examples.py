@@ -34,19 +34,7 @@ scatterd(X[:,0], X[:,1], labels=labels, s=s, cmap='Set2', xlabel='xlabel', ylabe
 
 scatterd(X[:,0], X[:,1], labels=labels, s=s, cmap='Set2', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True, fontcolor=[0,0,0])
 
-args_density = {'fill':True, 'thresh': 0, 'levels': 100, 'cmap':"mako"}
+args_density = {'fill': True, 'thresh': 0, 'levels': 100, 'cmap':"mako", 'cbar': False, 'shade':True}
 scatterd(X[:,0], X[:,1], labels=labels, s=s, cmap='Set2', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True, fontcolor=[0,0,0], axiscolor=None, args_density=args_density)
 
 # %%
-s=25
-c=[0,0,0]
-label=None
-density=False
-norm=False
-cmap='Set1'
-xlabel=None
-ylabel=None
-title=None
-fontsize=16
-fontcolor=None
-figsize=(15,10)
