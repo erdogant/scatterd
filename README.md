@@ -65,12 +65,17 @@ scatterd(X[:,0], X[:,1], figsize=(25,15))
 </p>
 
 
-### Maintainers
-* Erdogan Taskesen, github: [erdogant](https://github.com/erdogant)
 
-### Contribute
-* All kinds of contributions are welcome!
+### Support
+
+This project needs some love! ❤️
+
+Contribute to this project by feature requests, idea discussions, reporting bugs, opening pull requests, or through Github Sponsors. Your help is highly appreciated.
+
 * If you wish to buy me a <a href="https://www.buymeacoffee.com/erdogant">Coffee</a> for this work, it is very appreciated :)
 
-### Licence
-See [LICENSE](LICENSE) for details.
+[![Github Sponsors](https://img.shields.io/github/sponsors/erdogant?label=github%20sponsors&logo=github%20sponsors&style=for-the-badge)](https://github.com/sponsors/erdogant)
+
+
+### Maintainers
+* Erdogan Taskesen, github: [erdogant](https://github.com/erdogant)
