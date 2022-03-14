@@ -88,11 +88,9 @@ On the [documentation pages](https://erdogant.github.io/scatterd/) you can find 
 	This project needs some love! ❤️ You can help in various ways.
 
 	* Become a **Sponsor**!
-	* Not blocking my ads. I use Carbon which respects your privacy, and does not do targeting.
-  * If you wish to buy me a <a href="https://www.buymeacoffee.com/erdogant">Coffee</a> for this work, it is very appreciated :)
+	* If you wish to buy me a <a href="https://www.buymeacoffee.com/erdogant">Coffee</a> for this work, it is very appreciated :)
 	* **Star** this repo at the github page.
 	* Other contributions can be in the form of feature requests, idea discussions, reporting bugs, opening pull requests.
-	
 	Read more why becoming an **sponsor** is important on the **Sponsor Github Page** (button below).
 	Cheers Mate.
 
