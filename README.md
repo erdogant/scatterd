@@ -90,6 +90,6 @@ On the [documentation pages](https://erdogant.github.io/scatterd/) you can find 
 	* Become a Sponsor!
 	* Star this repo at the github page.
 	* Other contributions can be in the form of feature requests, idea discussions, reporting bugs, opening pull requests.
+	* Read more why becoming an sponsor is important on the Sponsor Github Page.
 	
-	Read more why becoming an sponsor is important on the Sponsor Github Page.
 	Cheers Mate.
