@@ -14,7 +14,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-     install_requires=['matplotlib','numpy','colourmap'],
+     install_requires=['matplotlib','numpy','colourmap','seaborn'],
      python_requires='>=3',
      name='scatterd',
      version=new_version,
@@ -23,7 +23,7 @@ setuptools.setup(
      description="scatterd is an easy and fast way of creating scatter plots.",
      long_description=long_description,
      long_description_content_type="text/markdown",
-     url="https://github.com/erdogant/scatterd",
+     url="https://erdogant.github.io/scatterd",
 	 download_url = 'https://github.com/erdogant/scatterd/archive/'+new_version+'.tar.gz',
      packages=setuptools.find_packages(), # Searches throughout all dirs for files to include
      include_package_data=True, # Must be true to include files depicted in MANIFEST.in
