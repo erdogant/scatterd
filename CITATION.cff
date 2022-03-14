@@ -1,0 +1,19 @@
+# YAML 1.2
+---
+authors: 
+  -
+    family-names: Taskesen
+    given-names: Erdogan
+    orcid: "https://orcid.org/0000-0002-3430-9618"
+cff-version: "1.1.0"
+date-released: 2020-10-07
+keywords: 
+  - "python"
+  - "scatter"
+  - "density"
+license: "MIT"
+message: "If you use this software, please cite it using these metadata."
+repository-code: "https://erdogant.github.io/scatterd"
+title: "scatterd"
+version: "1.0.0"
+...
