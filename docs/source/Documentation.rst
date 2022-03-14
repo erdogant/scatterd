@@ -1,0 +1,41 @@
+Sponsor
+############
+
+
+.. tip::
+	This project needs some love! ❤️
+
+	Read more why this is important on my sponsor page. The **sponsor button** will direct you to the sponsor github page.
+	You can help in various ways:
+
+	* Become a **Sponsor**!
+	* Buy me a <a href="https://www.buymeacoffee.com/erdogant">Coffee</a>.
+	* Not blocking my ethical and friendly banners on this page :)
+	* Star this repo at the github page <https://github.com/erdogant/scatterd/>`_.
+	* Other contributions can be in the form of feature requests, idea discussions, reporting bugs, opening pull requests.
+	
+	Your help is highly appreciated.
+
+
+
+.. raw:: html
+
+	<iframe src="https://github.com/sponsors/erdogant/button" title="Sponsor erdogant" height="35" width="116" style="border: 0;"></iframe>
+
+
+
+Github
+############
+
+.. note::
+	`Source code of scatterd can be found at Github <https://github.com/erdogant/scatterd/>`_
+
+
+
+.. raw:: html
+
+	<hr>
+	<center>
+		<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CEADP27U&placement=erdogantgithubio" id="_carbonads_js"></script>
+	</center>
+	<hr>
