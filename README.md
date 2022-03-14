@@ -87,7 +87,7 @@ On the [documentation pages](https://erdogant.github.io/scatterd/) you can find 
 
 	This project needs some love! ❤️ You can help in various ways.
 
-	* Become a **Sponsor**!
+	* Become a Sponsor!
 	* Star this repo at the github page.
 	* Other contributions can be in the form of feature requests, idea discussions, reporting bugs, opening pull requests.
 	
