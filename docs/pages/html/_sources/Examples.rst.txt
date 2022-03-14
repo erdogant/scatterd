@@ -96,9 +96,11 @@ Coloring the dots on the input class labels.
 .. table:: Class label coloring
    :align: center
 
-   +----------+----------+
-   | |fig4|   | |fig5|   |
-   +----------+----------+
+   +----------+
+   | |fig4|   |
+   +----------+
+   | |fig5|   |
+   +----------+
 
 
 
@@ -130,11 +132,15 @@ Overlay the scatterplot with kernel densities.
 .. table:: Class label coloring
    :align: center
 
-   +----------+----------+
-   | |fig6|   | |fig7|   |
-   +----------+----------+
-   | |fig8|   | |fig9|   |
-   +----------+----------+
+   +----------+
+   | |fig6|   |
+   +----------+
+   | |fig7|   |
+   +----------+
+   | |fig8|   |
+   +----------+
+   | |fig9|   |
+   +----------+
 
 
 Customized colormap

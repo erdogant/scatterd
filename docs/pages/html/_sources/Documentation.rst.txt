@@ -4,17 +4,15 @@ Sponsor
 
 .. tip::
 	This project needs some love! ❤️
-
-	Read more why this is important on my sponsor page. The **sponsor button** will direct you to the sponsor github page.
 	You can help in various ways:
 
 	* Become a **Sponsor**!
 	* Not blocking my ethical and friendly banners on this documentation page :)
-	* Star this repo at the github page.
+	* **Star** this repo at the github page.
 	* Other contributions can be in the form of feature requests, idea discussions, reporting bugs, opening pull requests.
 	
+	Read more why becoming an sponsor is important on the **Sponsor Github Page** (button below).
 	Cheers Mate.
-
 
 
 .. raw:: html
