@@ -24,7 +24,7 @@ scatterd(X[:,0], X[:,1], labels=labels, cmap='Set2')
 
 # Color based on labels
 scatterd(X[:,0], X[:,1], s=100, density=True)
-scatterd(X[:,0], X[:,1], labels=labels, s=100, density=True)
+scatterd(X[:,0], X[:,1], labels=labels, density=True)
 
 # Set labels
 scatterd(X[:,0], X[:,1], labels=labels, s=100, norm=True, cmap='Set2', xlabel='xlabel', ylabel='ylabel', title='Title')

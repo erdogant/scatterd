@@ -9,9 +9,8 @@ Sponsor
 	You can help in various ways:
 
 	* Become a **Sponsor**!
-	* Buy me a <a href="https://www.buymeacoffee.com/erdogant">Coffee</a>.
 	* Not blocking my ethical and friendly banners on this page :)
-	* Star this repo at the github page <https://github.com/erdogant/scatterd/>`_.
+	* Star this repo at the github page.
 	* Other contributions can be in the form of feature requests, idea discussions, reporting bugs, opening pull requests.
 	
 	Your help is highly appreciated.
