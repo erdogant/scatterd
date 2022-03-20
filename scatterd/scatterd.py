@@ -81,7 +81,6 @@ def scatterd(x, y, s=50, c=[0, 0, 0], labels=None, density=False, norm=False, cm
     # Defaults
     defaults_kde = {'cmap': 'Reds', 'shade': True, 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': False, 'fill': True}
     args_density = {**defaults_kde, **args_density}
-    print(args_density)
 
     # Preprocessing
     X, labels = _preprocessing(x, y, labels, norm)
@@ -114,7 +113,7 @@ def scatterd(x, y, s=50, c=[0, 0, 0], labels=None, density=False, norm=False, cm
 # %% Setup figure properties
 def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title, axiscolor, ax):
     # Set axis fontsizes
-    font = {'family' : 'normal', 'weight' : 'normal', 'size'   : 16}
+    font = {'family': 'normal', 'weight': 'normal', 'size': 16}
     matplotlib.rc('font', **font)
 
     # Plot labels
