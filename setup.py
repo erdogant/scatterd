@@ -14,7 +14,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-     install_requires=['matplotlib','numpy','colourmap','seaborn'],
+     install_requires=['matplotlib','numpy','colourmap','seaborn','scatterd'],
      python_requires='>=3',
      name='scatterd',
      version=new_version,
@@ -27,6 +27,7 @@ setuptools.setup(
 	 download_url = 'https://github.com/erdogant/scatterd/archive/'+new_version+'.tar.gz',
      packages=setuptools.find_packages(), # Searches throughout all dirs for files to include
      include_package_data=True, # Must be true to include files depicted in MANIFEST.in
+     license_files=["LICENSE"],
      classifiers=[
          "Programming Language :: Python :: 3",
          "License :: OSI Approved :: MIT License",

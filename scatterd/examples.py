@@ -1,5 +1,11 @@
-from scatterd import scatterd
+from scatterd import scatterd, import_example
 import numpy as np
+
+# %%
+df = import_example()
+scatterd(df['tsneX'], df['tsneY'], z=df['PC2'], labels=df['labx'], gradient='#FFFFFF', cmap='Set1')
+scatterd(df['tsneX'], df['tsneY'], cmap='Set1')
+scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], cmap='Set1')
 
 # %%import some data to play with
 from sklearn import datasets
