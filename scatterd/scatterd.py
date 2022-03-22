@@ -105,6 +105,7 @@ def scatterd(x, y, z=None, s=50, c=[0, 0, 0], labels=None, marker=None, alpha=No
     if len(x)!=len(y): raise Exception('[scatterd] >Error: X should have same length as Y.')
     if s is None: raise Exception('[scatterd] >Error: input parameter s(ize) should be not None.')
     if c is None: raise Exception('[scatterd] >Error: input parameter c(olors) should be not None.')
+    if isinstance(c, str): raise Exception('[scatterd] >Error: input parameter c(olors) should be RGB of type tuple [0,0,0] .')
     if not isinstance(s, int) and len(s)!=len(x): raise Exception('[scatterd] >Error: input parameter s(ize) should be of same size of X.')
     if len(x)!=len(y): raise Exception('[scatterd] >Error: input parameter x should be the same size of y.')
     if (z is not None) and len(x)!=len(z): raise Exception('[scatterd] >Error: input parameter z should be the same size of x and y.')
@@ -119,6 +120,11 @@ def scatterd(x, y, z=None, s=50, c=[0, 0, 0], labels=None, marker=None, alpha=No
     # Figure properties
     c_rgb, fontcolor = set_colors(X, labels, fontcolor, c, cmap, gradient=gradient)
 
+    if s is None:
+        s = np.repeat(50, X.shape[0])
+    elif isinstance(s, int):
+        s = np.repeat(s, X.shape[0])
+
     # Bootup figure
     if ax is None:
         # fig, ax = plt.subplots(figsize=figsize)
@@ -132,9 +138,9 @@ def scatterd(x, y, z=None, s=50, c=[0, 0, 0], labels=None, marker=None, alpha=No
     for label in uilabels:
         Iloc = label==labels
         if z is None:
-            ax.scatter(X[Iloc, 0], X[Iloc, 1], color=c_rgb[Iloc], s=s, edgecolor='None', marker=marker, label=label)
+            ax.scatter(X[Iloc, 0], X[Iloc, 1], color=c_rgb[Iloc], s=s[Iloc], edgecolor='None', marker=marker, label=label)
         else:
-            ax.scatter(X[Iloc, 0], X[Iloc, 1], X[Iloc, 2], s=50, color=c_rgb[Iloc], edgecolor='None', marker=marker, label=label)
+            ax.scatter(X[Iloc, 0], X[Iloc, 1], X[Iloc, 2], s=s[Iloc], color=c_rgb[Iloc], edgecolor='None', marker=marker, label=label)
 
     # Add density to scatterplot
     if density:
@@ -191,8 +197,8 @@ def set_colors(X, labels, fontcolor, c, cmap, gradient=None):
     # Create unqiue colors for labels
     if len(np.unique(labels))>1:
         c_rgb, _ = colourmap.fromlist(labels, cmap=cmap, method='matplotlib', gradient=gradient)
-    else:
-        c_rgb = np.repeat(c, X.shape[0], axis=0).reshape(-1, 3)
+    elif len(c)==3 and (isinstance(c[0], int) or isinstance(c[0], float)):
+        c_rgb = np.repeat([c], X.shape[0], axis=0).reshape(-1, 3)
 
     if (gradient is not None):
         c_rgb = gradient_on_density_color(X, c_rgb, labels)
