@@ -199,6 +199,10 @@ def set_colors(X, labels, fontcolor, c, cmap, gradient=None):
         c_rgb, _ = colourmap.fromlist(labels, cmap=cmap, method='matplotlib', gradient=gradient)
     elif len(c)==3 and (isinstance(c[0], int) or isinstance(c[0], float)):
         c_rgb = np.repeat([c], X.shape[0], axis=0).reshape(-1, 3)
+    elif len(c)==1 and isinstance(c, list):
+        c_rgb = np.repeat(c[0], X.shape[0], axis=0).reshape(-1, 3)
+    else:
+        c_rgb = np.repeat([0, 0, 0], X.shape[0], axis=0).reshape(-1, 3)
 
     if (gradient is not None):
         c_rgb = gradient_on_density_color(X, c_rgb, labels)
