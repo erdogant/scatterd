@@ -30,7 +30,7 @@
             <a href="index.html" class="icon icon-home"> scatterd
           </a>
               <div class="version">
-                0.1.2
+                1.1.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -97,17 +97,47 @@
 <span id="api-references"></span><h1>API References<a class="headerlink" href="#module-scatterd.scatterd" title="Permalink to this headline"></a></h1>
 <p>Scatterplot.</p>
 <dl class="py function">
+<dt class="sig sig-object py" id="scatterd.scatterd.gradient_on_density_color">
+<span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">gradient_on_density_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_rgb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.gradient_on_density_color" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scatterd.scatterd.import_example">
+<span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">import_example</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cancer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.import_example" title="Permalink to this definition"></a></dt>
+<dd><p>Import example dataset from github source.</p>
+<p>Import one of the few datasets from github source or specify your own download url link.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>str</em>) – Name of datasets: ‘cancer’</p></li>
+<li><p><strong>url</strong> (<em>str</em>) – url link to to dataset.</p></li>
+<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>(</em><em>default: 3</em><em>)</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dataset containing mixed features.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame()</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="scatterd.scatterd.scatterd">
-<span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">scatterd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Set1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(25,</span> <span class="pre">15)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x-axis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'y-axis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">24</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontcolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axiscolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#dddddd'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args_density</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'alpha':</span> <span class="pre">0.66,</span> <span class="pre">'bw_adjust':</span> <span class="pre">0.6,</span> <span class="pre">'cbar':</span> <span class="pre">True,</span> <span class="pre">'cmap':</span> <span class="pre">'Reds',</span> <span class="pre">'fill':</span> <span class="pre">True,</span> <span class="pre">'legend':</span> <span class="pre">False,</span> <span class="pre">'shade':</span> <span class="pre">True,</span> <span class="pre">'thresh':</span> <span class="pre">0.05}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.scatterd" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">scatterd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Set1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(25,</span> <span class="pre">15)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x-axis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'y-axis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">24</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontcolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axiscolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#dddddd'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args_density</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'alpha':</span> <span class="pre">0.66,</span> <span class="pre">'bw_adjust':</span> <span class="pre">0.6,</span> <span class="pre">'cbar':</span> <span class="pre">False,</span> <span class="pre">'cmap':</span> <span class="pre">'Reds',</span> <span class="pre">'fill':</span> <span class="pre">True,</span> <span class="pre">'legend':</span> <span class="pre">False,</span> <span class="pre">'shade':</span> <span class="pre">True,</span> <span class="pre">'thresh':</span> <span class="pre">0.05}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.scatterd" title="Permalink to this definition"></a></dt>
 <dd><p>Make scaterplot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>numpy array</em>) – 1D Coordinates.</p></li>
-<li><p><strong>y</strong> (<em>numpy array</em>) – 1D Coordinates.</p></li>
+<li><p><strong>x</strong> (<em>numpy array</em>) – 1D Coordinates x-axis.</p></li>
+<li><p><strong>y</strong> (<em>numpy array</em>) – 1D Coordinates y-axis.</p></li>
+<li><p><strong>z</strong> (<em>numpy array</em>) – 1D Coordinates z-axis.</p></li>
 <li><p><strong>s</strong> (<em>Int</em><em> or </em><em>list/array of sizes with same size as X</em>) – Size of the samples.</p></li>
 <li><p><strong>c</strong> (<em>list/array of RGB colors with same size as X</em>) – Color of samples in RGB colors.</p></li>
 <li><p><strong>labels</strong> (<em>list of labels with same size as X</em>) – labels of the samples.</p></li>
+<li><p><strong>gradient</strong> (<em>String</em><em>, </em><em>(</em><em>default: None</em><em>)</em>) – Hex color to make a lineair gradient for the scatterplot.
+‘#FFFFFF’</p></li>
 <li><p><strong>density</strong> (<em>Bool</em><em> (</em><em>default: False</em><em>)</em>) – Include the kernel density in the scatter plot.</p></li>
 <li><p><strong>xlabel</strong> (<em>String</em><em>, </em><em>optional</em>) – Xlabel. The default is None.</p></li>
 <li><p><strong>ylabel</strong> (<em>String</em><em>, </em><em>optional</em>) – Ylabel. The default is None.</p></li>
@@ -131,14 +161,59 @@
 <li><p><strong>args_density</strong> (<em>dict</em><em>(</em><em>)</em>) – Dictionary containing arguments for kernel density plotting.</p></li>
 </ul>
 </dd>
-</dl>
-<p class="rubric">References</p>
-<p>Colormap: <a class="reference external" href="https://matplotlib.org/examples/color/colormaps_reference.html">https://matplotlib.org/examples/color/colormaps_reference.html</a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Fig, ax</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Fig, ax</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Import library</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scatterd</span> <span class="kn">import</span> <span class="n">scatterd</span><span class="p">,</span> <span class="n">import_example</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Import example</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">import_example</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># plain scatter plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">scatterd</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneX&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneY&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># plain scatter plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">scatterd</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneX&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneY&#39;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;labx&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Gradient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">scatterd</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneX&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneY&#39;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;labx&#39;</span><span class="p">],</span> <span class="n">gradient</span><span class="o">=</span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Change cmap</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">scatterd</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneX&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneY&#39;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;labx&#39;</span><span class="p">],</span> <span class="n">gradient</span><span class="o">=</span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Set2&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Density</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">scatterd</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneX&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneY&#39;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;labx&#39;</span><span class="p">],</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Density with gradient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">scatterd</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneX&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneY&#39;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;labx&#39;</span><span class="p">],</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gradient</span><span class="o">=</span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<p>Colormap: <a class="reference external" href="https://matplotlib.org/examples/color/colormaps_reference.html">https://matplotlib.org/examples/color/colormaps_reference.html</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scatterd.scatterd.set_colors">
+<span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">set_colors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontcolor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.set_colors" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scatterd.scatterd.wget">
+<span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">wget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">writepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.wget" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve file from url.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str.</em>) – Internet source.</p></li>
+<li><p><strong>writepath</strong> (<em>str.</em>) – Directory to write the file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">clustimage</span> <span class="k">as</span> <span class="nn">cl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">images</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">wget</span><span class="p">(</span><span class="s1">&#39;https://erdogant.github.io/datasets/flower_images.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;c://temp//flower_images.zip&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <hr>

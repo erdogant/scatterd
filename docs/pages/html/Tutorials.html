@@ -31,7 +31,7 @@
             <a href="index.html" class="icon icon-home"> scatterd
           </a>
               <div class="version">
-                0.1.2
+                1.1.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -99,15 +99,21 @@
 <p>Make scaterplot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">param x</dt>
-<dd class="field-odd"><p>1D Coordinates.</p>
+<dd class="field-odd"><p>1D Coordinates x-axis.</p>
 </dd>
 <dt class="field-even">type x</dt>
 <dd class="field-even"><p>numpy array</p>
 </dd>
 <dt class="field-odd">param y</dt>
-<dd class="field-odd"><p>1D Coordinates.</p>
+<dd class="field-odd"><p>1D Coordinates y-axis.</p>
 </dd>
 <dt class="field-even">type y</dt>
+<dd class="field-even"><p>numpy array</p>
+</dd>
+<dt class="field-odd">param z</dt>
+<dd class="field-odd"><p>1D Coordinates z-axis.</p>
+</dd>
+<dt class="field-even">type z</dt>
 <dd class="field-even"><p>numpy array</p>
 </dd>
 <dt class="field-odd">param s</dt>
@@ -127,6 +133,13 @@
 </dd>
 <dt class="field-even">type labels</dt>
 <dd class="field-even"><p>list of labels with same size as X</p>
+</dd>
+<dt class="field-odd">param gradient</dt>
+<dd class="field-odd"><p>Hex color to make a lineair gradient for the scatterplot.
+‘#FFFFFF’</p>
+</dd>
+<dt class="field-even">type gradient</dt>
+<dd class="field-even"><p>String, (default: None)</p>
 </dd>
 <dt class="field-odd">param density</dt>
 <dd class="field-odd"><p>Include the kernel density in the scatter plot.</p>
@@ -199,14 +212,32 @@
 <dt class="field-even">type args_density</dt>
 <dd class="field-even"><p>dict()</p>
 </dd>
-</dl>
-<p class="rubric">References</p>
-<p>Colormap: <a class="reference external" href="https://matplotlib.org/examples/color/colormaps_reference.html">https://matplotlib.org/examples/color/colormaps_reference.html</a></p>
-<dl class="field-list simple">
 <dt class="field-odd">rtype</dt>
 <dd class="field-odd"><p>Fig, ax</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Import library</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scatterd</span> <span class="kn">import</span> <span class="n">scatterd</span><span class="p">,</span> <span class="n">import_example</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Import example</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">import_example</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># plain scatter plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">scatterd</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneX&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneY&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># plain scatter plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">scatterd</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneX&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneY&#39;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;labx&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Gradient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">scatterd</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneX&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneY&#39;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;labx&#39;</span><span class="p">],</span> <span class="n">gradient</span><span class="o">=</span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Change cmap</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">scatterd</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneX&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneY&#39;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;labx&#39;</span><span class="p">],</span> <span class="n">gradient</span><span class="o">=</span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Set2&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Density</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">scatterd</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneX&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneY&#39;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;labx&#39;</span><span class="p">],</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Density with gradient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">scatterd</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneX&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tsneY&#39;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;labx&#39;</span><span class="p">],</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gradient</span><span class="o">=</span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<p>Colormap: <a class="reference external" href="https://matplotlib.org/examples/color/colormaps_reference.html">https://matplotlib.org/examples/color/colormaps_reference.html</a></p>
 <hr>
 <center>
         <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CEADP27U&placement=erdogantgithubio" id="_carbonads_js"></script>

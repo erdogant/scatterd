@@ -38,9 +38,6 @@ Coloring the dots can using RGB values or standard strings, such as 'r', 'k' etc
 	# Color dots in red
 	scatterd(X[:,0], X[:,1], c=[1,0,0])
 
-	# Color dots in red
-	scatterd(X[:,0], X[:,1], c='r')
-
 
 .. |fig2| image:: ../figs/fig2_red.png
 
