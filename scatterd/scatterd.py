@@ -227,13 +227,14 @@ def gradient_on_density_color(X, c_rgb, labels):
             else:
                 xy = np.vstack([X[idx, 0], X[idx, 1], X[idx, 2]])
 
-            if len(idx)>1:
+            try:
                 # Compute density
                 z = gaussian_kde(xy)(xy)
                 # Sort on density
                 didx = idx[np.argsort(z)[::-1]]
-            else:
+            except:
                 didx=idx
+
             # order colors correctly based Density
             density_colors[didx] = c_rgb[idx, :]
             # plt.figure()
