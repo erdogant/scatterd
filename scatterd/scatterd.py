@@ -102,12 +102,11 @@ def scatterd(x, y, z=None, s=50, c=[0, 0, 0], labels=None, marker=None, alpha=No
 
     """
     fig = None
-    if len(x)!=len(y): raise Exception('[scatterd] >Error: X should have same length as Y.')
-    if s is None: raise Exception('[scatterd] >Error: input parameter s(ize) should be not None.')
+    if len(x)!=len(y): raise Exception('[scatterd] >Error: input parameter x should be the same size of y.')
+    if s is None: raise Exception('[scatterd] >Error: input parameter s(ize) should have value >0.')
     if c is None: raise Exception('[scatterd] >Error: input parameter c(olors) should be not None.')
     if isinstance(c, str): raise Exception('[scatterd] >Error: input parameter c(olors) should be RGB of type tuple [0,0,0] .')
     if not isinstance(s, int) and len(s)!=len(x): raise Exception('[scatterd] >Error: input parameter s(ize) should be of same size of X.')
-    if len(x)!=len(y): raise Exception('[scatterd] >Error: input parameter x should be the same size of y.')
     if (z is not None) and len(x)!=len(z): raise Exception('[scatterd] >Error: input parameter z should be the same size of x and y.')
 
     # Defaults
