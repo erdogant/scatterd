@@ -54,7 +54,7 @@ def scatterd(x, y, z=None, s=50, c=[0, 0, 0], labels=None, marker=None, alpha=No
         None : Use same colorscheme as for c
         [0,0,0] : If the input is a single color, all fonts will get this color.
     norm : Bool, optional
-        Normalize datapoints. The default is True.
+        Normalize datapoints. The default is False.
     cmap : String, optional
         'Set1'       (default)
         'Set2'
