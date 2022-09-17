@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -31,7 +32,7 @@
             <a href="index.html" class="icon icon-home"> scatterd
           </a>
               <div class="version">
-                1.1.1
+                1.1.3
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -63,7 +64,9 @@
 <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Documentation.html">Sponsor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation.html#medium-blog">Medium Blog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Documentation.html#github">Github</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation.html#citing">Citing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Coding%20quality.html">Coding quality</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scatterd.scatterd.html">API References</a></li>
 </ul>
@@ -95,7 +98,7 @@
            <div itemprop="articleBody">
              
   <section id="quick-scatter">
-<h1>Quick Scatter<a class="headerlink" href="#quick-scatter" title="Permalink to this headline"></a></h1>
+<h1>Quick Scatter<a class="headerlink" href="#quick-scatter" title="Permalink to this heading"></a></h1>
 <p>In the following example we will make a simple scatter plot using all default parameters.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import example iris dataet</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
@@ -122,7 +125,7 @@
 </table>
 </section>
 <section id="coloring-dots">
-<h1>Coloring Dots<a class="headerlink" href="#coloring-dots" title="Permalink to this headline"></a></h1>
+<h1>Coloring Dots<a class="headerlink" href="#coloring-dots" title="Permalink to this heading"></a></h1>
 <p>Coloring the dots can using RGB values or standard strings, such as ‘r’, ‘k’ etc</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Color dots in red</span>
 <span class="n">scatterd</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
@@ -140,7 +143,7 @@
 </table>
 </section>
 <section id="coloring-class-label-fonts">
-<h1>Coloring Class Label Fonts<a class="headerlink" href="#coloring-class-label-fonts" title="Permalink to this headline"></a></h1>
+<h1>Coloring Class Label Fonts<a class="headerlink" href="#coloring-class-label-fonts" title="Permalink to this heading"></a></h1>
 <p>Coloring the dots can using RGB values or standard strings, such as ‘r’, ‘k’ etc</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fontcolor in red</span>
 <span class="n">scatterd</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">fontcolor</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
@@ -161,7 +164,7 @@
 </table>
 </section>
 <section id="coloring-on-classlabels">
-<h1>Coloring on classlabels<a class="headerlink" href="#coloring-on-classlabels" title="Permalink to this headline"></a></h1>
+<h1>Coloring on classlabels<a class="headerlink" href="#coloring-on-classlabels" title="Permalink to this heading"></a></h1>
 <p>Coloring the dots on the input class labels.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Color on classlabels</span>
 <span class="n">scatterd</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
@@ -184,7 +187,7 @@
 </table>
 </section>
 <section id="overlay-with-kernel-density">
-<h1>Overlay with Kernel Density<a class="headerlink" href="#overlay-with-kernel-density" title="Permalink to this headline"></a></h1>
+<h1>Overlay with Kernel Density<a class="headerlink" href="#overlay-with-kernel-density" title="Permalink to this heading"></a></h1>
 <p>Overlay the scatterplot with kernel densities.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add density to plot</span>
 <span class="n">scatterd</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -217,7 +220,7 @@
 </table>
 </section>
 <section id="customized-colormap">
-<h1>Customized colormap<a class="headerlink" href="#customized-colormap" title="Permalink to this headline"></a></h1>
+<h1>Customized colormap<a class="headerlink" href="#customized-colormap" title="Permalink to this heading"></a></h1>
 <p>Overlay the scatterplot with kernel densities.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change various parameters</span>
 <span class="n">args_density</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;fill&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;thresh&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;levels&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;cmap&#39;</span><span class="p">:</span><span class="s2">&quot;mako&quot;</span><span class="p">}</span>
