@@ -4,9 +4,9 @@ scatterd's documentation!
 ``scatterd`` is a Python package for the creation of beautiful scatter plots in a easy and fast manner.
 
 
-Star is important
-======================
-If you ❤️ this project, **star** this repo at the `github page <https://github.com/erdogant/scatterd/>`_!
+You contribution is important
+==============================
+If you ❤️ this project, **star** this repo at the `github page <https://github.com/erdogant/scatterd/>`_ and have a look at the `sponser page <https://github.com/erdogant/scatterd/pages/html/Documentation.html>`_!
 
 
 Github
