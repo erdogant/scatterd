@@ -6,7 +6,7 @@ scatterd's documentation!
 
 You contribution is important
 ==============================
-If you ❤️ this project, **star** this repo at the `github page <https://github.com/erdogant/scatterd/>`_ and have a look at the `sponser page <https://github.com/erdogant/scatterd/pages/html/Documentation.html>`_!
+If you ❤️ this project, **star** this repo at the `github page <https://github.com/erdogant/scatterd/>`_ and have a look at the `sponser page <https://erdogant.github.io/scatterd/pages/html/Documentation.html>`_!
 
 
 Github
