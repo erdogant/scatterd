@@ -15,7 +15,7 @@ In the following example we will make a simple scatter plot using all default pa
 	from scatterd import scatterd
 	
 	# Scatter the results
-	scatterd(X[:,0], X[:,1])
+	fig, ax = scatterd(X[:,0], X[:,1])
 
 
 .. |fig1| image:: ../figs/fig1_simple.png
@@ -36,7 +36,7 @@ Coloring the dots can using RGB values or standard strings, such as 'r', 'k' etc
 .. code:: python
 	
 	# Color dots in red
-	scatterd(X[:,0], X[:,1], c=[1,0,0])
+	fig, ax = scatterd(X[:,0], X[:,1], c=[1,0,0])
 
 
 .. |fig2| image:: ../figs/fig2_red.png
@@ -57,10 +57,10 @@ Coloring the dots can using RGB values or standard strings, such as 'r', 'k' etc
 .. code:: python
 	
 	# Fontcolor in red
-	scatterd(X[:,0], X[:,1], fontcolor=[1,0,0])
+	fig, ax = scatterd(X[:,0], X[:,1], fontcolor=[1,0,0])
 
 	# Fontcolor red
-	scatterd(X[:,0], X[:,1], fontcolor='r')
+	fig, ax = scatterd(X[:,0], X[:,1], fontcolor='r')
 
 
 .. |fig3| image:: ../figs/fig1_fontcoloring.png
@@ -81,10 +81,10 @@ Coloring the dots on the input class labels.
 .. code:: python
 	
 	# Color on classlabels
-	scatterd(X[:,0], X[:,1], labels=labels)
+	fig, ax = scatterd(X[:,0], X[:,1], labels=labels)
 
 	# Change color using the cmap
-	scatterd(X[:,0], X[:,1], labels=labels, cmap='Set2')
+	fig, ax = scatterd(X[:,0], X[:,1], labels=labels, cmap='Set2')
 
 
 .. |fig4| image:: ../figs/fig_classlabels1.png
@@ -109,16 +109,16 @@ Overlay the scatterplot with kernel densities.
 .. code:: python
 	
 	# Add density to plot
-	scatterd(X[:,0], X[:,1], density=True)
+	fig, ax = scatterd(X[:,0], X[:,1], density=True)
 
 	# Color the classlabels
-	scatterd(X[:,0], X[:,1], labels=labels, density=True)
+	fig, ax = scatterd(X[:,0], X[:,1], labels=labels, density=True)
 
 	# Increase dot sizes
-	scatterd(X[:,0], X[:,1], labels=labels, density=True, s=100)
+	fig, ax = scatterd(X[:,0], X[:,1], labels=labels, density=True, s=100)
 	
 	# Change various parameters
-	scatterd(X[:,0], X[:,1], labels=labels, s=s, cmap='Set2', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True, fontcolor=[0,0,0])
+	fig, ax = scatterd(X[:,0], X[:,1], labels=labels, s=s, cmap='Set2', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True, fontcolor=[0,0,0])
 
 
 .. |fig6| image:: ../figs/fig_density_1.png
@@ -151,7 +151,7 @@ Overlay the scatterplot with kernel densities.
 	args_density = {'fill':True, 'thresh': 0, 'levels': 100, 'cmap':"mako"}
 
 	# Scatter
-	scatterd(X[:,0], X[:,1], labels=labels, s=s, cmap='Set2', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True, fontcolor=[0,0,0], axiscolor=None, args_density=args_density)
+	fig, ax = scatterd(X[:,0], X[:,1], labels=labels, s=s, cmap='Set2', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True, fontcolor=[0,0,0], axiscolor=None, args_density=args_density)
 
 
 
