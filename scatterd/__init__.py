@@ -17,24 +17,33 @@ Examples
 --------
 >>> # Import library
 >>> from scatterd import scatterd, import_example
+>>>
 >>> # Import example
 >>> df = import_example()
->>> # plain scatter plot
->>> ax = scatterd(df['tsneX'], df['tsneY'])
->>> # plain scatter plot
->>> ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'])
->>> # Gradient
->>> ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], gradient='#FFFFFF')
+>>>
+>>> # Simple scatter
+>>> fig, ax = scatterd(df['tsneX'], df['tsneY'])
+>>>
+>>> # Scatter with labels
+>>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'])
+>>>
+>>> # Scatter with gradient
+>>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], gradient='#FFFFFF')
+>>>
 >>> # Change cmap
->>> ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], gradient='#FFFFFF', cmap='Set2')
->>> # Density
->>> ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True)
->>> # Density with gradient
->>> ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True, gradient='#FFFFFF')
+>>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], gradient='#FFFFFF', cmap='Set2')
+>>>
+>>> # Scatter with density
+>>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True)
+>>>
+>>> # Scatter with density and gradient
+>>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True, gradient='#FFFFFF')
 >>>
 
 References
 ----------
-https://github.com/erdogant/scatterd
+* github: https://github.com/erdogant/scatterd
+* Documentation: https://erdogant.github.io/scatterd/
+* Colormap: https://matplotlib.org/examples/color/colormaps_reference.html
 
 """

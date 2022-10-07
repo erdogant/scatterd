@@ -18,7 +18,21 @@ import os
 from urllib.parse import urlparse
 
 # %% Main
-def scatterd(x, y, z=None, s=50, c=[0, 0, 0], labels=None, marker=None, alpha=None, gradient=None, density=False, norm=False, cmap='Set1', figsize=(25, 15), legend=True, ax=None,
+def scatterd(x,
+             y,
+             z=None,
+             s=50,
+             c=[0, 0, 0],
+             labels=None,
+             marker=None,
+             alpha=None,
+             gradient=None,
+             density=False,
+             norm=False,
+             cmap='Set1',
+             figsize=(25, 15),
+             legend=True,
+             ax=None,
              xlabel='x-axis', ylabel='y-axis', title='', fontsize=24, fontcolor=None, axiscolor='#dddddd',
              args_density = {'cmap': 'Reds', 'shade': True, 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': False, 'fill': True}):
     """Make scaterplot.
@@ -80,25 +94,34 @@ def scatterd(x, y, z=None, s=50, c=[0, 0, 0], labels=None, marker=None, alpha=No
     --------
     >>> # Import library
     >>> from scatterd import scatterd, import_example
+    >>>
     >>> # Import example
     >>> df = import_example()
-    >>> # plain scatter plot
-    >>> ax = scatterd(df['tsneX'], df['tsneY'])
-    >>> # plain scatter plot
-    >>> ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'])
-    >>> # Gradient
-    >>> ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], gradient='#FFFFFF')
+    >>>
+    >>> # Simple scatter
+    >>> fig, ax = scatterd(df['tsneX'], df['tsneY'])
+    >>>
+    >>> # Scatter with labels
+    >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'])
+    >>>
+    >>> # Scatter with gradient
+    >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], gradient='#FFFFFF')
+    >>>
     >>> # Change cmap
-    >>> ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], gradient='#FFFFFF', cmap='Set2')
-    >>> # Density
-    >>> ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True)
-    >>> # Density with gradient
-    >>> ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True, gradient='#FFFFFF')
+    >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], gradient='#FFFFFF', cmap='Set2')
+    >>>
+    >>> # Scatter with density
+    >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True)
+    >>>
+    >>> # Scatter with density and gradient
+    >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True, gradient='#FFFFFF')
     >>>
 
     References
     -------
-    Colormap: https://matplotlib.org/examples/color/colormaps_reference.html
+    * github: https://github.com/erdogant/scatterd
+    * Documentation: https://erdogant.github.io/scatterd/
+    * Colormap: https://matplotlib.org/examples/color/colormaps_reference.html
 
     """
     fig = None
@@ -192,7 +215,7 @@ def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title
 
 # %% Setup colors
 def set_colors(X, labels, fontcolor, c, cmap, gradient=None):
-
+    """Set colors."""
     # Create unqiue colors for labels
     if len(np.unique(labels))>1:
         c_rgb, _ = colourmap.fromlist(labels, cmap=cmap, method='matplotlib', gradient=gradient)
@@ -214,6 +237,7 @@ def set_colors(X, labels, fontcolor, c, cmap, gradient=None):
 
 # %% Create gradient based on density.
 def gradient_on_density_color(X, c_rgb, labels):
+    """Set gradient on density color."""
     from scipy.stats import gaussian_kde
     uilabels = np.unique(labels)
     density_colors= np.repeat([1., 1., 1.], len(labels), axis=0).reshape(-1, 3)
