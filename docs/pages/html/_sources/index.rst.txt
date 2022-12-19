@@ -1,6 +1,17 @@
 scatterd's documentation!
 ==============================
 
+.. |fig1A| image:: ../figs/custom_args.png
+.. |fig1B| image:: ../figs/fig_density_3.png
+
+.. table:: Scatterplot examples
+   :align: center
+
+   +----------+----------+
+   | |fig1A|  | |fig1B|  |
+   +----------+----------+
+
+
 |python| |pypi| |docs| |stars| |LOC| |downloads_month| |downloads_total| |license| |forks| |open issues| |project status| |medium| |DOI| |repo-size| |donate|
 
 ``scatterd`` is a Python package for the creation of beautiful scatter plots in a easy and fast manner.
