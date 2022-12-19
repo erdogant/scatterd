@@ -217,7 +217,7 @@ def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title
 def set_colors(X, labels, fontcolor, c, cmap, gradient=None):
     """Set colors."""
     # Create unqiue colors for labels
-    if len(np.unique(labels))>1:
+    if (len(np.unique(labels))>1) or (len(c)==1 and isinstance(c, list) and (cmap is not None) and (gradient is not None)):
         c_rgb, _ = colourmap.fromlist(labels, cmap=cmap, method='matplotlib', gradient=gradient)
     elif len(c)==3 and (isinstance(c[0], int) or isinstance(c[0], float)):
         c_rgb = np.repeat([c], X.shape[0], axis=0).reshape(-1, 3)
