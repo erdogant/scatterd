@@ -17,7 +17,6 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -32,7 +31,7 @@
             <a href="index.html" class="icon icon-home"> scatterd
           </a>
               <div class="version">
-                1.2.0
+                1.2.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -68,14 +67,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Documentation.html#github">Github</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Documentation.html#citing">Citing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Coding%20quality.html">Coding quality</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API References</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.gradient_on_density_color"><code class="docutils literal notranslate"><span class="pre">gradient_on_density_color()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.import_example"><code class="docutils literal notranslate"><span class="pre">import_example()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.scatterd"><code class="docutils literal notranslate"><span class="pre">scatterd()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.set_colors"><code class="docutils literal notranslate"><span class="pre">set_colors()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.wget"><code class="docutils literal notranslate"><span class="pre">wget()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API References</a></li>
 </ul>
 
     <a href= "genindex.html">Index</a>
@@ -145,9 +137,9 @@
 <li><p><strong>x</strong> (<em>numpy array</em>) – 1D Coordinates x-axis.</p></li>
 <li><p><strong>y</strong> (<em>numpy array</em>) – 1D Coordinates y-axis.</p></li>
 <li><p><strong>z</strong> (<em>numpy array</em>) – 1D Coordinates z-axis.</p></li>
-<li><p><strong>s</strong> (<em>Int</em><em> or </em><em>list/array</em><em> of </em><em>sizes with same size as X</em>) – Size of the samples.</p></li>
-<li><p><strong>c</strong> (<em>list/array</em><em> of </em><em>RGB colors with same size as X</em>) – Color of samples in RGB colors.</p></li>
-<li><p><strong>labels</strong> (<em>list</em><em> of </em><em>labels with same size as X</em>) – labels of the samples.</p></li>
+<li><p><strong>s</strong> (<em>Int</em><em> or </em><em>list/array of sizes with same size as X</em>) – Size of the samples.</p></li>
+<li><p><strong>c</strong> (<em>list/array of RGB colors with same size as X</em>) – Color of samples in RGB colors.</p></li>
+<li><p><strong>labels</strong> (<em>list of labels with same size as X</em>) – labels of the samples.</p></li>
 <li><p><strong>gradient</strong> (<em>String</em><em>, </em><em>(</em><em>default: None</em><em>)</em>) – Hex color to make a lineair gradient for the scatterplot.
 ‘#FFFFFF’</p></li>
 <li><p><strong>density</strong> (<em>Bool</em><em> (</em><em>default: False</em><em>)</em>) – Include the kernel density in the scatter plot.</p></li>
@@ -155,7 +147,7 @@
 <li><p><strong>ylabel</strong> (<em>String</em><em>, </em><em>optional</em>) – Ylabel. The default is None.</p></li>
 <li><p><strong>title</strong> (<em>String</em><em>, </em><em>optional</em>) – Title of the figure. The default is None.</p></li>
 <li><p><strong>fontsize</strong> (<em>String</em><em>, </em><em>optional</em>) – The fontsize of the y labels that are plotted in the graph. The default is 16.</p></li>
-<li><p><strong>fontcolor</strong> (<em>list/array</em><em> of </em><em>RGB colors with same size as X</em><em> (</em><em>default : None</em><em>)</em>) – None : Use same colorscheme as for c
+<li><p><strong>fontcolor</strong> (<em>list/array of RGB colors with same size as X</em><em> (</em><em>default : None</em><em>)</em>) – None : Use same colorscheme as for c
 [0,0,0] : If the input is a single color, all fonts will get this color.</p></li>
 <li><p><strong>norm</strong> (<em>Bool</em><em>, </em><em>optional</em>) – Normalize datapoints. The default is False.</p></li>
 <li><p><strong>cmap</strong> (<em>String</em><em>, </em><em>optional</em>) – ‘Set1’       (default)
