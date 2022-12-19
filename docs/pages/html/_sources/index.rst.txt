@@ -1,4 +1,4 @@
-scatterd's documentation!
+scatterd documentation!
 ==============================
 
 .. |fig1A| image:: ../figs/custom_args.png
