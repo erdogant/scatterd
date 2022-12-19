@@ -1,15 +1,21 @@
 # scatterd
 
 [![Python](https://img.shields.io/pypi/pyversions/scatterd)](https://img.shields.io/pypi/pyversions/scatterd)
-[![PyPI Version](https://img.shields.io/pypi/v/scatterd)](https://pypi.org/project/scatterd/)
+[![Pypi](https://img.shields.io/pypi/v/scatterd)](https://pypi.org/project/scatterd/)
+[![Docs](https://img.shields.io/badge/Sphinx-Docs-Green)](https://erdogant.github.io/scatterd/)
+[![LOC](https://sloc.xyz/github/erdogant/scatterd/?category=code)](https://github.com/erdogant/scatterd/)
+[![Downloads](https://static.pepy.tech/personalized-badge/scatterd?period=month&units=international_system&left_color=grey&right_color=brightgreen&left_text=PyPI%20downloads/month)](https://pepy.tech/project/scatterd)
+[![Downloads](https://static.pepy.tech/personalized-badge/scatterd?period=total&units=international_system&left_color=grey&right_color=brightgreen&left_text=Downloads)](https://pepy.tech/project/scatterd)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/erdogant/scatterd/blob/master/LICENSE)
-[![Github Forks](https://img.shields.io/github/forks/erdogant/scatterd.svg)](https://github.com/erdogant/scatterd/network)
-[![GitHub Open Issues](https://img.shields.io/github/issues/erdogant/scatterd.svg)](https://github.com/erdogant/scatterd/issues)
+[![Forks](https://img.shields.io/github/forks/erdogant/scatterd.svg)](https://github.com/erdogant/scatterd/network)
+[![Issues](https://img.shields.io/github/issues/erdogant/scatterd.svg)](https://github.com/erdogant/scatterd/issues)
 [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Downloads](https://pepy.tech/badge/scatterd/month)](https://pepy.tech/project/scatterd/month)
-[![Downloads](https://pepy.tech/badge/scatterd)](https://pepy.tech/project/scatterd)
-[![BuyMeCoffee](https://img.shields.io/badge/buymea-coffee-yellow.svg)](https://www.buymeacoffee.com/erdogant)
-[![Sphinx](https://img.shields.io/badge/Sphinx-Docs-Green)](https://erdogant.github.io/scatterd/)
+[![DOI](https://zenodo.org/badge/228166657.svg)](https://zenodo.org/badge/latestdoi/228166657)
+[![Medium](https://towardsdatascience.com/get-the-most-out-of-your-scatterplot-by-making-it-interactive-using-d3js-19939e3b046)
+![GitHub Repo stars](https://img.shields.io/github/stars/erdogant/scatterd)
+![GitHub repo size](https://img.shields.io/github/repo-size/erdogant/scatterd)
+[![Donate](https://img.shields.io/badge/Support%20this%20project-grey.svg?logo=github%20sponsors)](https://erdogant.github.io/scatterd/pages/html/Documentation.html#)
+<!---[![BuyMeCoffee](https://img.shields.io/badge/buymea-coffee-yellow.svg)](https://www.buymeacoffee.com/erdogant)-->
 <!---[![Coffee](https://img.shields.io/badge/coffee-black-grey.svg)](https://erdogant.github.io/donate/?currency=USD&amount=5)-->
 
 * ``scatterd`` is a python package to creating scatter plots in a easy and fast manner.
