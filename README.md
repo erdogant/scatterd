@@ -10,7 +10,7 @@
 [![Forks](https://img.shields.io/github/forks/erdogant/scatterd.svg)](https://github.com/erdogant/scatterd/network)
 [![Issues](https://img.shields.io/github/issues/erdogant/scatterd.svg)](https://github.com/erdogant/scatterd/issues)
 [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![DOI](https://zenodo.org/badge/228166657.svg)](https://zenodo.org/badge/latestdoi/228166657)
+[![DOI](https://zenodo.org/badge/234931793.svg)](https://zenodo.org/badge/latestdoi/234931793)
 [![Medium](https://img.shields.io/badge/Medium-Blog-green)](https://erdogant.github.io/scatterd/pages/html/Documentation.html#medium-blog)
 ![GitHub Repo stars](https://img.shields.io/github/stars/erdogant/scatterd)
 ![GitHub repo size](https://img.shields.io/github/repo-size/erdogant/scatterd)
