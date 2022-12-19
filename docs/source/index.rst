@@ -133,9 +133,9 @@ Indices and tables
     :alt: donate
     :target: https://erdogant.github.io/scatterd/pages/html/Documentation.html#
 
-.. |DOI| image:: https://zenodo.org/badge/246504758.svg
+.. |DOI| image:: https://zenodo.org/badge/234931793.svg
     :alt: Cite
-    :target: https://zenodo.org/badge/latestdoi/246504758
+    :target: https://zenodo.org/badge/latestdoi/234931793
 
 .. |repo-size| image:: https://img.shields.io/github/repo-size/erdogant/scatterd
     :alt: repo-size
