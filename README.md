@@ -11,7 +11,7 @@
 [![Issues](https://img.shields.io/github/issues/erdogant/scatterd.svg)](https://github.com/erdogant/scatterd/issues)
 [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![DOI](https://zenodo.org/badge/228166657.svg)](https://zenodo.org/badge/latestdoi/228166657)
-[![Medium](https://towardsdatascience.com/get-the-most-out-of-your-scatterplot-by-making-it-interactive-using-d3js-19939e3b046)
+[![Medium](https://erdogant.github.io/scatterd/pages/html/Documentation.html#medium-blog)
 ![GitHub Repo stars](https://img.shields.io/github/stars/erdogant/scatterd)
 ![GitHub repo size](https://img.shields.io/github/repo-size/erdogant/scatterd)
 [![Donate](https://img.shields.io/badge/Support%20this%20project-grey.svg?logo=github%20sponsors)](https://erdogant.github.io/scatterd/pages/html/Documentation.html#)
