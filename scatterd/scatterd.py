@@ -225,6 +225,8 @@ def set_colors(X, labels, fontcolor, c, cmap, gradient=None):
         c_rgb, _ = colourmap.fromlist(labels, cmap=cmap, method='matplotlib', gradient=gradient)
     elif len(c)==1 and isinstance(c, list):
         c_rgb = np.repeat(c[0], X.shape[0], axis=0).reshape(-1, 3)
+    elif len(labels)==len(c):
+        c_rgb=c
     else:
         c_rgb = np.repeat([0, 0, 0], X.shape[0], axis=0).reshape(-1, 3)
 

@@ -14,8 +14,14 @@ iris = datasets.load_iris()
 X = iris.data[:, :2]  # we only take the first two features.
 labels = iris.target
 
+import colourmap
+c=colourmap.fromlist(labels)[0]
+c[0]=[0,0,0]
+c[1]=[0,0,0]
+
 
 # %% Scatter
+fig, ax = scatterd(X[:,0], X[:,1], c=c, s=150)
 
 # Change figure size
 fig, ax = scatterd(X[:,0], X[:,1])
@@ -23,11 +29,11 @@ fig, ax = scatterd(X[:,0], X[:,1], c=[1,0,0])
 
 fig, ax = scatterd(X[:,0], X[:,1], fontcolor=[1,0,0])
 fig, ax = scatterd(X[:,0], X[:,1], fontcolor='r')
-fig, ax = scatterd(X[:,0], X[:,1], c=[1,0,0])
 
-fig, ax = scatterd(X[:,0], X[:,1], labels=labels)
-fig, ax = scatterd(X[:,0], X[:,1], labels=labels, gradient='#FFFFFF')
-fig, ax = scatterd(X[:,0], X[:,1], labels=labels, cmap='Set2')
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, s=150)
+fig, ax = scatterd(X[:,0], X[:,1], c=c, s=150)
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, gradient='#FFFFFF', s=150)
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, cmap='Set2', s=150)
 
 
 # Color based on labels
