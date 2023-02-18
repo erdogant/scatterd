@@ -1,6 +1,11 @@
 scatterd documentation!
 ==============================
 
+|python| |pypi| |docs| |stars| |LOC| |downloads_month| |downloads_total| |license| |forks| |open issues| |project status| |medium| |DOI| |repo-size| |donate|
+
+.. include:: add_top.add
+
+
 .. |fig1A| image:: ../figs/custom_args.png
 .. |fig1B| image:: ../figs/fig_density_3.png
 
@@ -12,22 +17,24 @@ scatterd documentation!
    +----------+----------+
 
 
-|python| |pypi| |docs| |stars| |LOC| |downloads_month| |downloads_total| |license| |forks| |open issues| |project status| |medium| |DOI| |repo-size| |donate|
+-----------------------------------
+
 
 ``scatterd`` is a Python package for the creation of beautiful scatter plots in a easy and fast manner.
 
 
-Github
-======
-Please report bugs, issues and feature extensions at `github <https://github.com/erdogant/scatterd/>`_.
 
+-----------------------------------
 
-Quick install
-=============
+.. note::
+	**Your ❤️ is important to keep maintaining this package.** You can `support <https://erdogant.github.io/scatterd/pages/html/Documentation.html>`_ in various ways, have a look at the `sponser page <https://erdogant.github.io/scatterd/pages/html/Documentation.html>`_.
+	Report bugs, issues and feature extensions at `github <https://github.com/erdogant/scatterd/>`_ page.
 
-.. code-block:: console
+	.. code-block:: console
 
-   pip install scatterd
+	   pip install scatterd
+
+-----------------------------------
 
 
 Content
@@ -71,14 +78,6 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-
-.. raw:: html
-
-	<hr>
-	<center>
-		<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CEADP27U&placement=erdogantgithubio" id="_carbonads_js"></script>
-	</center>
-	<hr>
 
 
 .. |python| image:: https://img.shields.io/pypi/pyversions/scatterd.svg
@@ -140,3 +139,6 @@ Indices and tables
 .. |repo-size| image:: https://img.shields.io/github/repo-size/erdogant/scatterd
     :alt: repo-size
     :target: https://img.shields.io/github/repo-size/erdogant/scatterd
+
+
+.. include:: add_bottom.add
