@@ -17,6 +17,7 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -67,7 +68,14 @@
 <li class="toctree-l1"><a class="reference internal" href="Documentation.html#github">Github</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Documentation.html#citing">Citing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Coding%20quality.html">Coding quality</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API References</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.gradient_on_density_color"><code class="docutils literal notranslate"><span class="pre">gradient_on_density_color()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.import_example"><code class="docutils literal notranslate"><span class="pre">import_example()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.scatterd"><code class="docutils literal notranslate"><span class="pre">scatterd()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.set_colors"><code class="docutils literal notranslate"><span class="pre">set_colors()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.wget"><code class="docutils literal notranslate"><span class="pre">wget()</span></code></a></li>
+</ul>
+</li>
 </ul>
 
     <a href= "genindex.html">Index</a>
@@ -96,13 +104,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <hr>
-<center>
-        <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
-        <div data-ea-publisher="erdogantgithubio" data-ea-type="text"></div>
-        <!-- <div data-ea-publisher="erdogantgithubio" data-ea-type="text" data-ea-style="fixedfooter"></div> -->
-</center>
-<hr><section id="module-scatterd.scatterd">
+  <section id="module-scatterd.scatterd">
 <span id="api-references"></span><h1>API References<a class="headerlink" href="#module-scatterd.scatterd" title="Permalink to this heading"></a></h1>
 <p>Scatterplot.</p>
 <dl class="py function">
@@ -115,22 +117,35 @@
 <dt class="sig sig-object py" id="scatterd.scatterd.import_example">
 <span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">import_example</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cancer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.import_example" title="Permalink to this definition"></a></dt>
 <dd><p>Import example dataset from github source.</p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
 <p>Import one of the few datasets from github source or specify your own download url link.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>str</em>) – Name of datasets: ‘cancer’</p></li>
-<li><p><strong>url</strong> (<em>str</em>) – url link to to dataset.</p></li>
-<li><p><strong>verbose</strong> (<em>int</em><em>, </em><em>(</em><em>default: 3</em><em>)</em>) – </p></li>
-</ul>
+<dt class="field-odd">param data</dt>
+<dd class="field-odd"><p>Name of datasets: ‘cancer’</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Dataset containing mixed features.</p>
+<dt class="field-even">type data</dt>
+<dd class="field-even"><p>str</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.DataFrame()</p>
+<dt class="field-odd">param url</dt>
+<dd class="field-odd"><p>url link to to dataset.</p>
+</dd>
+<dt class="field-even">type url</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">param verbose</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">type verbose</dt>
+<dd class="field-even"><p>int, (default: 3)</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>Dataset containing mixed features.</p>
+</dd>
+<dt class="field-even">rtype</dt>
+<dd class="field-even"><p>pd.DataFrame()</p>
 </dd>
 </dl>
+</section>
 </dd></dl>
 
 <dl class="py function">
@@ -143,9 +158,9 @@
 <li><p><strong>x</strong> (<em>numpy array</em>) – 1D Coordinates x-axis.</p></li>
 <li><p><strong>y</strong> (<em>numpy array</em>) – 1D Coordinates y-axis.</p></li>
 <li><p><strong>z</strong> (<em>numpy array</em>) – 1D Coordinates z-axis.</p></li>
-<li><p><strong>s</strong> (<em>Int</em><em> or </em><em>list/array of sizes with same size as X</em>) – Size of the samples.</p></li>
-<li><p><strong>c</strong> (<em>list/array of RGB colors with same size as X</em>) – Color of samples in RGB colors.</p></li>
-<li><p><strong>labels</strong> (<em>list of labels with same size as X</em>) – labels of the samples.</p></li>
+<li><p><strong>s</strong> (<em>Int</em><em> or </em><em>list/array</em><em> of </em><em>sizes with same size as X</em>) – Size of the samples.</p></li>
+<li><p><strong>c</strong> (<em>list/array</em><em> of </em><em>RGB colors with same size as X</em>) – Color of samples in RGB colors.</p></li>
+<li><p><strong>labels</strong> (<em>list</em><em> of </em><em>labels with same size as X</em>) – labels of the samples.</p></li>
 <li><p><strong>gradient</strong> (<em>String</em><em>, </em><em>(</em><em>default: None</em><em>)</em>) – Hex color to make a lineair gradient for the scatterplot.
 ‘#FFFFFF’</p></li>
 <li><p><strong>density</strong> (<em>Bool</em><em> (</em><em>default: False</em><em>)</em>) – Include the kernel density in the scatter plot.</p></li>
@@ -153,7 +168,7 @@
 <li><p><strong>ylabel</strong> (<em>String</em><em>, </em><em>optional</em>) – Ylabel. The default is None.</p></li>
 <li><p><strong>title</strong> (<em>String</em><em>, </em><em>optional</em>) – Title of the figure. The default is None.</p></li>
 <li><p><strong>fontsize</strong> (<em>String</em><em>, </em><em>optional</em>) – The fontsize of the y labels that are plotted in the graph. The default is 16.</p></li>
-<li><p><strong>fontcolor</strong> (<em>list/array of RGB colors with same size as X</em><em> (</em><em>default : None</em><em>)</em>) – None : Use same colorscheme as for c
+<li><p><strong>fontcolor</strong> (<em>list/array</em><em> of </em><em>RGB colors with same size as X</em><em> (</em><em>default : None</em><em>)</em>) – None : Use same colorscheme as for c
 [0,0,0] : If the input is a single color, all fonts will get this color.</p></li>
 <li><p><strong>norm</strong> (<em>Bool</em><em>, </em><em>optional</em>) – Normalize datapoints. The default is False.</p></li>
 <li><p><strong>cmap</strong> (<em>String</em><em>, </em><em>optional</em>) – ‘Set1’       (default)

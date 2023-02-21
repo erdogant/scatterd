@@ -3,8 +3,6 @@ scatterd documentation!
 
 |python| |pypi| |docs| |stars| |LOC| |downloads_month| |downloads_total| |license| |forks| |open issues| |project status| |medium| |DOI| |repo-size| |donate|
 
-.. include:: add_top.add
-
 
 .. |fig1A| image:: ../figs/custom_args.png
 .. |fig1B| image:: ../figs/fig_density_3.png
