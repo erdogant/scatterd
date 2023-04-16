@@ -33,6 +33,7 @@ def scatterd(x,
              figsize=(25, 15),
              legend=True,
              ax=None,
+             jitter=None,
              xlabel='x-axis', ylabel='y-axis', title='', fontsize=24, fontcolor=None, axiscolor='#dddddd',
              args_density = {'cmap': 'Reds', 'shade': True, 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': False, 'fill': True}):
     """Make scaterplot.
@@ -69,6 +70,10 @@ def scatterd(x,
         [0,0,0] : If the input is a single color, all fonts will get this color.
     norm : Bool, optional
         Normalize datapoints. The default is False.
+    legend : bool, (default: False)
+        Plot the legend.
+    jitter : float, default: None
+        Add jitter to data points as random normal data. Values of 0.01 is usually good for one-hot data seperation.
     cmap : String, optional
         'Set1'       (default)
         'Set2'
@@ -135,6 +140,11 @@ def scatterd(x,
     # Defaults
     defaults_kde = {'cmap': 'Reds', 'shade': True, 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': False, 'fill': True}
     args_density = {**defaults_kde, **args_density}
+
+    # Add jitter
+    if jitter is not None:
+        x = x + np.random.normal(0, jitter, size=1)
+        y = y + np.random.normal(0, jitter, size=1)
 
     # Preprocessing
     X, labels = _preprocessing(x, y, z, labels, norm)
