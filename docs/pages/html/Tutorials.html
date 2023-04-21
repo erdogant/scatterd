@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Input &mdash; scatterd scatterd documentation</title>
@@ -13,9 +13,6 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -30,14 +27,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> scatterd
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            scatterd
           </a>
               <div class="version">
-                1.2.5
+                1.2.7
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -60,6 +61,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Examples.html#coloring-class-label-fonts">Coloring Class Label Fonts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Examples.html#coloring-on-classlabels">Coloring on classlabels</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Examples.html#overlay-with-kernel-density">Overlay with Kernel Density</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples.html#gradient">Gradient</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Examples.html#customized-colormap">Customized colormap</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
@@ -87,8 +89,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Input</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Input</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/Tutorials.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -102,93 +104,152 @@
 <span id="input"></span><h1>Input<a class="headerlink" href="#module-scatterd.scatterd.scatterd" title="Permalink to this heading"></a></h1>
 <p>Make scaterplot.</p>
 <dl class="field-list simple">
-<dt class="field-odd">param x</dt>
+<dt class="field-odd">param x<span class="colon">:</span></dt>
 <dd class="field-odd"><p>1D Coordinates x-axis.</p>
 </dd>
-<dt class="field-even">type x</dt>
+<dt class="field-even">type x<span class="colon">:</span></dt>
 <dd class="field-even"><p>numpy array</p>
 </dd>
-<dt class="field-odd">param y</dt>
+<dt class="field-odd">param y<span class="colon">:</span></dt>
 <dd class="field-odd"><p>1D Coordinates y-axis.</p>
 </dd>
-<dt class="field-even">type y</dt>
+<dt class="field-even">type y<span class="colon">:</span></dt>
 <dd class="field-even"><p>numpy array</p>
 </dd>
-<dt class="field-odd">param z</dt>
+<dt class="field-odd">param z<span class="colon">:</span></dt>
 <dd class="field-odd"><p>1D Coordinates z-axis.</p>
 </dd>
-<dt class="field-even">type z</dt>
+<dt class="field-even">type z<span class="colon">:</span></dt>
 <dd class="field-even"><p>numpy array</p>
 </dd>
-<dt class="field-odd">param s</dt>
+<dt class="field-odd">param s<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Size of the samples.</p>
 </dd>
-<dt class="field-even">type s</dt>
+<dt class="field-even">type s<span class="colon">:</span></dt>
 <dd class="field-even"><p>Int or list/array of sizes with same size as X</p>
 </dd>
-<dt class="field-odd">param c</dt>
+<dt class="field-odd">param c<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Color of samples in RGB colors.</p>
 </dd>
-<dt class="field-even">type c</dt>
+<dt class="field-even">type c<span class="colon">:</span></dt>
 <dd class="field-even"><p>list/array of RGB colors with same size as X</p>
 </dd>
-<dt class="field-odd">param labels</dt>
+<dt class="field-odd">param labels<span class="colon">:</span></dt>
 <dd class="field-odd"><p>labels of the samples.</p>
 </dd>
-<dt class="field-even">type labels</dt>
+<dt class="field-even">type labels<span class="colon">:</span></dt>
 <dd class="field-even"><p>list of labels with same size as X</p>
 </dd>
-<dt class="field-odd">param gradient</dt>
+<dt class="field-odd">param marker<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Marker for the samples.</dt><dd><ul class="simple">
+<li><p>‘x’ : All data points get this marker</p></li>
+<li><p>(‘.’, ‘o’, ‘v’, ‘^’, ‘&lt;’, ‘&gt;’, ‘8’, ‘s’, ‘p’, ‘*’, ‘h’, ‘H’, ‘D’, ‘d’, ‘P’, ‘X’) : Specify per sample the marker type.</p></li>
+<li><p>[0,3,0,1,2,1,..] : It is also possible to provide a list of labels. The markers will be assigned accordingly.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">type marker<span class="colon">:</span></dt>
+<dd class="field-even"><p>list/array of strings (default: ‘o’).</p>
+</dd>
+<dt class="field-odd">param alpha<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The alpha blending value, between 0 (transparent) and 1 (opaque).</p>
+</dd>
+<dt class="field-even">type alpha<span class="colon">:</span></dt>
+<dd class="field-even"><p>float, default: 0.8</p>
+</dd>
+<dt class="field-odd">param edgecolors<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>The edge color of the marker. Possible values:</dt><dd><ul class="simple">
+<li><p>‘face’: The edge color will always be the same as the face color.</p></li>
+<li><p>‘none’: No patch boundary will be drawn.</p></li>
+<li><p>‘#FFFFFF’ : A color or sequence of colors.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">type edgecolors<span class="colon">:</span></dt>
+<dd class="field-even"><p>(default: ‘face’)</p>
+</dd>
+<dt class="field-odd">param gradient<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Hex color to make a lineair gradient for the scatterplot.
 ‘#FFFFFF’</p>
 </dd>
-<dt class="field-even">type gradient</dt>
+<dt class="field-even">type gradient<span class="colon">:</span></dt>
 <dd class="field-even"><p>String, (default: None)</p>
 </dd>
-<dt class="field-odd">param density</dt>
+<dt class="field-odd">param density<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Include the kernel density in the scatter plot.</p>
 </dd>
-<dt class="field-even">type density</dt>
+<dt class="field-even">type density<span class="colon">:</span></dt>
 <dd class="field-even"><p>Bool (default: False)</p>
 </dd>
-<dt class="field-odd">param xlabel</dt>
+<dt class="field-odd">param xlabel<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Xlabel. The default is None.</p>
 </dd>
-<dt class="field-even">type xlabel</dt>
+<dt class="field-even">type xlabel<span class="colon">:</span></dt>
 <dd class="field-even"><p>String, optional</p>
 </dd>
-<dt class="field-odd">param ylabel</dt>
+<dt class="field-odd">param ylabel<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Ylabel. The default is None.</p>
 </dd>
-<dt class="field-even">type ylabel</dt>
+<dt class="field-even">type ylabel<span class="colon">:</span></dt>
 <dd class="field-even"><p>String, optional</p>
 </dd>
-<dt class="field-odd">param title</dt>
+<dt class="field-odd">param title<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Title of the figure. The default is None.</p>
 </dd>
-<dt class="field-even">type title</dt>
+<dt class="field-even">type title<span class="colon">:</span></dt>
 <dd class="field-even"><p>String, optional</p>
 </dd>
-<dt class="field-odd">param fontsize</dt>
+<dt class="field-odd">param fontsize<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The fontsize of the y labels that are plotted in the graph. The default is 16.</p>
 </dd>
-<dt class="field-even">type fontsize</dt>
+<dt class="field-even">type fontsize<span class="colon">:</span></dt>
 <dd class="field-even"><p>String, optional</p>
 </dd>
-<dt class="field-odd">param fontcolor</dt>
+<dt class="field-odd">param fontcolor<span class="colon">:</span></dt>
 <dd class="field-odd"><p>None : Use same colorscheme as for c
-[0,0,0] : If the input is a single color, all fonts will get this color.</p>
+‘#000000’ : If the input is a single color, all fonts will get this color.</p>
 </dd>
-<dt class="field-even">type fontcolor</dt>
+<dt class="field-even">type fontcolor<span class="colon">:</span></dt>
 <dd class="field-even"><p>list/array of RGB colors with same size as X (default : None)</p>
 </dd>
-<dt class="field-odd">param norm</dt>
+<dt class="field-odd">param grid<span class="colon">:</span></dt>
+<dd class="field-odd"><p>False or None : Do not plot grid
+True : Set axis color to: ‘#dddddd’
+‘#dddddd’ : Specify color with hex</p>
+</dd>
+<dt class="field-even">type grid<span class="colon">:</span></dt>
+<dd class="field-even"><p>str or bool (default: False)</p>
+</dd>
+<dt class="field-odd">param norm<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Normalize datapoints. The default is False.</p>
 </dd>
-<dt class="field-even">type norm</dt>
+<dt class="field-even">type norm<span class="colon">:</span></dt>
 <dd class="field-even"><p>Bool, optional</p>
 </dd>
-<dt class="field-odd">param cmap</dt>
+<dt class="field-odd">param legend<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Plot the legend.</p>
+</dd>
+<dt class="field-even">type legend<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool, (default: False)</p>
+</dd>
+<dt class="field-odd">param jitter<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Add jitter to data points as random normal data. Values of 0.01 is usually good for one-hot data seperation.</dt><dd><ul class="simple">
+<li><p>None or False: Do not add jitter</p></li>
+<li><p>True : adds 0.01</p></li>
+<li><p>0.05 : Specify the amount jitter to add.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">type jitter<span class="colon">:</span></dt>
+<dd class="field-even"><p>float, default: None</p>
+</dd>
+<dt class="field-odd">param cmap<span class="colon">:</span></dt>
 <dd class="field-odd"><p>‘Set1’       (default)
 ‘Set2’
 ‘rainbow’
@@ -201,22 +262,28 @@
 ‘Paired’     Discrete colors
 ‘Set1’       Discrete colors</p>
 </dd>
-<dt class="field-even">type cmap</dt>
+<dt class="field-even">type cmap<span class="colon">:</span></dt>
 <dd class="field-even"><p>String, optional</p>
 </dd>
-<dt class="field-odd">param figsize</dt>
+<dt class="field-odd">param figsize<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Figure size. The default is (15,10).</p>
 </dd>
-<dt class="field-even">type figsize</dt>
+<dt class="field-even">type figsize<span class="colon">:</span></dt>
 <dd class="field-even"><p>tuple, optional</p>
 </dd>
-<dt class="field-odd">param args_density</dt>
+<dt class="field-odd">param visible<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Visible status of the Figure. When False, figure is created on the background.</p>
+</dd>
+<dt class="field-even">type visible<span class="colon">:</span></dt>
+<dd class="field-even"><p>Bool, default: True</p>
+</dd>
+<dt class="field-odd">param args_density<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Dictionary containing arguments for kernel density plotting.</p>
 </dd>
-<dt class="field-even">type args_density</dt>
+<dt class="field-even">type args_density<span class="colon">:</span></dt>
 <dd class="field-even"><p>dict()</p>
 </dd>
-<dt class="field-odd">rtype</dt>
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Fig, ax</p>
 </dd>
 </dl>

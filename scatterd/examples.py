@@ -8,6 +8,20 @@ import numpy as np
 # scatterd(df['tsneX'], df['tsneY'], cmap='Set1')
 # scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], cmap='Set1')
 
+# %%
+# Import example iris dataet
+from sklearn import datasets
+iris = datasets.load_iris()
+X = iris.data[:, :2]
+labels = iris.target
+
+# Load library
+from scatterd import scatterd
+
+# Scatter the results
+fig, ax = scatterd(X[:,0], X[:,1], s=250, grid=True)
+
+
 # %%import some data to play with
 from sklearn import datasets
 iris = datasets.load_iris()
@@ -32,7 +46,7 @@ fig, ax = scatterd(X[:,0], X[:,1], labels=None, marker=labels.astype(str), s=s, 
 fig, ax = scatterd(X[:,0], X[:,1], labels=labels, marker=labels, s=s, cmap='Set2', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True, fontcolor=[0,0,0])
 
 fig, ax = scatterd(X[:,0], X[:,1], labels=None, marker=np.repeat('X', X.shape[0]))
-fig, ax = scatterd(X[:,0], X[:,1], labels=labels, marker=labels, s=300)
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, marker=labels, s=300, grid=True)
 fig, ax = scatterd(X[:,0], X[:,1], labels=None, marker=labels, s=300)
 fig, ax = scatterd(X[:,0], X[:,1], labels=None, marker='s', visible=True)
 

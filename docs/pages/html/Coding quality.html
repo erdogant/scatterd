@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Coding quality &mdash; scatterd scatterd documentation</title>
@@ -13,9 +13,6 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -30,14 +27,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> scatterd
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            scatterd
           </a>
               <div class="version">
-                1.2.5
+                1.2.7
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -60,6 +61,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Examples.html#coloring-class-label-fonts">Coloring Class Label Fonts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Examples.html#coloring-on-classlabels">Coloring on classlabels</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Examples.html#overlay-with-kernel-density">Overlay with Kernel Density</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples.html#gradient">Gradient</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Examples.html#customized-colormap">Customized colormap</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
@@ -93,8 +95,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Coding quality</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Coding quality</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/Coding quality.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -115,29 +117,29 @@ Such conventions are helpfull to improve the quality, make the code cleaner and 
 <h2>library<a class="headerlink" href="#library" title="Permalink to this heading"></a></h2>
 <p>The file structure of the generated package looks like:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>path/to/scatterd/
-├── .editorconfig
-├── .gitignore
-├── .pre-commit-config.yml
-├── .prospector.yml
-├── CHANGELOG.rst
-├── docs
-│   ├── conf.py
-│   ├── index.rst
-│   └── ...
-├── LICENSE
-├── MANIFEST.in
-├── NOTICE
-├── scatterd
-│   ├── __init__.py
-│   ├── __version__.py
-│   └── scatterd.py
-├── README.md
-├── requirements.txt
-├── setup.cfg
-├── setup.py
-└── tests
-    ├── __init__.py
-    └── test_scatterd.py
+├──<span class="w"> </span>.editorconfig
+├──<span class="w"> </span>.gitignore
+├──<span class="w"> </span>.pre-commit-config.yml
+├──<span class="w"> </span>.prospector.yml
+├──<span class="w"> </span>CHANGELOG.rst
+├──<span class="w"> </span>docs
+│<span class="w">   </span>├──<span class="w"> </span>conf.py
+│<span class="w">   </span>├──<span class="w"> </span>index.rst
+│<span class="w">   </span>└──<span class="w"> </span>...
+├──<span class="w"> </span>LICENSE
+├──<span class="w"> </span>MANIFEST.in
+├──<span class="w"> </span>NOTICE
+├──<span class="w"> </span>scatterd
+│<span class="w">   </span>├──<span class="w"> </span>__init__.py
+│<span class="w">   </span>├──<span class="w"> </span>__version__.py
+│<span class="w">   </span>└──<span class="w"> </span>scatterd.py
+├──<span class="w"> </span>README.md
+├──<span class="w"> </span>requirements.txt
+├──<span class="w"> </span>setup.cfg
+├──<span class="w"> </span>setup.py
+└──<span class="w"> </span>tests
+<span class="w">    </span>├──<span class="w"> </span>__init__.py
+<span class="w">    </span>└──<span class="w"> </span>test_scatterd.py
 </pre></div>
 </div>
 </section>

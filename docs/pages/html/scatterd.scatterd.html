@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>API References &mdash; scatterd scatterd documentation</title>
@@ -13,9 +13,6 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -29,14 +26,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> scatterd
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            scatterd
           </a>
               <div class="version">
-                1.2.5
+                1.2.7
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -59,6 +60,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Examples.html#coloring-class-label-fonts">Coloring Class Label Fonts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Examples.html#coloring-on-classlabels">Coloring on classlabels</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Examples.html#overlay-with-kernel-density">Overlay with Kernel Density</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples.html#gradient">Gradient</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Examples.html#customized-colormap">Customized colormap</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
@@ -71,8 +73,13 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API References</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.gradient_on_density_color"><code class="docutils literal notranslate"><span class="pre">gradient_on_density_color()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.import_example"><code class="docutils literal notranslate"><span class="pre">import_example()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.init_figure"><code class="docutils literal notranslate"><span class="pre">init_figure()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.scatterd"><code class="docutils literal notranslate"><span class="pre">scatterd()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.set_alpha"><code class="docutils literal notranslate"><span class="pre">set_alpha()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.set_colors"><code class="docutils literal notranslate"><span class="pre">set_colors()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.set_fontcolor"><code class="docutils literal notranslate"><span class="pre">set_fontcolor()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.set_marker"><code class="docutils literal notranslate"><span class="pre">set_marker()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.set_size"><code class="docutils literal notranslate"><span class="pre">set_size()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scatterd.scatterd.wget"><code class="docutils literal notranslate"><span class="pre">wget()</span></code></a></li>
 </ul>
 </li>
@@ -93,8 +100,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>API References</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API References</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/scatterd.scatterd.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -121,27 +128,27 @@
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
 <p>Import one of the few datasets from github source or specify your own download url link.</p>
 <dl class="field-list simple">
-<dt class="field-odd">param data</dt>
+<dt class="field-odd">param data<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Name of datasets: ‘cancer’</p>
 </dd>
-<dt class="field-even">type data</dt>
+<dt class="field-even">type data<span class="colon">:</span></dt>
 <dd class="field-even"><p>str</p>
 </dd>
-<dt class="field-odd">param url</dt>
+<dt class="field-odd">param url<span class="colon">:</span></dt>
 <dd class="field-odd"><p>url link to to dataset.</p>
 </dd>
-<dt class="field-even">type url</dt>
+<dt class="field-even">type url<span class="colon">:</span></dt>
 <dd class="field-even"><p>str</p>
 </dd>
-<dt class="field-odd">param verbose</dt>
+<dt class="field-odd">param verbose<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
-<dt class="field-even">type verbose</dt>
+<dt class="field-even">type verbose<span class="colon">:</span></dt>
 <dd class="field-even"><p>int, (default: 3)</p>
 </dd>
-<dt class="field-odd">returns</dt>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Dataset containing mixed features.</p>
 </dd>
-<dt class="field-even">rtype</dt>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
 <dd class="field-even"><p>pd.DataFrame()</p>
 </dd>
 </dl>
@@ -149,11 +156,16 @@
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="scatterd.scatterd.init_figure">
+<span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">init_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">visible</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.init_figure" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="scatterd.scatterd.scatterd">
-<span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">scatterd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Set1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(25,</span> <span class="pre">15)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x-axis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'y-axis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">24</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontcolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axiscolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#dddddd'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args_density</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'alpha':</span> <span class="pre">0.66,</span> <span class="pre">'bw_adjust':</span> <span class="pre">0.6,</span> <span class="pre">'cbar':</span> <span class="pre">False,</span> <span class="pre">'cmap':</span> <span class="pre">'Reds',</span> <span class="pre">'fill':</span> <span class="pre">True,</span> <span class="pre">'legend':</span> <span class="pre">False,</span> <span class="pre">'shade':</span> <span class="pre">True,</span> <span class="pre">'thresh':</span> <span class="pre">0.05}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.scatterd" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">scatterd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">150</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">0.1,</span> <span class="pre">0.4]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'o'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#000000'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tab20c'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(25,</span> <span class="pre">15)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jitter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x-axis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'y-axis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">24</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontcolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontweight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'normal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args_density</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'alpha':</span> <span class="pre">0.66,</span> <span class="pre">'bw_adjust':</span> <span class="pre">0.6,</span> <span class="pre">'cbar':</span> <span class="pre">False,</span> <span class="pre">'cmap':</span> <span class="pre">'Reds',</span> <span class="pre">'fill':</span> <span class="pre">True,</span> <span class="pre">'legend':</span> <span class="pre">False,</span> <span class="pre">'thresh':</span> <span class="pre">0.05}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">visible</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.scatterd" title="Permalink to this definition"></a></dt>
 <dd><p>Make scaterplot.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>numpy array</em>) – 1D Coordinates x-axis.</p></li>
 <li><p><strong>y</strong> (<em>numpy array</em>) – 1D Coordinates y-axis.</p></li>
@@ -161,6 +173,25 @@
 <li><p><strong>s</strong> (<em>Int</em><em> or </em><em>list/array</em><em> of </em><em>sizes with same size as X</em>) – Size of the samples.</p></li>
 <li><p><strong>c</strong> (<em>list/array</em><em> of </em><em>RGB colors with same size as X</em>) – Color of samples in RGB colors.</p></li>
 <li><p><strong>labels</strong> (<em>list</em><em> of </em><em>labels with same size as X</em>) – labels of the samples.</p></li>
+<li><p><strong>marker</strong> (<em>list/array</em><em> of </em><em>strings</em><em> (</em><em>default: 'o'</em><em>)</em><em>.</em>) – <dl class="simple">
+<dt>Marker for the samples.</dt><dd><ul>
+<li><p>’x’ : All data points get this marker</p></li>
+<li><p>(‘.’, ‘o’, ‘v’, ‘^’, ‘&lt;’, ‘&gt;’, ‘8’, ‘s’, ‘p’, ‘*’, ‘h’, ‘H’, ‘D’, ‘d’, ‘P’, ‘X’) : Specify per sample the marker type.</p></li>
+<li><p>[0,3,0,1,2,1,..] : It is also possible to provide a list of labels. The markers will be assigned accordingly.</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>default: 0.8</em>) – The alpha blending value, between 0 (transparent) and 1 (opaque).</p></li>
+<li><p><strong>edgecolors</strong> (<em>(</em><em>default: 'face'</em><em>)</em>) – <dl class="simple">
+<dt>The edge color of the marker. Possible values:</dt><dd><ul>
+<li><p>’face’: The edge color will always be the same as the face color.</p></li>
+<li><p>’none’: No patch boundary will be drawn.</p></li>
+<li><p>’#FFFFFF’ : A color or sequence of colors.</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
 <li><p><strong>gradient</strong> (<em>String</em><em>, </em><em>(</em><em>default: None</em><em>)</em>) – Hex color to make a lineair gradient for the scatterplot.
 ‘#FFFFFF’</p></li>
 <li><p><strong>density</strong> (<em>Bool</em><em> (</em><em>default: False</em><em>)</em>) – Include the kernel density in the scatter plot.</p></li>
@@ -169,8 +200,21 @@
 <li><p><strong>title</strong> (<em>String</em><em>, </em><em>optional</em>) – Title of the figure. The default is None.</p></li>
 <li><p><strong>fontsize</strong> (<em>String</em><em>, </em><em>optional</em>) – The fontsize of the y labels that are plotted in the graph. The default is 16.</p></li>
 <li><p><strong>fontcolor</strong> (<em>list/array</em><em> of </em><em>RGB colors with same size as X</em><em> (</em><em>default : None</em><em>)</em>) – None : Use same colorscheme as for c
-[0,0,0] : If the input is a single color, all fonts will get this color.</p></li>
+‘#000000’ : If the input is a single color, all fonts will get this color.</p></li>
+<li><p><strong>grid</strong> (<em>str</em><em> or </em><em>bool</em><em> (</em><em>default: False</em><em>)</em>) – False or None : Do not plot grid
+True : Set axis color to: ‘#dddddd’
+‘#dddddd’ : Specify color with hex</p></li>
 <li><p><strong>norm</strong> (<em>Bool</em><em>, </em><em>optional</em>) – Normalize datapoints. The default is False.</p></li>
+<li><p><strong>legend</strong> (<em>bool</em><em>, </em><em>(</em><em>default: False</em><em>)</em>) – Plot the legend.</p></li>
+<li><p><strong>jitter</strong> (<em>float</em><em>, </em><em>default: None</em>) – <dl class="simple">
+<dt>Add jitter to data points as random normal data. Values of 0.01 is usually good for one-hot data seperation.</dt><dd><ul>
+<li><p>None or False: Do not add jitter</p></li>
+<li><p>True : adds 0.01</p></li>
+<li><p>0.05 : Specify the amount jitter to add.</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
 <li><p><strong>cmap</strong> (<em>String</em><em>, </em><em>optional</em>) – ‘Set1’       (default)
 ‘Set2’
 ‘rainbow’
@@ -183,10 +227,11 @@
 ‘Paired’     Discrete colors
 ‘Set1’       Discrete colors</p></li>
 <li><p><strong>figsize</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Figure size. The default is (15,10).</p></li>
+<li><p><strong>visible</strong> (<em>Bool</em><em>, </em><em>default: True</em>) – Visible status of the Figure. When False, figure is created on the background.</p></li>
 <li><p><strong>args_density</strong> (<em>dict</em><em>(</em><em>)</em>) – Dictionary containing arguments for kernel density plotting.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>Fig, ax</p>
 </dd>
 </dl>
@@ -226,23 +271,43 @@
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="scatterd.scatterd.set_alpha">
+<span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">set_alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.set_alpha" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="scatterd.scatterd.set_colors">
-<span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">set_colors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontcolor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.set_colors" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">set_colors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tab20c'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.set_colors" title="Permalink to this definition"></a></dt>
 <dd><p>Set colors.</p>
 </dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scatterd.scatterd.set_fontcolor">
+<span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">set_fontcolor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fontcolor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.set_fontcolor" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scatterd.scatterd.set_marker">
+<span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">set_marker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.set_marker" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scatterd.scatterd.set_size">
+<span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">set_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.set_size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="scatterd.scatterd.wget">
 <span class="sig-prename descclassname"><span class="pre">scatterd.scatterd.</span></span><span class="sig-name descname"><span class="pre">wget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">writepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scatterd.scatterd.wget" title="Permalink to this definition"></a></dt>
 <dd><p>Retrieve file from url.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>url</strong> (<em>str.</em>) – Internet source.</p></li>
 <li><p><strong>writepath</strong> (<em>str.</em>) – Directory to write the file.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None.</p>
 </dd>
 </dl>
