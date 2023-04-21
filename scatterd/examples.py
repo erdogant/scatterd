@@ -18,19 +18,73 @@ import colourmap
 c=colourmap.fromlist(labels)[0]
 c[0]=[0,0,0]
 c[1]=[0,0,0]
+s = (labels+1) * 200
+random_integers = np.random.randint(0, len(s), size=X.shape[0])
+alpha = np.random.rand(1, X.shape[0])[0][random_integers]
 
+# %%
+
+fig, ax = scatterd(X[:,0], X[:,1], labels=None, s=alpha*1000, alpha=alpha)
+
+# %%
+# s=np.random.randint(10, 500,len(labels))
+fig, ax = scatterd(X[:,0], X[:,1], labels=None, marker=labels.astype(str), s=s, cmap='Set2', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True, fontcolor=[0,0,0])
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, marker=labels, s=s, cmap='Set2', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True, fontcolor=[0,0,0])
+
+fig, ax = scatterd(X[:,0], X[:,1], labels=None, marker=np.repeat('X', X.shape[0]))
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, marker=labels, s=300)
+fig, ax = scatterd(X[:,0], X[:,1], labels=None, marker=labels, s=300)
+fig, ax = scatterd(X[:,0], X[:,1], labels=None, marker='s', visible=True)
+
+
+marker=labels.astype(str)
+marker[labels==0]='s'
+marker[labels==1]='o'
+marker[labels==2]='d'
+
+fig, ax = scatterd(X[:,0], X[:,1], labels=None, marker=marker, visible=True)
 
 # %% Scatter
-fig, ax = scatterd(X[:,0], X[:,1], c=c, s=150)
+
+fig, ax = scatterd(X[:,0], X[:,1], c=[0,0,0], labels=None, verbose=4, visible=False)
+scatterd(X[:,0], X[:,1], c=None, density=True, ax=ax)
+fig.set_visible(True)
+
+fig, ax = scatterd(X[:,0], X[:,1], c=[1,0,0], labels=None, verbose=4)
+
+fig, ax = scatterd(X[:,0], X[:,1], labels=None, c=[0,0,0], density=True)
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, c=[0,0,0], density=True, fontsize=28, legend=False, fontcolor='#000000')
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, c=[0,0,0], density=True, fontsize=28, legend=True, fontcolor='#000000')
+
+fig, ax = scatterd(X[:,0], X[:,1], labels=None, c=None, density=True)
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, density=True)
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, c=None, density=True)
+
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, verbose=4)
+fig, ax = scatterd(X[:,0], X[:,1], c=[1,0,0], labels=None, verbose=4)
+fig, ax = scatterd(X[:,0], X[:,1], c=[0,0,0], labels=labels, verbose=4, gradient='#ffffff')
+fig, ax = scatterd(X[:,0], X[:,1], c=[0,0,0], labels=labels, verbose=4, gradient='#ffffff')
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, verbose=4, gradient='#ffffff')
+
+# Grid options
+fig, ax = scatterd(X[:,0], X[:,1], c=c, grid=False, verbose=4)
+fig, ax = scatterd(X[:,0], X[:,1], c=c, grid=True, verbose=4)
+fig, ax = scatterd(X[:,0], X[:,1], c=c, grid='#000000', verbose=4)
 
 # Change figure size
-fig, ax = scatterd(X[:,0], X[:,1])
-fig, ax = scatterd(X[:,0], X[:,1], c=[1,0,0])
+fig, ax = scatterd(X[:,0], X[:,1], verbose=4)
+fig, ax = scatterd(X[:,0], X[:,1], c=[0,0,0], verbose=4)
+fig, ax = scatterd(X[:,0], X[:,1], c=[0,0,0], labels=labels, verbose=4)
+fig, ax = scatterd(X[:,0], X[:,1], X[:,1], c=c, verbose=4)
+fig, ax = scatterd(X[:,0], X[:,1], c=[0,0,0], density=True)
 
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels)
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, fontcolor='#000000')
+fig, ax = scatterd(X[:,0], X[:,1], labels=None, c=[0,0,0])
 fig, ax = scatterd(X[:,0], X[:,1], fontcolor=[1,0,0])
 fig, ax = scatterd(X[:,0], X[:,1], fontcolor='r')
 
-fig, ax = scatterd(X[:,0], X[:,1], labels=labels, s=150)
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, s=150, fontcolor='r')
 fig, ax = scatterd(X[:,0], X[:,1], c=c, s=150)
 fig, ax = scatterd(X[:,0], X[:,1], labels=labels, gradient='#FFFFFF', s=150)
 fig, ax = scatterd(X[:,0], X[:,1], labels=labels, cmap='Set2', s=150)
@@ -48,8 +102,11 @@ s=np.random.randint(10, 500,len(labels))
 fig, ax = scatterd(X[:,0], X[:,1], labels=labels, s=s, cmap='Set2', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True)
 
 fig, ax = scatterd(X[:,0], X[:,1], labels=labels, s=s, cmap='Set2', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True, fontcolor=[0,0,0])
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, marker=labels, s=s, cmap='Set2', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True, fontcolor=[0,0,0])
+fig, ax = scatterd(X[:,0], X[:,1], labels=None, marker=labels, s=s, cmap='Set2', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True, fontcolor=[0,0,0])
 
-args_density = {'fill': True, 'thresh': 0, 'levels': 100, 'cmap':"mako", 'cbar': False, 'shade':True}
-fig, ax = scatterd(X[:,0], X[:,1], labels=labels, s=s, cmap='Set2', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True, fontcolor=[0,0,0], axiscolor=None, args_density=args_density)
+args_density = {'fill': True, 'thresh': 0, 'levels': 100, 'cmap':"mako", 'cbar': False}
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, s=s, cmap='tab20c', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True, fontcolor=[0,0,0], grid=None, args_density=args_density)
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, s=0, cmap='tab20c', xlabel='xlabel', ylabel='ylabel', title='Title', fontsize=25, density=True, fontcolor=[0,0,0], grid=None, args_density=args_density)
 
 # %%
