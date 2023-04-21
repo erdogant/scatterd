@@ -393,6 +393,7 @@ def set_size(X, s):
 
 
 def set_alpha(X, alpha):
+    if alpha is None: alpha=0.8
     if isinstance(alpha, (int, float)): alpha = np.repeat(alpha, X.shape[0])
     # Minimum size should be 0 (dots will not be showed)
     alpha = np.maximum(alpha, 0)
