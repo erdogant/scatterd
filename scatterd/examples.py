@@ -3,10 +3,22 @@ import numpy as np
 
 # %%
 
-# df = import_example()
+df = import_example()
 # scatterd(df['tsneX'], df['tsneY'], z=df['PC2'], labels=df['labx'], gradient='#FFFFFF', cmap='Set1')
 # scatterd(df['tsneX'], df['tsneY'], cmap='Set1')
 # scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], cmap='Set1')
+fig, ax = scatterd(df['tsneX'],
+                   df['tsneY'],
+                   labels=df['labx'],
+                   density=True,
+                   density_on_top=True,
+                   args_density={'alpha': 0.3},
+                   gradient='#FFFFFF',
+                   edgecolor='#FFFFFF',
+                   grid=True,
+                   fontweight='bold',
+                   fontsize=26,
+                   )
 
 # %%
 # Import example iris dataet
@@ -37,7 +49,17 @@ random_integers = np.random.randint(0, len(s), size=X.shape[0])
 alpha = np.random.rand(1, X.shape[0])[0][random_integers]
 
 # %%
+from scatterd import scatterd
+import matplotlib as mpl
+custom_cmap = mpl.colors.ListedColormap(['green', 'black', 'blue'])
 
+s = (labels+1) * 200
+random_integers = np.random.randint(0, len(s), size=X.shape[0])
+alpha = np.random.rand(1, X.shape[0])[0][random_integers]
+
+fig, ax = scatterd(X[:,0], X[:,1], labels=labels, marker=labels, gradient='#ffffff', edgecolor='#ffffff', s=s, density=True, alpha=1, cmap=custom_cmap, density_on_top=False)
+
+# %%
 fig, ax = scatterd(X[:,0], X[:,1], labels=None, s=alpha*1000, alpha=alpha)
 
 # %%
@@ -58,11 +80,21 @@ marker[labels==2]='d'
 
 fig, ax = scatterd(X[:,0], X[:,1], labels=None, marker=marker, visible=True)
 
+# %% Density 3d
+fig, ax = scatterd(X[:,0], X[:,1], z=X[:,1], c=[0,0,0], labels=labels, density=True)
+
 # %% Scatter
 
+# Dots foreground
+fig, ax = scatterd(X[:,0], X[:,1], c=[0,0,0], labels=None, verbose=4, visible=True,density=True)
+
+# Dots background
 fig, ax = scatterd(X[:,0], X[:,1], c=[0,0,0], labels=None, verbose=4, visible=False)
 scatterd(X[:,0], X[:,1], c=None, density=True, ax=ax)
 fig.set_visible(True)
+
+
+# %% Scatter
 
 fig, ax = scatterd(X[:,0], X[:,1], c=[1,0,0], labels=None, verbose=4)
 

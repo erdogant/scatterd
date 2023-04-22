@@ -29,16 +29,18 @@ def scatterd(x,
              edgecolor='#000000',
              gradient=None,
              density=False,
+             density_on_top=False,
              norm=False,
              cmap='tab20c',
              figsize=(25, 15),
              dpi=100,
              legend=True,
-             ax=None,
              jitter=None,
              xlabel='x-axis', ylabel='y-axis', title='', fontsize=24, fontcolor=None, grid=False, fontweight='normal',
              args_density = {'cmap': 'Reds', 'fill': True, 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': False},
              visible=True,
+             fig=None,
+             ax=None,
              verbose=3):
     """Make scaterplot.
 
@@ -73,6 +75,9 @@ def scatterd(x,
         '#FFFFFF'
     density : Bool (default: False)
         Include the kernel density in the scatter plot.
+    density_on_top : bool, (default: False)
+        True : The density is the highest layer.
+        False : The density is the lowest layer.
     xlabel : String, optional
         Xlabel. The default is None.
     ylabel : String, optional
@@ -129,19 +134,25 @@ def scatterd(x,
     >>> df = import_example()
     >>>
     >>> # Simple scatter
-    >>> fig, ax = scatterd(df['tsneX'], df['tsneY'])
+    >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], edgecolor='#FFFFFF')
+    >>>
+    >>> # Scatter with labels
+    >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'])
     >>>
     >>> # Scatter with labels
     >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'])
     >>>
     >>> # Scatter with gradient
-    >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], gradient='#FFFFFF')
+    >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], z=df['tsneY'], labels=df['labx'], gradient='#FFFFFF')
     >>>
     >>> # Change cmap
     >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], gradient='#FFFFFF', cmap='Set2')
     >>>
     >>> # Scatter with density
     >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True)
+    >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=False, gradient='#FFFFFF', edgecolor='#FFFFFF')
+    >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True, gradient='#FFFFFF', edgecolor='#FFFFFF')
+    >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True, gradient='#FFFFFF', c=None)
     >>>
     >>> # Scatter with density and gradient
     >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True, gradient='#FFFFFF')
@@ -154,15 +165,13 @@ def scatterd(x,
     * Colormap: https://matplotlib.org/examples/color/colormaps_reference.html
 
     """
-    fig = None
     if len(x)!=len(y): raise Exception('[scatterd] >Error: input parameter x should be the same size of y.')
-    # if s is None: raise Exception('[scatterd] >Error: input parameter s(ize) should have value >0.')
-    # if c is None: raise Exception('[scatterd] >Error: input parameter c(olors) can not be None.')
     if isinstance(c, str): raise Exception('[scatterd] >Error: input parameter c(olors) should be RGB of type tuple [0,0,0] .')
     if not isinstance(s, int) and len(s)!=len(x): raise Exception('[scatterd] >Error: input parameter s(ize) should be of same size of X.')
     if (z is not None) and len(x)!=len(z): raise Exception('[scatterd] >Error: input parameter z should be the same size of x and y.')
     if s is None: s=0
     if c is None: s, c = 0, [0, 0, 0]
+    zorder = None if density_on_top else 10
 
     # Defaults
     defaults_density = {'cmap': 'Reds', 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': False, 'fill': True}
@@ -181,15 +190,13 @@ def scatterd(x,
     # Set marker
     marker = set_marker(X, marker)
     # Bootup figure
-    fig, ax = init_figure(ax, z, dpi, figsize, visible)
-
+    fig, ax = init_figure(ax, z, dpi, figsize, visible, fig)
     # Set figure properties
     ax = _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title, grid, fontweight, ax)
 
     # Add density as bottom layer to the scatterplot
     if density:
         ax = sns.kdeplot(x=X[:, 0], y=X[:, 1], ax=ax, **args_density)
-        # ax = sns.kdeplot(x=X[:, 0], y=X[:, 1], ax=ax, hue=labels, **args_density)
 
     # Scatter all at once
     if (labels is None) and isinstance(marker, str):
@@ -205,7 +212,7 @@ def scatterd(x,
             for m in np.unique(marker[Iloc1]):
                 Iloc2 = np.logical_and(Iloc1, m==marker)
                 if z is None:
-                    ax.scatter(X[Iloc2, 0], X[Iloc2, 1], c=c_rgb[Iloc2], s=s[Iloc2], edgecolor=edgecolor, marker=m, label=label, alpha=alpha[Iloc2])
+                    ax.scatter(X[Iloc2, 0], X[Iloc2, 1], c=c_rgb[Iloc2], s=s[Iloc2], edgecolor=edgecolor, marker=m, label=label, alpha=alpha[Iloc2], zorder=zorder)
                 else:
                     # Let op: alpha[Iloc2] geeft een foutmelding
                     ax.scatter(X[Iloc2, 0], X[Iloc2, 1], X[Iloc2, 2], s=s[Iloc2], c=c_rgb[Iloc2], edgecolor=edgecolor, marker=m, label=label, alpha=0.8)
@@ -386,6 +393,7 @@ def set_fontcolor(fontcolor, label, X, cmap, verbose=3):
 
 
 def set_size(X, s):
+    """Set size."""
     if isinstance(s, (int, float)): s = np.repeat(s, X.shape[0])
     # Minimum size should be 0 (dots will not be showed)
     s = np.maximum(s, 0)
@@ -393,6 +401,7 @@ def set_size(X, s):
 
 
 def set_alpha(X, alpha):
+    """Set alpha."""
     if alpha is None: alpha=0.8
     if isinstance(alpha, (int, float)): alpha = np.repeat(alpha, X.shape[0])
     # Minimum size should be 0 (dots will not be showed)
@@ -401,6 +410,7 @@ def set_alpha(X, alpha):
 
 
 def set_marker(X, marker):
+    """Set markers."""
     markers = np.array(['o', 'v', 's', 'p', '*', 'h', 'H', 'D', 'd', 'P', 'X', '.', '^', '>', '<', '8'])
     # markers_list = dict(zip(markers, np.arange(0,len(markers))))
     # In case single str
@@ -417,10 +427,10 @@ def set_marker(X, marker):
     # Return
     return np.repeat('o', X.shape[0])
 
-def init_figure(ax, z, dpi, figsize, visible):
-    fig = None
+
+def init_figure(ax, z, dpi, figsize, visible, fig):
+    """Initialize figure."""
     if ax is None:
-        # fig, ax = plt.subplots(figsize=figsize)
         fig = plt.figure(figsize=figsize, dpi=dpi)
         if z is None:
             ax = fig.add_subplot()
