@@ -4,9 +4,6 @@ import numpy as np
 # %%
 
 df = import_example()
-# scatterd(df['tsneX'], df['tsneY'], z=df['PC2'], labels=df['labx'], gradient='#FFFFFF', cmap='Set1')
-# scatterd(df['tsneX'], df['tsneY'], cmap='Set1')
-# scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], cmap='Set1')
 fig, ax = scatterd(df['tsneX'],
                    df['tsneY'],
                    labels=df['labx'],
