@@ -238,7 +238,7 @@ def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title
             # Compute median for better center compared to mean
             XYmean = np.median(X[labels==uilabel, :], axis=0)
             if X.shape[1]==2:
-                ax.text(XYmean[0], XYmean[1], str(uilabel), color=fontcolor.get(uilabel), fontdict={'weight': fontweight, 'size': fontsize})
+                ax.text(XYmean[0], XYmean[1], str(uilabel), color=fontcolor.get(uilabel), fontdict={'weight': fontweight, 'size': fontsize}, zorder=15)
             else:
                 ax.text(XYmean[0], XYmean[1], XYmean[2], str(uilabel), color=fontcolor.get(uilabel), fontdict={'weight': fontweight, 'size': fontsize})
 
