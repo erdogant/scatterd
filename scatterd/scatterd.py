@@ -178,6 +178,7 @@ def scatterd(x,
     if (z is not None) and len(x)!=len(z): raise Exception('[scatterd] >Error: input parameter z should be the same size of x and y.')
     if s is None: s=0
     if c is None: s, c = 0, [0, 0, 0]
+    if s==0: fontsize=0
     zorder = None if density_on_top else 10
 
     # Defaults
@@ -208,9 +209,9 @@ def scatterd(x,
     # Scatter all at once
     if (labels is None) and isinstance(marker, str):
         if z is None:
-            ax.scatter(X[:, 0], X[:, 1], c=c_rgb, s=s, edgecolor=edgecolor, marker=marker, alpha=alpha)
+            ax.scatter(X[:, 0], X[:, 1], c=c_rgb, s=s, edgecolor=edgecolor, marker=marker, alpha=alpha, zorder=zorder)
         else:
-            ax.scatter(X[:, 0], X[:, 1], X[:, 2], s=s, c=c_rgb, edgecolor=edgecolor, marker=marker, alpha=alpha)
+            ax.scatter(X[:, 0], X[:, 1], X[:, 2], s=s, c=c_rgb, edgecolor=edgecolor, marker=marker, alpha=alpha, zorder=zorder)
     else:
         uilabels = np.unique(labels)
         for label in uilabels:
@@ -240,6 +241,8 @@ def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title
     if grid is True: grid='#dddddd'
     font = {'family': 'DejaVu Sans', 'weight': fontweight, 'size': fontsize}
     matplotlib.rc('font', **font)
+    for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] + ax.get_xticklabels() + ax.get_yticklabels()):
+        item.set_fontsize(20)
 
     # Plot labels
     if (labels is not None) and (fontcolor is not None):
@@ -445,6 +448,7 @@ def init_figure(ax, z, dpi, figsize, visible, fig):
             ax = fig.add_subplot()
         else:
             ax = fig.add_subplot(projection='3d')
+            # Rotate
             ax.view_init(-140, 60)
 
     if fig is not None:
