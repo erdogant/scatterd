@@ -178,7 +178,7 @@ def scatterd(x,
     if (z is not None) and len(x)!=len(z): raise Exception('[scatterd] >Error: input parameter z should be the same size of x and y.')
     if s is None: s=0
     if c is None: s, c = 0, [0, 0, 0]
-    if s==0: fontsize=0
+    if isinstance(s, (int, float)) and s==0: fontsize=0
     zorder = None if density_on_top else 10
 
     # Defaults
