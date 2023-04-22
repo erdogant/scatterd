@@ -13,8 +13,9 @@ fig, ax = scatterd(df['tsneX'],
                    gradient='#FFFFFF',
                    edgecolor='#FFFFFF',
                    grid=True,
-                   fontweight='bold',
+                   fontweight='normal',
                    fontsize=26,
+                   legend=2,
                    )
 
 # %%

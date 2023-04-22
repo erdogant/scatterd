@@ -34,7 +34,7 @@ def scatterd(x,
              cmap='tab20c',
              figsize=(25, 15),
              dpi=100,
-             legend=True,
+             legend=None,
              jitter=None,
              xlabel='x-axis', ylabel='y-axis', title='', fontsize=24, fontcolor=None, grid=False, fontweight='normal',
              args_density = {'cmap': 'Reds', 'fill': True, 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': False},
@@ -95,8 +95,14 @@ def scatterd(x,
         '#dddddd' : Specify color with hex
     norm : Bool, optional
         Normalize datapoints. The default is False.
-    legend : bool, (default: False)
-        Plot the legend.
+    legend : int, default: 0
+        None: Set automatically based number of labels.
+        False : Disable.
+        True : Best position.
+        1 : 'upper right'
+        2 : 'upper left'
+        3 : 'lower left'
+        4 : 'lower right'
     jitter : float, default: None
         Add jitter to data points as random normal data. Values of 0.01 is usually good for one-hot data seperation.
             * None or False: Do not add jitter
@@ -214,11 +220,13 @@ def scatterd(x,
                 if z is None:
                     ax.scatter(X[Iloc2, 0], X[Iloc2, 1], c=c_rgb[Iloc2], s=s[Iloc2], edgecolor=edgecolor, marker=m, label=label, alpha=alpha[Iloc2], zorder=zorder)
                 else:
-                    # Let op: alpha[Iloc2] geeft een foutmelding
-                    ax.scatter(X[Iloc2, 0], X[Iloc2, 1], X[Iloc2, 2], s=s[Iloc2], c=c_rgb[Iloc2], edgecolor=edgecolor, marker=m, label=label, alpha=0.8)
+                    # Note: alpha[Iloc2] throws an error
+                    ax.scatter(X[Iloc2, 0], X[Iloc2, 1], X[Iloc2, 2], s=s[Iloc2], c=c_rgb[Iloc2], edgecolor=edgecolor, marker=m, label=label, alpha=0.8, zorder=zorder)
 
     # Show legend (only if labels are present)
-    if legend and labels is not None: ax.legend()
+    if isinstance(legend, bool): legend = 0 if legend else -1
+    if legend is None: legend = -1 if len(np.unique(labels))>20 else 0
+    if legend>=0: ax.legend(loc=legend, fontsize=fontsize-6)
 
     # Return
     return fig, ax
