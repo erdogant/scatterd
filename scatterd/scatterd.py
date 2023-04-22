@@ -159,6 +159,7 @@ def scatterd(x,
     >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=False, gradient='#FFFFFF', edgecolor='#FFFFFF')
     >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True, gradient='#FFFFFF', edgecolor='#FFFFFF')
     >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True, gradient='#FFFFFF', c=None)
+    >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True, density_on_top=True, args_density={'alpha': 0.3}, gradient='#FFFFFF', edgecolor='#FFFFFF', grid=True, fontweight='normal', fontsize=26, legend=2)
     >>>
     >>> # Scatter with density and gradient
     >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True, gradient='#FFFFFF')
@@ -226,7 +227,7 @@ def scatterd(x,
     # Show legend (only if labels are present)
     if isinstance(legend, bool): legend = 0 if legend else -1
     if legend is None: legend = -1 if len(np.unique(labels))>20 else 0
-    if legend>=0: ax.legend(loc=legend, fontsize=fontsize-6)
+    if legend>=0: ax.legend(loc=legend, fontsize=14)
 
     # Return
     return fig, ax
@@ -244,7 +245,7 @@ def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title
     if (labels is not None) and (fontcolor is not None):
         for uilabel in fontcolor.keys():
             # Compute median for better center compared to mean
-            XYmean = np.median(X[labels==uilabel, :], axis=0)
+            XYmean = np.mean(X[labels==uilabel, :], axis=0)
             if X.shape[1]==2:
                 ax.text(XYmean[0], XYmean[1], str(uilabel), color=fontcolor.get(uilabel), fontdict={'weight': fontweight, 'size': fontsize}, zorder=15)
             else:
@@ -444,6 +445,7 @@ def init_figure(ax, z, dpi, figsize, visible, fig):
             ax = fig.add_subplot()
         else:
             ax = fig.add_subplot(projection='3d')
+            ax.view_init(-140, 60)
 
     if fig is not None:
         fig.set_visible(visible)

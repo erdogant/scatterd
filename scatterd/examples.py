@@ -18,6 +18,7 @@ fig, ax = scatterd(df['tsneX'],
                    legend=2,
                    )
 
+
 # %%
 # Import example iris dataet
 from sklearn import datasets

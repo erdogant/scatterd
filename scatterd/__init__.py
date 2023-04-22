@@ -2,7 +2,7 @@ from scatterd.scatterd import scatterd,import_example, set_colors, _preprocessin
 
 __author__ = 'Erdogan Tasksen'
 __email__ = 'erdogant@gmail.com'
-__version__ = '1.3.0'
+__version__ = '1.3.1'
 
 # module level doc-string
 __doc__ = """
@@ -41,6 +41,10 @@ Examples
 >>>
 >>> # Only density
 >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=None, density=True)
+>>>
+>>> # Various settings
+>>> fig, ax = scatterd(df['tsneX'], df['tsneY'], labels=df['labx'], density=True, density_on_top=True, args_density={'alpha': 0.3}, gradient='#FFFFFF', edgecolor='#FFFFFF', grid=True, fontweight='normal', fontsize=26, legend=2)
+>>>
 
 References
 ----------
