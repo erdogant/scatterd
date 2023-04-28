@@ -200,7 +200,7 @@ def scatterd(x,
     # Bootup figure
     fig, ax = init_figure(ax, z, dpi, figsize, visible, fig)
     # Set figure properties
-    ax = _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title, grid, fontweight, ax)
+    ax = _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title, grid, fontweight, zorder, ax)
 
     # Add density as bottom layer to the scatterplot
     if density:
@@ -208,6 +208,8 @@ def scatterd(x,
 
     # Scatter all at once
     if (labels is None) and isinstance(marker, str):
+        # Do not try to plot legend.
+        legend = -1
         if z is None:
             ax.scatter(X[:, 0], X[:, 1], c=c_rgb, s=s, edgecolor=edgecolor, marker=marker, alpha=alpha, zorder=zorder)
         else:
@@ -235,7 +237,7 @@ def scatterd(x,
 
 
 # %% Setup figure properties
-def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title, grid, fontweight, ax):
+def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title, grid, fontweight, zorder, ax):
     # Set axis fontsizes
     if grid is None: grid=False
     if grid is True: grid='#dddddd'
@@ -250,7 +252,7 @@ def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title
             # Compute median for better center compared to mean
             XYmean = np.mean(X[labels==uilabel, :], axis=0)
             if X.shape[1]==2:
-                ax.text(XYmean[0], XYmean[1], str(uilabel), color=fontcolor.get(uilabel), fontdict={'weight': fontweight, 'size': fontsize}, zorder=15)
+                ax.text(XYmean[0], XYmean[1], str(uilabel), color=fontcolor.get(uilabel), fontdict={'weight': fontweight, 'size': fontsize}, zorder=zorder+1)
             else:
                 ax.text(XYmean[0], XYmean[1], XYmean[2], str(uilabel), color=fontcolor.get(uilabel), fontdict={'weight': fontweight, 'size': fontsize})
 
