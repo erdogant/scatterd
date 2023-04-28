@@ -2,6 +2,11 @@ from scatterd import scatterd, import_example
 import numpy as np
 
 # %%
+X, y = make_friedman1(n_samples=100000, n_features=5, random_state=0)
+fig, ax = scatterd(X[:,0], X[:,1], density=False, s=0)
+
+
+# %%
 
 df = import_example()
 fig, ax = scatterd(df['tsneX'],
