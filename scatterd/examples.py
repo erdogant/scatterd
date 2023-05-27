@@ -1,6 +1,11 @@
 from scatterd import scatterd, import_example
 import numpy as np
 
+# %%
+from scatterd import scatterd
+
+# %%
+
 df = import_example()
 fig, ax = scatterd(df['tsneX'],
                    df['tsneY'],
