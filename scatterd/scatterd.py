@@ -75,6 +75,10 @@ def scatterd(x,
             * None: Do not use gradient.
             * opaque: Towards the edges the points become more opaque and thus not visible.
             * '#FFFFFF': Towards the edges it smooths into this color
+    opaque_type : String, optional
+            * 'per_class': Transprancy is determined on the density within the class label (y)
+            * 'all': Transprancy is determined on all available data points
+            * 'lineair': Transprancy is lineair set within the class label (y)
     density : Bool (default: False)
         Include the kernel density in the scatter plot.
     density_on_top : bool, (default: False)
@@ -190,7 +194,7 @@ def scatterd(x,
     # Preprocessing
     X, labels = _preprocessing(x, y, z, labels, jitter, norm)
     # Set color
-    c_rgb, opaque = set_colors(X, labels, c, cmap, gradient=gradient, verbose=verbose)
+    c_rgb, opaque = set_colors(X, labels, c, cmap, gradient=gradient, opaque_type=opaque_type, verbose=verbose)
     # Set fontcolor
     fontcolor = set_fontcolor(fontcolor, labels, X, cmap, verbose=2)
     # Set size
@@ -279,14 +283,14 @@ def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title
 
 
 # %% Setup colors
-def set_colors(X, labels, c, cmap='tab20c', gradient=None, verbose=3):
+def set_colors(X, labels, c, cmap='tab20c', gradient=None, opaque_type='per_class', verbose=3):
     """Set colors."""
     if c is None: return None
 
     # The default is all dots to black
     c_rgb = np.repeat([0, 0, 0], X.shape[0], axis=0).reshape(-1, 3)
     # Create opaque levels
-    opaque = np.array([0.0] * X.shape[0])
+    opaque = np.array([1.0] * X.shape[0])
 
     # Change on input c
     if len(c)==1 and isinstance(c, list): c = c[0]
@@ -302,16 +306,12 @@ def set_colors(X, labels, c, cmap='tab20c', gradient=None, verbose=3):
         # Create unqiue colors for labels if there are multiple classes or in case cmap and gradient is used.
         if verbose>=4: print('[scatterd] >Colors are based on the input [labels] and on [cmap].')
         if labels is None: labels = np.repeat(0, X.shape[0])
-        c_rgb = colourmap.fromlist(labels, X=X, cmap=cmap, method='matplotlib', gradient=gradient)[0]
-
-    # Add gradient for each class
-    # if (gradient is not None):
-    #     if verbose>=4: print('[scatterd] >Color [gradient] is included.')
-    #     c_rgb = gradient_on_density_color(X, c_rgb, labels)
-
-    if gradient=='opaque' and c_rgb.shape[1]==4:
-        opaque = c_rgb[:, -1]
-        c_rgb = c_rgb[:, :3]
+        c_rgb = colourmap.fromlist(labels, X=X, cmap=cmap, scheme='rgb', method='matplotlib', gradient=gradient, opaque_type=opaque_type)[0]
+        # Add extra column with transparancy
+        if gradient=='opaque' and c_rgb.shape[1]==4:
+            # Set the minimum transparancy level at 0.1
+            opaque = np.maximum(c_rgb[:, -1], 0.1)
+            c_rgb = c_rgb[:, :3]
 
     # Return
     return c_rgb, opaque
@@ -384,7 +384,9 @@ def _preprocessing(x, y, z, labels, jitter, norm=False):
 # %% Fontcolor
 def _normalize(X):
     x_min, x_max = np.min(X, 0), np.max(X, 0)
-    return (X - x_min) / (x_max - x_min)
+    out = (X - x_min) / (x_max - x_min)
+    out[np.isnan(out)]=1
+    return out
 
 
 # %% Fontcolor
