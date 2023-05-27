@@ -2,4 +2,4 @@ matplotlib
 numpy 
 seaborn
 requests
-colourmap>="1.1.12"
+colourmap>="1.1.13"

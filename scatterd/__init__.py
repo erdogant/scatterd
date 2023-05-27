@@ -2,7 +2,7 @@ from scatterd.scatterd import scatterd,import_example, set_colors, _preprocessin
 
 __author__ = 'Erdogan Tasksen'
 __email__ = 'erdogant@gmail.com'
-__version__ = '1.3.3'
+__version__ = '1.3.4'
 
 # module level doc-string
 __doc__ = """
