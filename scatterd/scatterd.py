@@ -22,13 +22,13 @@ def scatterd(x,
              y,
              z=None,
              s=150,
-             c=[0,0.1,0.4],
+             c=[0, 0.1, 0.4],
              labels=None,
              marker='o',
              alpha=0.8,
              edgecolor='#000000',
-             gradient=None,
-             density=False,
+             gradient='opaque',
+             density=True,
              density_on_top=False,
              norm=False,
              cmap='tab20c',
@@ -36,7 +36,7 @@ def scatterd(x,
              dpi=100,
              legend=None,
              jitter=None,
-             xlabel='x-axis', ylabel='y-axis', title='', fontsize=24, fontcolor=None, grid=False, fontweight='normal',
+             xlabel='x-axis', ylabel='y-axis', title='', fontsize=24, fontcolor=None, grid=True, fontweight='normal',
              args_density = {'cmap': 'Reds', 'fill': True, 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': False},
              visible=True,
              fig=None,
@@ -70,9 +70,11 @@ def scatterd(x,
             * 'face': The edge color will always be the same as the face color.
             * 'none': No patch boundary will be drawn.
             * '#FFFFFF' : A color or sequence of colors.
-    gradient : String, (default: None)
-        Hex color to make a lineair gradient for the scatterplot.
-        '#FFFFFF'
+    gradient : String, (default: 'opaque')
+        Hex color to make a lineair gradient using the density.
+            * None: Do not use gradient.
+            * opaque: Towards the edges the points become more opaque and thus not visible.
+            * '#FFFFFF': Towards the edges it smooths into this color
     density : Bool (default: False)
         Include the kernel density in the scatter plot.
     density_on_top : bool, (default: False)
@@ -188,13 +190,13 @@ def scatterd(x,
     # Preprocessing
     X, labels = _preprocessing(x, y, z, labels, jitter, norm)
     # Set color
-    c_rgb = set_colors(X, labels, c, cmap, gradient=gradient, verbose=verbose)
+    c_rgb, opaque = set_colors(X, labels, c, cmap, gradient=gradient, verbose=verbose)
     # Set fontcolor
     fontcolor = set_fontcolor(fontcolor, labels, X, cmap, verbose=2)
     # Set size
     s = set_size(X, s)
     # Set size
-    alpha = set_alpha(X, alpha)
+    alpha = set_alpha(X, alpha, gradient, opaque, verbose)
     # Set marker
     marker = set_marker(X, marker)
     # Bootup figure
@@ -241,6 +243,7 @@ def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title
     # Set axis fontsizes
     if grid is None: grid=False
     if grid is True: grid='#dddddd'
+    None if zorder is None else zorder + 1
     font = {'family': 'DejaVu Sans', 'weight': fontweight, 'size': fontsize}
     matplotlib.rc('font', **font)
     for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] + ax.get_xticklabels() + ax.get_yticklabels()):
@@ -252,7 +255,7 @@ def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title
             # Compute median for better center compared to mean
             XYmean = np.mean(X[labels==uilabel, :], axis=0)
             if X.shape[1]==2:
-                ax.text(XYmean[0], XYmean[1], str(uilabel), color=fontcolor.get(uilabel), fontdict={'weight': fontweight, 'size': fontsize}, zorder=zorder+1)
+                ax.text(XYmean[0], XYmean[1], str(uilabel), color=fontcolor.get(uilabel), fontdict={'weight': fontweight, 'size': fontsize}, zorder=zorder)
             else:
                 ax.text(XYmean[0], XYmean[1], XYmean[2], str(uilabel), color=fontcolor.get(uilabel), fontdict={'weight': fontweight, 'size': fontsize})
 
@@ -282,6 +285,8 @@ def set_colors(X, labels, c, cmap='tab20c', gradient=None, verbose=3):
 
     # The default is all dots to black
     c_rgb = np.repeat([0, 0, 0], X.shape[0], axis=0).reshape(-1, 3)
+    # Create opaque levels
+    opaque = np.array([0.0] * X.shape[0])
 
     # Change on input c
     if len(c)==1 and isinstance(c, list): c = c[0]
@@ -297,51 +302,59 @@ def set_colors(X, labels, c, cmap='tab20c', gradient=None, verbose=3):
         # Create unqiue colors for labels if there are multiple classes or in case cmap and gradient is used.
         if verbose>=4: print('[scatterd] >Colors are based on the input [labels] and on [cmap].')
         if labels is None: labels = np.repeat(0, X.shape[0])
-        c_rgb, _ = colourmap.fromlist(labels, cmap=cmap, method='matplotlib', gradient=gradient)
+        c_rgb = colourmap.fromlist(labels, X=X, cmap=cmap, method='matplotlib', gradient=gradient)[0]
 
     # Add gradient for each class
-    if (gradient is not None):
-        if verbose>=4: print('[scatterd] >Color [gradient] is included.')
-        c_rgb = gradient_on_density_color(X, c_rgb, labels)
+    # if (gradient is not None):
+    #     if verbose>=4: print('[scatterd] >Color [gradient] is included.')
+    #     c_rgb = gradient_on_density_color(X, c_rgb, labels)
+
+    if gradient=='opaque' and c_rgb.shape[1]==4:
+        opaque = c_rgb[:, -1]
+        c_rgb = c_rgb[:, :3]
 
     # Return
-    return c_rgb
+    return c_rgb, opaque
 
 
 # %% Create gradient based on density.
-def gradient_on_density_color(X, c_rgb, labels):
-    """Set gradient on density color."""
-    if labels is None: labels = np.repeat(0, X.shape[0])
-    from scipy.stats import gaussian_kde
-    uilabels = np.unique(labels)
-    density_colors= np.repeat([1., 1., 1.], len(labels), axis=0).reshape(-1, 3)
+# def gradient_on_density_color(X, c_rgb, labels, showfig=False):
+#     """Set gradient on density color."""
+#     if labels is None: labels = np.repeat(0, X.shape[0])
+#     from scipy.stats import gaussian_kde
+#     uilabels = np.unique(labels)
+#     # density_colors = np.repeat([1., 1., 1.], len(labels), axis=0).reshape(-1, 3)
+#     density_colors = np.ones_like(c_rgb)
 
-    if (len(uilabels)!=len(labels)):
-        for label in uilabels:
-            idx = np.where(labels==label)[0]
-            if X.shape[1]==2:
-                xy = np.vstack([X[idx, 0], X[idx, 1]])
-            else:
-                xy = np.vstack([X[idx, 0], X[idx, 1], X[idx, 2]])
+#     if (len(uilabels)!=len(labels)):
+#         for label in uilabels:
+#             idx = np.where(labels==label)[0]
+#             if X.shape[1]==2:
+#                 xy = np.vstack([X[idx, 0], X[idx, 1]])
+#             else:
+#                 xy = np.vstack([X[idx, 0], X[idx, 1], X[idx, 2]])
 
-            try:
-                # Compute density
-                z = gaussian_kde(xy)(xy)
-                # Sort on density
-                didx = idx[np.argsort(z)[::-1]]
-            except:
-                didx=idx
+#             try:
+#                 # Compute density
+#                 z = gaussian_kde(xy)(xy)
+#                 # Sort on density
+#                 didx = idx[np.argsort(z)[::-1]]
+#             except:
+#                 didx=idx
 
-            # order colors correctly based Density
-            density_colors[didx] = c_rgb[idx, :]
-            # plt.figure()
-            # plt.scatter(X[didx,0], X[didx,1], color=c_rgb[idx, :])
-            # plt.figure()
-            # plt.scatter(idx, idx, color=c_rgb[idx, :])
-        c_rgb=density_colors
+#             # order colors correctly based Density
+#             density_colors[didx] = c_rgb[idx, :]
 
-    # Return
-    return c_rgb
+#             if showfig:
+#                 plt.figure()
+#                 fig, ax = plt.subplots(1,2, figsize=(20,10))
+#                 ax[0].scatter(X[didx,0], X[didx,1], color=c_rgb[idx, 0:3], alpha=c_rgb[idx, 3], edgecolor='#000000')
+#                 ax[1].scatter(idx, idx, color=c_rgb[idx, 0:3], alpha=c_rgb[idx, 3], edgecolor='#000000')
+
+#         c_rgb=density_colors
+
+#     # Return
+#     return c_rgb
 
 
 # %% Fontcolor
@@ -414,10 +427,14 @@ def set_size(X, s):
     return s
 
 
-def set_alpha(X, alpha):
+def set_alpha(X, alpha, gradient, opaque, verbose):
     """Set alpha."""
     if alpha is None: alpha=0.8
-    if isinstance(alpha, (int, float)): alpha = np.repeat(alpha, X.shape[0])
+    if isinstance(alpha, (int, float)):
+        alpha = np.repeat(alpha, X.shape[0])
+    if gradient=='opaque':
+        if verbose>=3: print('[scatterd]> Set alpha based on density because of the parameter: [%s]' %(gradient))
+        alpha = opaque
     # Minimum size should be 0 (dots will not be showed)
     alpha = np.maximum(alpha, 0)
     return alpha

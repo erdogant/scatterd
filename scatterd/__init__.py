@@ -2,16 +2,14 @@ from scatterd.scatterd import scatterd,import_example, set_colors, _preprocessin
 
 __author__ = 'Erdogan Tasksen'
 __email__ = 'erdogant@gmail.com'
-__version__ = '1.3.1'
+__version__ = '1.3.2'
 
 # module level doc-string
 __doc__ = """
 scatterd
 =====================================================================
 
-Description
------------
-Scatterd is an easy and fast way of creating scatter plots.
+Scatterd is an easy and fast way of creating beautiful scatter plots.
 
 Examples
 --------

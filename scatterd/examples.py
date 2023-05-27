@@ -1,27 +1,38 @@
 from scatterd import scatterd, import_example
 import numpy as np
 
+df = import_example()
+fig, ax = scatterd(df['tsneX'],
+                   df['tsneY'],
+                   labels=df['labx'],
+                   )
+
 # %%
-X, y = make_friedman1(n_samples=100000, n_features=5, random_state=0)
-fig, ax = scatterd(X[:,0], X[:,1], density=False, s=0)
-
-
-# %%
-
+from scatterd import scatterd, import_example
 df = import_example()
 fig, ax = scatterd(df['tsneX'],
                    df['tsneY'],
                    labels=df['labx'],
                    density=True,
-                   density_on_top=True,
-                   args_density={'alpha': 0.3},
-                   gradient='#FFFFFF',
-                   edgecolor='#FFFFFF',
+                   density_on_top=False,
+                    # args_density={'alpha': 0.3},
+                    gradient='opaque',
+                    # gradient='#FFFFFF',
+                   edgecolor='#000000',
                    grid=True,
                    fontweight='normal',
                    fontsize=26,
                    legend=2,
                    )
+
+# %%
+# X, y = make_friedman1(n_samples=100000, n_features=5, random_state=0)
+# fig, ax = scatterd(X[:,0], X[:,1], density=False, s=0)
+
+
+# %%
+
+
 
 
 # %%
