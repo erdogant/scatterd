@@ -346,9 +346,9 @@ def jitter_func(x, jitter=0.01):
 
 # %% Fontcolor
 def _preprocessing(x, y, z, labels, jitter, norm=False):
-    x = jitter_func(x)
-    y = jitter_func(y)
-    z = jitter_func(z)
+    x = jitter_func(x, jitter=jitter)
+    y = jitter_func(y, jitter=jitter)
+    z = jitter_func(z, jitter=jitter)
     # if jitter is None or jitter is False: jitter=0
     # if jitter is True: jitter=0.01
     # if jitter>0:
