@@ -318,54 +318,43 @@ def set_colors(X, labels, c, cmap='tab20c', gradient=None, opaque_type='per_clas
     return c_rgb, opaque
 
 
-# %% Create gradient based on density.
-# def gradient_on_density_color(X, c_rgb, labels, showfig=False):
-#     """Set gradient on density color."""
-#     if labels is None: labels = np.repeat(0, X.shape[0])
-#     from scipy.stats import gaussian_kde
-#     uilabels = np.unique(labels)
-#     # density_colors = np.repeat([1., 1., 1.], len(labels), axis=0).reshape(-1, 3)
-#     density_colors = np.ones_like(c_rgb)
+# %% Jitter
+def jitter_func(x, jitter=0.01):
+    """Add jitter to data.
 
-#     if (len(uilabels)!=len(labels)):
-#         for label in uilabels:
-#             idx = np.where(labels==label)[0]
-#             if X.shape[1]==2:
-#                 xy = np.vstack([X[idx, 0], X[idx, 1]])
-#             else:
-#                 xy = np.vstack([X[idx, 0], X[idx, 1], X[idx, 2]])
+    Noise is generated from random normal distribution and added to the data.
 
-#             try:
-#                 # Compute density
-#                 z = gaussian_kde(xy)(xy)
-#                 # Sort on density
-#                 didx = idx[np.argsort(z)[::-1]]
-#             except:
-#                 didx=idx
+    Parameters
+    ----------
+    x : numpy array
+        input data.
+    jitter : float, optional
+        Strength of generated noise. The default is 0.01.
 
-#             # order colors correctly based Density
-#             density_colors[didx] = c_rgb[idx, :]
+    Returns
+    -------
+    x : array-like
+        Data including noise.
 
-#             if showfig:
-#                 plt.figure()
-#                 fig, ax = plt.subplots(1,2, figsize=(20,10))
-#                 ax[0].scatter(X[didx,0], X[didx,1], color=c_rgb[idx, 0:3], alpha=c_rgb[idx, 3], edgecolor='#000000')
-#                 ax[1].scatter(idx, idx, color=c_rgb[idx, 0:3], alpha=c_rgb[idx, 3], edgecolor='#000000')
-
-#         c_rgb=density_colors
-
-#     # Return
-#     return c_rgb
+    """
+    if jitter is None or jitter is False: jitter=0
+    if jitter is True: jitter=0.01
+    if jitter>0 and x is not None:
+        x = x + np.random.normal(0, jitter, size=len(x))
+    return x
 
 
 # %% Fontcolor
 def _preprocessing(x, y, z, labels, jitter, norm=False):
-    if jitter is None or jitter is False: jitter=0
-    if jitter is True: jitter=0.01
-    if jitter>0:
-        x = x + np.random.normal(0, jitter, size=len(x))
-        if y is not None: y = y + np.random.normal(0, jitter, size=len(y))
-        if z is not None: z = z + np.random.normal(0, jitter, size=len(z))
+    x = jitter_func(x)
+    y = jitter_func(y)
+    z = jitter_func(z)
+    # if jitter is None or jitter is False: jitter=0
+    # if jitter is True: jitter=0.01
+    # if jitter>0:
+    #     x = x + np.random.normal(0, jitter, size=len(x))
+    #     if y is not None: y = y + np.random.normal(0, jitter, size=len(y))
+    #     if z is not None: z = z + np.random.normal(0, jitter, size=len(z))
 
     # Combine into array
     if z is not None:
@@ -374,7 +363,7 @@ def _preprocessing(x, y, z, labels, jitter, norm=False):
         X = np.c_[x, y]
     # Normalize data
     if norm:
-        X = _normalize(X)
+        X = normalize_between_0_and_1(X)
     # Labels
     # if labels is None:
     #     labels=np.zeros_like(y).astype(int)
@@ -382,8 +371,8 @@ def _preprocessing(x, y, z, labels, jitter, norm=False):
     return X, labels
 
 
-# %% Fontcolor
-def _normalize(X):
+# %% Normalize between [0-1]
+def normalize_between_0_and_1(X):
     x_min, x_max = np.min(X, 0), np.max(X, 0)
     out = (X - x_min) / (x_max - x_min)
     out[np.isnan(out)]=1
