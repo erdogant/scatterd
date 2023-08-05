@@ -140,6 +140,9 @@ def scatterd(x,
         Visible status of the Figure. When False, figure is created on the background.
     args_density : dict()
         Dictionary containing arguments for kernel density plotting.
+    verbose : int, (default: 'info')
+        Print progress to screen. The default is 'info'
+        60: None, 40: error, 30: warning, 20: info, 10: debug
 
     Returns
     -------
