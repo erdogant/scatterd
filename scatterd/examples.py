@@ -2,19 +2,16 @@ from scatterd import scatterd, import_example
 import numpy as np
 
 # %%
-from scatterd import scatterd
-
-# %%
-
-df = import_example()
+df = import_example(data='cancer', verbose='info')
 fig, ax = scatterd(df['tsneX'],
                    df['tsneY'],
                    labels=df['labx'],
+                   verbose='info',
                    )
 
 # %%
 from scatterd import scatterd, import_example
-df = import_example()
+df = import_example(data='cancer', verbose='warning')
 fig, ax = scatterd(df['tsneX'],
                    df['tsneY'],
                    labels=df['labx'],
@@ -28,6 +25,7 @@ fig, ax = scatterd(df['tsneX'],
                    fontweight='normal',
                    fontsize=26,
                    legend=2,
+                   verbose='info',
                    )
 
 # %%
@@ -62,8 +60,8 @@ labels = iris.target
 
 import colourmap
 c=colourmap.fromlist(labels)[0]
-c[0]=[0,0,0]
-c[1]=[0,0,0]
+c[0]=[0,0,0,0]
+c[1]=[0,0,0,0]
 s = (labels+1) * 200
 random_integers = np.random.randint(0, len(s), size=X.shape[0])
 alpha = np.random.rand(1, X.shape[0])[0][random_integers]
