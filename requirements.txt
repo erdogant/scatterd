@@ -1,5 +1,5 @@
 matplotlib 
 numpy 
 seaborn
-requests
-colourmap>="1.1.13"
+colourmap>="1.1.16"
+datazets

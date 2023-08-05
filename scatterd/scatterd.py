@@ -13,9 +13,16 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
-import requests
-import os
-from urllib.parse import urlparse
+import logging
+
+logger = logging.getLogger('')
+[logger.removeHandler(handler) for handler in logger.handlers[:]]
+console = logging.StreamHandler()
+formatter = logging.Formatter('[scatterd] >%(levelname)s> %(message)s')
+console.setFormatter(formatter)
+logger.addHandler(console)
+logger = logging.getLogger(__name__)
+
 
 # %% Main
 def scatterd(x,
@@ -42,7 +49,7 @@ def scatterd(x,
              visible=True,
              fig=None,
              ax=None,
-             verbose=3):
+             verbose='info'):
     """Make scaterplot.
 
     Parameters
@@ -179,6 +186,9 @@ def scatterd(x,
     * Colormap: https://matplotlib.org/examples/color/colormaps_reference.html
 
     """
+    # Set the logger
+    set_logger(verbose=verbose)
+
     if len(x)!=len(y): raise Exception('[scatterd] >Error: input parameter x should be the same size of y.')
     if isinstance(c, str): raise Exception('[scatterd] >Error: input parameter c(olors) should be RGB of type tuple [0,0,0] .')
     if not isinstance(s, int) and len(s)!=len(x): raise Exception('[scatterd] >Error: input parameter s(ize) should be of same size of X.')
@@ -195,13 +205,13 @@ def scatterd(x,
     # Preprocessing
     X, labels = _preprocessing(x, y, z, labels, jitter, norm)
     # Set color
-    c_rgb, opaque = set_colors(X, labels, c, cmap, gradient=gradient, opaque_type=opaque_type, verbose=verbose)
+    c_rgb, opaque = set_colors(X, labels, c, cmap, gradient=gradient, opaque_type=opaque_type)
     # Set fontcolor
-    fontcolor = set_fontcolor(fontcolor, labels, X, cmap, verbose=2)
+    fontcolor = set_fontcolor(fontcolor, labels, X, cmap)
     # Set size
     s = set_size(X, s)
     # Set size
-    alpha = set_alpha(X, alpha, gradient, opaque, verbose)
+    alpha = set_alpha(X, alpha, gradient, opaque)
     # Set marker
     marker = set_marker(X, marker)
     # Bootup figure
@@ -211,10 +221,12 @@ def scatterd(x,
 
     # Add density as bottom layer to the scatterplot
     if density:
+        logger.info('Add density layer')
         ax = sns.kdeplot(x=X[:, 0], y=X[:, 1], ax=ax, **args_density)
 
     # Scatter all at once
     if (labels is None) and isinstance(marker, str):
+        logger.info('Create scatterplot (fast)')
         # Do not try to plot legend.
         legend = -1
         if z is None:
@@ -222,6 +234,7 @@ def scatterd(x,
         else:
             ax.scatter(X[:, 0], X[:, 1], X[:, 2], s=s, c=c_rgb, edgecolor=edgecolor, marker=marker, alpha=alpha, zorder=zorder)
     else:
+        logger.info('Create scatterplot')
         uilabels = np.unique(labels)
         for label in uilabels:
             Iloc1 = label==labels
@@ -284,8 +297,10 @@ def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title
 
 
 # %% Setup colors
-def set_colors(X, labels, c, cmap='tab20c', gradient=None, opaque_type='per_class', verbose=3):
+def set_colors(X, labels, c, cmap='tab20c', gradient=None, opaque_type='per_class', verbose=None):
     """Set colors."""
+    # Set the logger
+    if verbose is not None: set_logger(verbose=verbose)
     if c is None: return None
 
     # The default is all dots to black
@@ -296,18 +311,18 @@ def set_colors(X, labels, c, cmap='tab20c', gradient=None, opaque_type='per_clas
     # Change on input c
     if len(c)==1 and isinstance(c, list): c = c[0]
     if len(c)==3 and isinstance(c[0], (int, float)):
-        if verbose>=4: print('[scatterd] >Colors are all set to %s.' %(c))
+        logger.debug('Colors are all set to %s.' %(c))
         c_rgb = np.repeat([c], X.shape[0], axis=0).reshape(-1, 3)
 
     if X.shape[0]==len(c):
-        if verbose>=4: print('[scatterd] >Colors are set to input colors defined in [c].')
+        logger.debug('Colors are set to input colors defined in [c].')
         c_rgb=c
 
     if labels is not None:
         # Create unqiue colors for labels if there are multiple classes or in case cmap and gradient is used.
-        if verbose>=4: print('[scatterd] >Colors are based on the input [labels] and on [cmap].')
+        logger.debug('Colors are based on the input [labels] and on [cmap].')
         if labels is None: labels = np.repeat(0, X.shape[0])
-        c_rgb = colourmap.fromlist(labels, X=X, cmap=cmap, scheme='rgb', method='matplotlib', gradient=gradient, opaque_type=opaque_type)[0]
+        c_rgb = colourmap.fromlist(labels, X=X, cmap=cmap, scheme='rgb', method='matplotlib', gradient=gradient, opaque_type=opaque_type, verbose=verbose)[0]
         # Add extra column with transparancy
         if gradient=='opaque' and c_rgb.shape[1]==4:
             # Set the minimum transparancy level at 0.1
@@ -375,8 +390,10 @@ def normalize_between_0_and_1(X):
 
 
 # %% Fontcolor
-def set_fontcolor(fontcolor, label, X, cmap, verbose=3):
-    if (fontcolor is not None) and colourmap.is_hex_color(fontcolor, verbose=0):
+def set_fontcolor(fontcolor, label, X, cmap, verbose=None):
+    # Set the logger
+    if verbose is not None: set_logger(verbose=verbose)
+    if (fontcolor is not None) and colourmap.is_hex_color(fontcolor, verbose=get_logger()):
         fontcolor = colourmap.hex2rgb(fontcolor)
 
     # Set font colors
@@ -391,13 +408,13 @@ def set_fontcolor(fontcolor, label, X, cmap, verbose=3):
             fontcolor_dict[lab]=fontcolor
         fontcolor=fontcolor_dict
     elif (fontcolor is not None) and (label is None):
-        if verbose>=2: print('[scatterd] >Warning : Without label, there is no font(color) to print.')
+        logger.warning('Without label, there is no font(color) to print.')
     elif (fontcolor is None) and (label is not None):
-        _, fontcolor = colourmap.fromlist(label, cmap=cmap, method='matplotlib')
+        _, fontcolor = colourmap.fromlist(label, cmap=cmap, method='matplotlib', verbose=get_logger())
     elif (fontcolor is not None) and (label is not None) and (len(fontcolor)==X.shape[0]):
-        _, fontcolor = colourmap.fromlist(fontcolor, cmap=cmap, method='matplotlib')
+        _, fontcolor = colourmap.fromlist(fontcolor, cmap=cmap, method='matplotlib', verbose=get_logger())
     elif (fontcolor is not None) and (label is not None) and ((isinstance(fontcolor[0], int)) or (isinstance(fontcolor[0], float))):
-        _, tmpcolors = colourmap.fromlist(label, cmap=cmap, method='matplotlib')
+        _, tmpcolors = colourmap.fromlist(label, cmap=cmap, method='matplotlib', verbose=get_logger())
         # list(map(lambda x: tmpcolors.update({x: fontcolor}), [*tmpcolors.keys()]))
         fontcolor = tmpcolors
     else:
@@ -414,13 +431,15 @@ def set_size(X, s):
     return s
 
 
-def set_alpha(X, alpha, gradient, opaque, verbose):
+def set_alpha(X, alpha, gradient, opaque, verbose=None):
     """Set alpha."""
+    # Set the logger
+    if verbose is not None: set_logger(verbose=verbose)
     if alpha is None: alpha=0.8
     if isinstance(alpha, (int, float)):
         alpha = np.repeat(alpha, X.shape[0])
     if gradient=='opaque':
-        if verbose>=3: print('[scatterd]> Set alpha based on density because of the parameter: [%s]' %(gradient))
+        logger.info('Set alpha based on density because of the parameter: [%s]' %(gradient))
         alpha = opaque
     # Minimum size should be 0 (dots will not be showed)
     alpha = np.maximum(alpha, 0)
