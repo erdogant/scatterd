@@ -463,83 +463,86 @@ def init_figure(ax, z, dpi, figsize, visible, fig):
     return fig, ax
 
 
-# %% Import example dataset from github.
-def import_example(data='cancer', url=None, sep=',', verbose=3):
-    """Import example dataset from github source.
-
-    Description
-    -----------
-    Import one of the few datasets from github source or specify your own download url link.
-
-    Parameters
-    ----------
-    data : str
-        Name of datasets: 'cancer'
-    url : str
-        url link to to dataset.
-    verbose : int, (default: 3)
-
-    Returns
-    -------
-    pd.DataFrame()
-        Dataset containing mixed features.
-
-    """
-    import pandas as pd
-
-    if url is None:
-        url='https://erdogant.github.io/datasets/cancer_dataset.zip'
+# %%
+def convert_verbose_to_new(verbose):
+    """Convert old verbosity to the new."""
+    # In case the new verbosity is used, convert to the old one.
+    if verbose is None: verbose=0
+    if not isinstance(verbose, str) and verbose<10:
+        status_map = {
+            'None': 'silent',
+            0: 'silent',
+            6: 'silent',
+            1: 'critical',
+            2: 'warning',
+            3: 'info',
+            4: 'debug',
+            5: 'debug'}
+        if verbose>=2: print('[scatterd]> WARNING use the standardized verbose status. The status [1-6] will be deprecated in future versions.')
+        return status_map.get(verbose, 0)
     else:
-        data = wget.filename_from_url(url)
-
-    if url is None:
-        if verbose>=3: print('Nothing to download.')
-        return None
-
-    curpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
-    filename = os.path.basename(urlparse(url).path)
-    PATH_TO_DATA = os.path.join(curpath, filename)
-    if not os.path.isdir(curpath):
-        os.makedirs(curpath, exist_ok=True)
-
-    # Check file exists.
-    if not os.path.isfile(PATH_TO_DATA):
-        if verbose>=3: print('Downloading [%s] dataset from github source..' %(data))
-        wget(url, PATH_TO_DATA)
-
-    # Import local dataset
-    if verbose>=3: print('Import dataset [%s]' %(data))
-
-    df = pd.read_csv(PATH_TO_DATA, sep=sep)
-    # Return
-    return df
+        return verbose
 
 
-# %% Download files from github source
-def wget(url, writepath):
-    """Retrieve file from url.
+# %%
+def get_logger():
+    return logger.getEffectiveLevel()
+
+
+# %%
+def set_logger(verbose: [str, int] = 'info'):
+    """Set the logger for verbosity messages.
 
     Parameters
     ----------
-    url : str.
-        Internet source.
-    writepath : str.
-        Directory to write the file.
+    verbose : [str, int], default is 'info' or 20
+        Set the verbose messages using string or integer values.
+        * [0, 60, None, 'silent', 'off', 'no']: No message.
+        * [10, 'debug']: Messages from debug level and higher.
+        * [20, 'info']: Messages from info level and higher.
+        * [30, 'warning']: Messages from warning level and higher.
+        * [50, 'critical']: Messages from critical level and higher.
 
     Returns
     -------
     None.
 
-    Example
-    -------
-    >>> import clustimage as cl
-    >>> images = cl.wget('https://erdogant.github.io/datasets/flower_images.zip', 'c://temp//flower_images.zip')
+    > # Set the logger to warning
+    > set_logger(verbose='warning')
+    > # Test with different messages
+    > logger.debug("Hello debug")
+    > logger.info("Hello info")
+    > logger.warning("Hello warning")
+    > logger.critical("Hello critical")
 
     """
-    r = requests.get(url, stream=True)
-    with open(writepath, "wb") as fd:
-        for chunk in r.iter_content(chunk_size=1024):
-            fd.write(chunk)
+    # Set 0 and None as no messages.
+    if (verbose==0) or (verbose is None):
+        verbose=60
+    # Convert to verbose
+    verbose = convert_verbose_to_new(verbose)
+    # Convert str to levels
+    if isinstance(verbose, str):
+        levels = {'silent': 60,
+                  'off': 60,
+                  'no': 60,
+                  'debug': 10,
+                  'info': 20,
+                  'warning': 30,
+                  'error': 50,
+                  'critical': 50}
+        verbose = levels[verbose]
+
+    # Show examples
+    logger.setLevel(verbose)
+    logger.debug('Set verbose to %s' %(verbose))
+
+
+# %%
+def disable_tqdm():
+    """Set the logger for verbosity messages."""
+    return (True if (logger.getEffectiveLevel()>=30) else False)
+
 
 # %% Density
 # def coord2density(X, kernel='gaussian', metric='euclidean', ax=None, visible=False):
