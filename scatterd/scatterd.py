@@ -218,7 +218,7 @@ def scatterd(x,
     # Set marker
     marker = set_marker(X, marker)
     # Bootup figure
-    fig, ax = init_figure(ax, z, dpi, figsize, visible, fig)
+    fig, ax = init_figure(ax, z, dpi, figsize, visible, fig, fontsize)
     # Set figure properties
     ax = _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title, grid, fontweight, zorder, ax)
 
@@ -253,7 +253,7 @@ def scatterd(x,
     # Show legend (only if labels are present)
     if isinstance(legend, bool): legend = 0 if legend else -1
     if legend is None: legend = -1 if len(np.unique(labels))>20 else 0
-    if legend>=0: ax.legend(loc=legend, fontsize=14)
+    if (legend>=0) and (labels is not None): ax.legend(loc=legend, fontsize=14)
 
     # Return
     return fig, ax
@@ -265,7 +265,7 @@ def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title
     if grid is None: grid=False
     if grid is True: grid='#dddddd'
     None if zorder is None else zorder + 1
-    font = {'family': 'DejaVu Sans', 'weight': fontweight, 'size': fontsize}
+    font = {'family': 'DejaVu Sans', 'weight': fontweight, 'size': np.maximum(fontsize, 1)}
     matplotlib.rc('font', **font)
     for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] + ax.get_xticklabels() + ax.get_yticklabels()):
         item.set_fontsize(20)
@@ -281,9 +281,9 @@ def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title
                 ax.text(XYmean[0], XYmean[1], XYmean[2], str(uilabel), color=fontcolor.get(uilabel), fontdict={'weight': fontweight, 'size': fontsize})
 
     # Labels on axis
-    ax.set_xlabel(xlabel)
-    ax.set_ylabel(ylabel)
-    if title is not None: ax.set_title(title)
+    if (xlabel is not None) and (xlabel!=''): ax.set_xlabel(xlabel)
+    if (ylabel is not None) and (ylabel!=''): ax.set_ylabel(ylabel)
+    if (title is not None) and (title!=''): ax.set_title(title)
 
     # set background to none
     ax.set_facecolor('none')
@@ -468,10 +468,12 @@ def set_marker(X, marker):
     return np.repeat('o', X.shape[0])
 
 
-def init_figure(ax, z, dpi, figsize, visible, fig):
+def init_figure(ax, z, dpi, figsize, visible, fig, fontsize):
     """Initialize figure."""
     if ax is None:
         fig = plt.figure(figsize=figsize, dpi=dpi)
+        # Adjust global font settings
+        plt.rcParams['font.size'] = np.maximum(fontsize, 1)  # Set an appropriate font size
         if z is None:
             ax = fig.add_subplot()
         else:
