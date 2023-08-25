@@ -396,7 +396,7 @@ def normalize_between_0_and_1(X):
 def set_fontcolor(fontcolor, label, X, cmap, verbose=None):
     # Set the logger
     if verbose is not None: set_logger(verbose=verbose)
-    if (fontcolor is not None) and colourmap.is_hex_color(fontcolor, verbose=get_logger()):
+    if (fontcolor is not None) and colourmap.is_hex_color(fontcolor, verbose=0):
         fontcolor = colourmap.hex2rgb(fontcolor)
 
     # Set font colors
