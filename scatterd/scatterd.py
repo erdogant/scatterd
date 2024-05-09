@@ -268,24 +268,25 @@ def _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title
     if grid is True: grid='#dddddd'
     None if zorder is None else zorder + 1
     font = {'family': 'DejaVu Sans', 'weight': fontweight, 'size': np.maximum(fontsize, 1)}
-    matplotlib.rc('font', **font)
-    for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] + ax.get_xticklabels() + ax.get_yticklabels()):
-        item.set_fontsize(20)
+    with matplotlib.rc_context():
+        matplotlib.rc('font', **font)
+        for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] + ax.get_xticklabels() + ax.get_yticklabels()):
+            item.set_fontsize(20)
 
-    # Plot labels
-    if (labels is not None) and (fontcolor is not None):
-        for uilabel in fontcolor.keys():
-            # Compute median for better center compared to mean
-            XYmean = np.mean(X[labels==uilabel, :], axis=0)
-            if X.shape[1]==2:
-                ax.text(XYmean[0], XYmean[1], str(uilabel), color=fontcolor.get(uilabel), fontdict={'weight': fontweight, 'size': fontsize}, zorder=zorder)
-            else:
-                ax.text(XYmean[0], XYmean[1], XYmean[2], str(uilabel), color=fontcolor.get(uilabel), fontdict={'weight': fontweight, 'size': fontsize})
+        # Plot labels
+        if (labels is not None) and (fontcolor is not None):
+            for uilabel in fontcolor.keys():
+                # Compute median for better center compared to mean
+                XYmean = np.mean(X[labels==uilabel, :], axis=0)
+                if X.shape[1]==2:
+                    ax.text(XYmean[0], XYmean[1], str(uilabel), color=fontcolor.get(uilabel), fontdict={'weight': fontweight, 'size': fontsize}, zorder=zorder)
+                else:
+                    ax.text(XYmean[0], XYmean[1], XYmean[2], str(uilabel), color=fontcolor.get(uilabel), fontdict={'weight': fontweight, 'size': fontsize})
 
-    # Labels on axis
-    if (xlabel is not None) and (xlabel!=''): ax.set_xlabel(xlabel)
-    if (ylabel is not None) and (ylabel!=''): ax.set_ylabel(ylabel)
-    if (title is not None) and (title!=''): ax.set_title(title)
+        # Labels on axis
+        if (xlabel is not None) and (xlabel!=''): ax.set_xlabel(xlabel)
+        if (ylabel is not None) and (ylabel!=''): ax.set_ylabel(ylabel)
+        if (title is not None) and (title!=''): ax.set_title(title)
 
     # set background to none
     ax.set_facecolor('none')
