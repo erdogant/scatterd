@@ -14,7 +14,7 @@ with open("README.md", "r", encoding='utf8') as fh:
     long_description = fh.read()
 
 setuptools.setup(
-     install_requires=['matplotlib','numpy','colourmap>=1.1.16','seaborn', 'datazets'],
+     install_requires=['matplotlib','numpy','colourmap>=1.1.19','seaborn', 'datazets'],
      python_requires='>=3',
      name='scatterd',
      version=new_version,
