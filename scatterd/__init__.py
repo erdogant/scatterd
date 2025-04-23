@@ -1,9 +1,21 @@
-from scatterd.scatterd import scatterd, set_colors, _preprocessing, jitter_func, normalize_between_0_and_1
-from datazets import get as import_example
+from scatterd.scatterd import scatterd, set_colors, _preprocessing, jitter_func, normalize_between_0_and_1, check_logger
+from datazets.datazets import get as import_example
+import logging
 
 __author__ = 'Erdogan Tasksen'
 __email__ = 'erdogant@gmail.com'
-__version__ = '1.3.7'
+__version__ = '1.3.8'
+
+# Setup root logger
+_logger = logging.getLogger('scatterd')
+_log_handler = logging.StreamHandler()
+_fmt = '[{asctime}] [{name}] [{levelname}] {msg}'
+_formatter = logging.Formatter(fmt=_fmt, style='{', datefmt='%d-%m-%Y %H:%M:%S')
+_log_handler.setFormatter(_formatter)
+_log_handler.setLevel(logging.DEBUG)
+_logger.addHandler(_log_handler)
+_logger.propagate = False
+
 
 # module level doc-string
 __doc__ = """

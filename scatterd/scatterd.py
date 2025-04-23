@@ -15,14 +15,7 @@ import numpy as np
 import seaborn as sns
 import logging
 
-logger = logging.getLogger('')
-[logger.removeHandler(handler) for handler in logger.handlers[:]]
-console = logging.StreamHandler()
-formatter = logging.Formatter('[scatterd] >%(levelname)s> %(message)s')
-console.setFormatter(formatter)
-logger.addHandler(console)
 logger = logging.getLogger(__name__)
-
 
 # %% Main
 def scatterd(x,
@@ -567,6 +560,15 @@ def disable_tqdm():
     """Set the logger for verbosity messages."""
     return (True if (logger.getEffectiveLevel()>=30) else False)
 
+
+# %%
+def check_logger(verbose: [str, int] = 'info'):
+    """Check the logger."""
+    set_logger(verbose)
+    logger.debug('DEBUG')
+    logger.info('INFO')
+    logger.warning('WARNING')
+    logger.critical('CRITICAL')
 
 # %% Density
 # def coord2density(X, kernel='gaussian', metric='euclidean', ax=None, visible=False):

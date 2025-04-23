@@ -1,6 +1,14 @@
 from scatterd import scatterd, import_example
 import numpy as np
 
+#%%
+import scatterd
+scatterd.check_logger(verbose='info')
+
+scatterd.check_logger(verbose='debug')
+
+scatterd.check_logger(verbose='warning')
+
 # %%
 df = import_example(data='cancer', verbose='info')
 fig, ax = scatterd(df['tsneX'],
