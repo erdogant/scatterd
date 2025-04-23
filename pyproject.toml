@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scatterd"
+dynamic = ["version"]
+authors = [{ name = "Erdogan Taskesen", email = "erdogant@gmail.com" },]
+description = "scatterd is an easy and fast way of creating beautiful scatter plots."
+readme = "README.md"
+requires-python = ">=3"
+license = { file = "LICENSE" }
+keywords = ["Python", ""]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = ['matplotlib','numpy','colourmap>=1.1.19','seaborn', 'datazets']
+
+[project.urls]
+Homepage = "https://erdogant.github.io/scatterd"
+Download = "https://github.com/erdogant/scatterd/archive/{version}.tar.gz"
+
+[tool.setuptools]
+packages = ["scatterd"]
+include-package-data = true
+
+[tool.setuptools.dynamic]
+version = { attr = "scatterd.__version__" }
