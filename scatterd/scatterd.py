@@ -144,10 +144,12 @@ def scatterd(x,
     Examples
     --------
     >>> # Import library
-    >>> from scatterd import scatterd, import_example
+    >>> from scatterd import scatterd
+    >>> import datazets as dz
     >>>
     >>> # Import example
-    >>> df = import_example()
+    >>> # pip install datazets
+    >>> df = dz.get(data='cancer')
     >>>
     >>> # Simple scatter
     >>> fig, ax = scatterd(df['tsneX'], df['tsneY'], edgecolor='#FFFFFF')

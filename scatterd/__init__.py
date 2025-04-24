@@ -1,6 +1,13 @@
-from scatterd.scatterd import scatterd, set_colors, _preprocessing, jitter_func, normalize_between_0_and_1, check_logger
-from datazets.datazets import get as import_example
 import logging
+
+from scatterd.scatterd import (
+    scatterd,
+    set_colors,
+    _preprocessing,
+    jitter_func,
+    normalize_between_0_and_1,
+    check_logger,
+    )
 
 __author__ = 'Erdogan Tasksen'
 __email__ = 'erdogant@gmail.com'
@@ -27,10 +34,13 @@ Scatterd is an easy and fast way of creating beautiful scatter plots.
 Examples
 --------
 >>> # Import library
->>> from scatterd import scatterd, import_example
+>>> from scatterd import scatterd
+>>>
+>>> # pip install datazets
+>>> import datazets as dz
 >>>
 >>> # Import example
->>> df = import_example()
+>>> df = dz.get('cancer')
 >>>
 >>> # Simple scatter
 >>> fig, ax = scatterd(df['tsneX'], df['tsneY'])

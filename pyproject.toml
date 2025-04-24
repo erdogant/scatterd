@@ -16,7 +16,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-dependencies = ['matplotlib','numpy','colourmap>=1.1.19','seaborn', 'datazets']
+dependencies = ['matplotlib','numpy','colourmap>=1.1.19','seaborn']
 
 [project.urls]
 Homepage = "https://erdogant.github.io/scatterd"
