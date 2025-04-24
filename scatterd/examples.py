@@ -1,4 +1,5 @@
-from scatterd import scatterd, import_example
+from scatterd import scatterd
+import datazets as dz
 import numpy as np
 
 #%%
@@ -10,7 +11,10 @@ scatterd.check_logger(verbose='debug')
 scatterd.check_logger(verbose='warning')
 
 # %%
-df = import_example(data='cancer', verbose='info')
+from scatterd import scatterd
+import datazets as dz
+
+df = dz.get(data='cancer', verbose='info')
 fig, ax = scatterd(df['tsneX'],
                    df['tsneY'],
                    labels=df['labx'],
@@ -18,8 +22,10 @@ fig, ax = scatterd(df['tsneX'],
                    )
 
 # %%
-from scatterd import scatterd, import_example
-df = import_example(data='cancer', verbose='warning')
+from scatterd import scatterd
+import datazets as dz
+
+df = dz.get(data='cancer', verbose='warning')
 fig, ax = scatterd(df['tsneX'],
                    df['tsneY'],
                    labels=df['labx'],
