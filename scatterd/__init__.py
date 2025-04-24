@@ -11,7 +11,7 @@ from scatterd.scatterd import (
 
 __author__ = 'Erdogan Tasksen'
 __email__ = 'erdogant@gmail.com'
-__version__ = '1.3.8'
+__version__ = '1.3.9'
 
 # Setup root logger
 _logger = logging.getLogger('scatterd')
@@ -29,7 +29,7 @@ __doc__ = """
 scatterd
 =====================================================================
 
-Scatterd is an easy and fast way of creating beautiful scatter plots.
+Scatterd is Python library to create beautiful scatter plots.
 
 Examples
 --------
