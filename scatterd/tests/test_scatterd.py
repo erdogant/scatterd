@@ -6,7 +6,7 @@ import matplotlib as mpl
 
 class Testscatterd(unittest.TestCase):
 
-    def test_import_example(self):
+    def test_scatterd(self):
         iris = datasets.load_iris()
         X = iris.data[:, :2]  # we only take the first two features.
         labels = iris.target
