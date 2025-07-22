@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 import logging
+from scipy.stats import gaussian_kde
 
 logger = logging.getLogger(__name__)
 
@@ -38,7 +39,7 @@ def scatterd(x,
              legend=None,
              jitter=None,
              xlabel='x-axis', ylabel='y-axis', title='', fontsize=24, fontcolor=None, grid=True, fontweight='normal',
-             args_density = {'cmap': 'Reds', 'fill': True, 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': False},
+             args_density = {'grid_points': 40, 'z_slices': 6, 'cmap': 'Reds', 'fill': True, 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': False},
              visible=True,
              fig=None,
              ax=None,
@@ -197,8 +198,9 @@ def scatterd(x,
     zorder = None if density_on_top else 10
 
     # Defaults
-    defaults_density = {'cmap': 'Reds', 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': False, 'fill': True}
+    defaults_density = {'grid_points': 40, 'z_slices': 7, 'cmap': 'Reds', 'thresh': 0.05, 'bw_adjust': .6, 'alpha': 0.66, 'legend': False, 'cbar': False, 'fill': True}
     args_density = {**defaults_density, **args_density}
+
 
     # Preprocessing
     X, labels = _preprocessing(x, y, z, labels, jitter, norm)
@@ -218,9 +220,14 @@ def scatterd(x,
     ax = _set_figure_properties(X, labels, fontcolor, fontsize, xlabel, ylabel, title, grid, fontweight, zorder, ax)
 
     # Add density as bottom layer to the scatterplot
-    if density:
+    if density and z is None:
         logger.info('Add density layer')
+        args_density.pop('grid_points')
+        args_density.pop('z_slices')
         ax = sns.kdeplot(x=X[:, 0], y=X[:, 1], ax=ax, **args_density)
+    elif density and z is not None:
+        logger.info('Add 3D density layer')
+        _, ax = kdeplot_3d_slices(X, ax=ax, grid_points=args_density['grid_points'], z_slices=args_density['z_slices'], scatter=False)
 
     # Scatter all at once
     if (labels is None) and isinstance(marker, str):
@@ -480,6 +487,82 @@ def init_figure(ax, z, dpi, figsize, visible, fig, fontsize):
         fig.set_visible(visible)
 
     return fig, ax
+
+
+def kdeplot_3d_slices(X, grid_points=40, z_slices=6, scatter=True,
+                      scatter_kwargs=None, contour_kwargs=None,
+                      figsize=(10, 15), ax=None):
+    """
+    Plot 3D scatter points with KDE isosurfaces on fixed z slices.
+
+    Parameters
+    ----------
+    X : ndarray of shape (n_samples, 3)
+        The input 3D data.
+    grid_points : int, optional
+        Number of grid points per axis for KDE evaluation (default=40).
+    z_slices : int, optional
+        Number of slices along the z-axis to show contours (default=6).
+    scatter : bool, optional
+        Whether to plot the original scatter points (default=True).
+    scatter_kwargs : dict, optional
+        Additional keyword arguments for scatter plot.
+    contour_kwargs : dict, optional
+        Additional keyword arguments for contour plot.
+    figsize : tuple, optional
+        Size of the figure (default=(10, 15)).
+    ax : matplotlib 3D axis, optional
+        If provided, plot into this existing 3D axis.
+
+    Returns
+    -------
+    fig, ax : matplotlib Figure and Axes3D objects
+    """
+    if not scatter:
+        scatter_kwargs=dict(s=0, alpha=0)
+
+    scatter_kwargs = scatter_kwargs or dict(s=5, alpha=0.3)
+    contour_kwargs = contour_kwargs or dict(levels=5, cmap='Reds', alpha=0.6)
+
+    # Create the KDE object
+    kde = gaussian_kde(X.T)
+
+    # Define grid limits
+    xmin, ymin, zmin = X.min(axis=0) - 1
+    xmax, ymax, zmax = X.max(axis=0) + 1
+
+    # Create a 3D grid
+    x, y, z = np.mgrid[xmin:xmax:grid_points*1j,
+                       ymin:ymax:grid_points*1j,
+                       zmin:zmax:grid_points*1j]
+    grid_coords = np.vstack([x.ravel(), y.ravel(), z.ravel()])
+
+    # Evaluate KDE on grid points
+    kde_values = kde(grid_coords).reshape(x.shape)
+
+    # Plot setup
+    if ax is None:
+        fig = plt.figure(figsize=figsize)
+        ax = fig.add_subplot(111, projection='3d')
+    else:
+        fig = ax.figure  # Use existing figure
+
+    # Plot scatter points
+    if scatter:
+        ax.scatter(X[:, 0], X[:, 1], X[:, 2], **scatter_kwargs)
+
+    # Overlay KDE isosurfaces by plotting contours on fixed z slices
+    for zi in np.linspace(zmin, zmax, z_slices):
+        idx = (np.abs(z[0, 0, :] - zi)).argmin()
+        ax.contour(x[:, :, idx], y[:, :, idx], kde_values[:, :, idx],
+                   zdir='z', offset=zi, **contour_kwargs)
+
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+
+    return fig, ax
+
 
 
 # %%

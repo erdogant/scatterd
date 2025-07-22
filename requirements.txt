@@ -2,3 +2,4 @@ matplotlib
 numpy 
 seaborn
 colourmap>=1.1.19
+scipy
