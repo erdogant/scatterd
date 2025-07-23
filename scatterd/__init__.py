@@ -11,7 +11,7 @@ from scatterd.scatterd import (
 
 __author__ = 'Erdogan Tasksen'
 __email__ = 'erdogant@gmail.com'
-__version__ = '1.4.0'
+__version__ = '1.4.1'
 
 # Setup root logger
 _logger = logging.getLogger('scatterd')
