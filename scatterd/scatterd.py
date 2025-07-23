@@ -25,7 +25,7 @@ def scatterd(x,
              s=150,
              c=[0, 0.1, 0.4],
              labels=None,
-             marker='o',
+             marker='labels',
              alpha=0.8,
              edgecolor='#808080',
              gradient='opaque',
@@ -194,6 +194,7 @@ def scatterd(x,
     if s is None: s=0
     if c is None: s, c = 0, [0, 0, 0]
     if isinstance(s, (int, float)) and s==0: fontsize=0
+    if marker is not None and isinstance(marker, str) and marker =='labels' and labels is not None: marker = labels
     zorder = None if density_on_top else 10
 
     # Defaults
