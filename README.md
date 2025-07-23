@@ -47,55 +47,30 @@ On the [documentation pages](https://erdogant.github.io/scatterd/) you can find 
 
 # 
 
-* [Example: Quick scatterplot](https://erdogant.github.io/scatterd/pages/html/Examples.html#)
-
-<p align="left">
-  <a href="https://erdogant.github.io/scatterd/pages/html/Examples.html#">
-  <img src="https://github.com/erdogant/scatterd/blob/master/docs/figs/fig1_simple.png" width="600" />
-  </a>
-</p>
-
-# 
-
-* [Example: Coloring Dots](https://erdogant.github.io/scatterd/pages/html/Examples.html#coloring-dots)
-
-<p align="left">
-  <a href="https://erdogant.github.io/scatterd/pages/html/Examples.html#coloring-dots">
-  <img src="https://github.com/erdogant/scatterd/blob/master/docs/figs/fig2_red.png" width="600" />
-  </a>
-</p>
+| [Example: Coloring Dots](https://erdogant.github.io/scatterd/pages/html/Examples.html#coloring-dots) | [Example: Overlay with Kernel Density](https://erdogant.github.io/scatterd/pages/html/Examples.html#overlay-with-kernel-density) |
+|:--:|:--:|
+| [![](https://github.com/erdogant/scatterd/blob/master/docs/figs/fig2_red.png)](https://erdogant.github.io/scatterd/pages/html/Examples.html#coloring-dots) | [![](https://github.com/erdogant/scatterd/blob/master/docs/figs/fig_density_4.png)](https://erdogant.github.io/scatterd/pages/html/Examples.html#overlay-with-kernel-density) |
 
 
-# 
 
-* [Example: Overlay with Kernel Density](https://erdogant.github.io/scatterd/pages/html/Examples.html#overlay-with-kernel-density)
+| [Example: Dark scatterplot](https://erdogant.github.io/scatterd/pages/html/Examples.html#customized-colormap) | [Example with PCA projection](https://erdogant.github.io/scatterd/pages/html/Examples.html#pca) |
+|:--:|:--:|
+| [![](https://github.com/erdogant/scatterd/blob/master/docs/figs/custom_args.png)](https://erdogant.github.io/scatterd/pages/html/Examples.html#customized-colormap) | [![](https://github.com/erdogant/scatterd/blob/master/docs/figs/pca.png)](https://erdogant.github.io/scatterd/pages/html/Examples.html#pca) |
 
-<p align="left">
-  <a href="https://erdogant.github.io/scatterd/pages/html/Examples.html#overlay-with-kernel-density">
-  <img src="https://github.com/erdogant/scatterd/blob/master/docs/figs/fig_density_4.png" width="600" />
-  </a>
-</p>
-
-
-# 
-
-* [Example: Dark scatterplot](https://erdogant.github.io/scatterd/pages/html/Examples.html#customized-colormap)
-
-<p align="left">
-  <a href="https://erdogant.github.io/scatterd/pages/html/Examples.html#customized-colormap">
-  <img src="https://github.com/erdogant/scatterd/blob/master/docs/figs/custom_args.png" width="600" />
-  </a>
-</p>
 
 <hr>
 
-### Support
+### Contributors
 
-	This project needs some love! ❤️ You can help in various ways.
+<p align="left">
+  <a href="https://github.com/erdogant/scatterd/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=erdogant/scatterd" />
+  </a>
+</p>
 
-	* Become a Sponsor!
-	* Star this repo at the github page.
-	* Other contributions can be in the form of feature requests, idea discussions, reporting bugs, opening pull requests.
-	* Read more why becoming an sponsor is important on the Sponsor Github Page.
-	
-	Cheers Mate.
+### Maintainer
+* Erdogan Taskesen, github: [erdogant](https://github.com/erdogant)
+* Contributions are welcome.
+* Yes! This library is entirely **free** but it runs on coffee! :) Feel free to support with a <a href="https://erdogant.github.io/donate/?currency=USD&amount=5">Coffee</a>.
+
+[![Buy me a coffee](https://img.buymeacoffee.com/button-api/?text=Buy+me+a+coffee&emoji=&slug=erdogant&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff)](https://www.buymeacoffee.com/erdogant)
