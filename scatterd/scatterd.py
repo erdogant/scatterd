@@ -27,7 +27,7 @@ def scatterd(x,
              labels=None,
              marker='o',
              alpha=0.8,
-             edgecolor='#000000',
+             edgecolor='#808080',
              gradient='opaque',
              opaque_type='per_class',
              density=True,
@@ -67,16 +67,15 @@ def scatterd(x,
             * [0,3,0,1,2,1,..] : It is also possible to provide a list of labels. The markers will be assigned accordingly.
     alpha : float, default: 0.8
         The alpha blending value, between 0 (transparent) and 1 (opaque).
-    edgecolors : (default: 'face')
+    edgecolor : (default: 'face')
         The edge color of the marker. Possible values:
-            * 'face': The edge color will always be the same as the face color.
-            * 'none': No patch boundary will be drawn.
-            * '#FFFFFF' : A color or sequence of colors.
+            * '#808080' : A color or sequence of colors.
+            * None: No patch boundary will be drawn.
     gradient : String, (default: 'opaque')
         Hex color to make a lineair gradient using the density.
-            * None: Do not use gradient.
-            * opaque: Towards the edges the points become more opaque and thus not visible.
             * '#FFFFFF': Towards the edges it smooths into this color
+            * opaque: Towards the edges the points become more opaque and thus not visible.
+            * None: Do not use gradient.
     opaque_type : String, optional
             * 'per_class': Transprancy is determined on the density within the class label (y)
             * 'all': Transprancy is determined on all available data points
@@ -566,7 +565,7 @@ def kdeplot_3d_slices(X, grid_points=40, z_slices=6, scatter=True,
 
 
 
-# %%
+# %% Verbosity functions
 def convert_verbose_to_new(verbose):
     """Convert old verbosity to the new."""
     # In case the new verbosity is used, convert to the old one.
@@ -586,13 +585,9 @@ def convert_verbose_to_new(verbose):
     else:
         return verbose
 
-
-# %%
 def get_logger():
     return logger.getEffectiveLevel()
 
-
-# %%
 def set_logger(verbose: [str, int] = 'info'):
     """Set the logger for verbosity messages.
 
@@ -640,14 +635,10 @@ def set_logger(verbose: [str, int] = 'info'):
     logger.setLevel(verbose)
     logger.debug('Set verbose to %s' %(verbose))
 
-
-# %%
 def disable_tqdm():
     """Set the logger for verbosity messages."""
     return (True if (logger.getEffectiveLevel()>=30) else False)
 
-
-# %%
 def check_logger(verbose: [str, int] = 'info'):
     """Check the logger."""
     set_logger(verbose)
@@ -655,20 +646,3 @@ def check_logger(verbose: [str, int] = 'info'):
     logger.info('INFO')
     logger.warning('WARNING')
     logger.critical('CRITICAL')
-
-# %% Density
-# def coord2density(X, kernel='gaussian', metric='euclidean', ax=None, visible=False):
-#     from sklearn.neighbors import KernelDensity
-
-#     kde = KernelDensity(kernel=kernel, metric=metric, bandwidth=0.2).fit(X)
-#     dens = kde.score_samples(X)
-
-#     # import mpl_scatter_density # adds projection='scatter_density'
-#     # pip install mpl-scatter-density
-#     # density = plt.scatter_density(x, y, cmap=white_viridis)
-
-#     if visible:
-#         if ax is None: plt.figure(figsize=(8,8))
-#         ax.scatter(X[:,0], X[:,1], c=dens)
-
-#     return dens
