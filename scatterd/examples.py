@@ -15,10 +15,32 @@ from scatterd import scatterd
 import datazets as dz
 
 df = dz.get(data='cancer', verbose='info')
+
 fig, ax = scatterd(df['tsneX'],
                    df['tsneY'],
                    labels=df['labx'],
-                   verbose='info',
+                   # marker='o',
+                   gradient='opaque',
+                   edgecolor=None,
+                   density=False,
+                   )
+
+fig, ax = scatterd(df['tsneX'],
+                   df['tsneY'],
+                   labels=df['labx'],
+                   marker='o',
+                   gradient='opaque',
+                   # edgecolor='#808080',
+                   density=False,
+                   )
+             
+fig, ax = scatterd(df['tsneX'],
+                   df['tsneY'],
+                   labels=df['labx'],
+                   # marker='o',
+                   # gradient='opaque',
+                   # edgecolor='#808080',
+                   density=False,
                    )
 
 # %%
@@ -34,22 +56,12 @@ fig, ax = scatterd(df['tsneX'],
                     # args_density={'alpha': 0.3},
                     gradient='opaque',
                     # gradient='#FFFFFF',
-                   edgecolor='#000000',
+                   # edgecolor='#000000',
                    grid=True,
                    fontweight='normal',
                    fontsize=26,
                    legend=2,
-                   verbose='info',
                    )
-
-# %%
-# X, y = make_friedman1(n_samples=100000, n_features=5, random_state=0)
-# fig, ax = scatterd(X[:,0], X[:,1], density=False, s=0)
-
-
-# %%
-
-
 
 
 # %%
@@ -68,6 +80,8 @@ fig, ax = scatterd(X[:,0], X[:,1], s=250, grid=True)
 
 # %%import some data to play with
 from sklearn import datasets
+import numpy as np
+
 iris = datasets.load_iris()
 X = iris.data[:, :2]  # we only take the first two features.
 labels = iris.target
