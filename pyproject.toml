@@ -9,13 +9,18 @@ authors = [{ name = "Erdogan Taskesen", email = "erdogant@gmail.com" },]
 description = "scatterd is an easy and fast way of creating beautiful scatter plots."
 readme = "README.md"
 requires-python = ">=3"
-license = { file = "LICENSE" }
-keywords = ["Python", ""]
+license = "MIT"
+keywords = ["Python", "scatter", "scatter plot", "visualization", "data visualization", "scatterd"]
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Operating System :: Unix",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
 ]
+
 dependencies = ['scipy', 'matplotlib','numpy','colourmap>=1.1.19','seaborn']
 
 [project.urls]
