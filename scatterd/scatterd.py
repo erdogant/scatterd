@@ -319,19 +319,28 @@ def set_colors(X, labels, c, cmap='tab20c', gradient=None, opaque_type='per_clas
     if c is None: return None
 
     # The default is all dots to black
-    c_rgb = np.repeat([0, 0, 0], X.shape[0], axis=0).reshape(-1, 3)
+    c_rgb = np.repeat([[0, 0, 0]], X.shape[0], axis=0)
     # Create opaque levels
-    opaque = np.array([1.0] * X.shape[0])
+    opaque = np.ones(X.shape[0], dtype=float)
+    
+    # Convert input colors to RGB when needed
+    if isinstance(c, (list, np.ndarray)): # pd.DataFrame, pd.Series
+        # Convert single-element list
+        if isinstance(c, list) and len(c) == 1:
+            c = c[0]
 
+        # Check whether c contains categorical values
+        if not colourmap.is_rgb(c):
+            logger.debug('Converting input colors to RGB values.')
+            c = colourmap.fromlist(c, cmap='Set1', scheme='rgb')[0]
+            
     # Change on input c
-    if len(c)==1 and isinstance(c, list): c = c[0]
-    if len(c)==3 and isinstance(c[0], (int, float)):
+    if isinstance(c, (list, tuple, np.ndarray)) and len(c) == 3 and np.asarray(c).ndim == 1:
         logger.debug('Colors are all set to %s.' %(c))
-        c_rgb = np.repeat([c], X.shape[0], axis=0).reshape(-1, 3)
-
-    if X.shape[0]==len(c):
+        c_rgb = np.repeat([c], X.shape[0], axis=0)
+    elif len(c) == X.shape[0]:
         logger.debug('Colors are set to input colors defined in [c].')
-        c_rgb=c
+        c_rgb = np.asarray(c)
 
     if labels is not None:
         # Create unqiue colors for labels if there are multiple classes or in case cmap and gradient is used.
